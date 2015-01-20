@@ -78,7 +78,7 @@ namespace SimpleBackup
             InitializeLanguage();
             if (SelectedLanguage == 0) ChangeLanguage("Deutsch");
             else if (SelectedLanguage == 1) ChangeLanguage("English");
-            SettingReadings = MainForm.SettingReadings;
+            SettingReadings = MainForm.SettingReadings.ToList<string>(); // not just copies the reference, but creates a new list
             foreach (string _str in SettingReadings)
             {
                 if (_str == "") continue;
@@ -181,7 +181,7 @@ namespace SimpleBackup
         {
             MainForm.SelectedLanguage = SelectedLanguage;
             MainForm.SettingReadings = SettingReadings;
-            MainForm.ReloadSettingsListBoxEntries(ListBox_SavedSettings, SettingReadings);
+            MainForm.ReloadSettingsListBoxEntries(MainForm.ListBox_ListOfSettings, SettingReadings);
 
             if (ListBox_SavedSettings.SelectedIndex != -1)
             {
@@ -293,10 +293,9 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_ApplySetting_Click(object _sender, EventArgs _e) // ok-button clicked
         {
-            //string str = TextBox_SourcePath.Text + "?" + TextBox_DestinationPath.Text;
             string[] _t = SettingReadings[ListBox_SavedSettings.SelectedIndex].Split('?');
             int _i = ListBox_SavedSettings.SelectedIndex;
-            //SettingReadings[ListBox_SavedSettings.SelectedIndex] = str + "?" + _t[2] + "?" + _t[3] + "?" + _t[4] + "?" + _t[5] + "?" + _t[6]; 
+
             SettingReadings[ListBox_SavedSettings.SelectedIndex] = TextBox_SourcePath.Text + "?"
                  + TextBox_DestinationPath.Text + "?"
                  + MainForm.RadioButton_OverwriteIfNewer.Checked + "?"
@@ -313,14 +312,16 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_NewSetting_Click(object _sender, EventArgs _e) // new-button clicked
         {
-            SettingReadings.Add(TextBox_SourcePath.Text + "?"
+            string _newEntry = TextBox_SourcePath.Text + "?"
                 + TextBox_DestinationPath.Text + "?"
                 + MainForm.RadioButton_OverwriteIfNewer.Checked + "?"
                 + MainForm.RadioButton_CopyAll.Checked + "?"
                 + MainForm.CheckBox_DeleteOldFiles.Checked + "?"
                 + SelectedLanguage + "?"
-                + MainForm.CheckBox_ShutDown.Checked);
+                + MainForm.CheckBox_ShutDown.Checked;
+
             ListBox_SavedSettings.Items.Add(TextBox_SourcePath.Text + "  ==>>  " + TextBox_DestinationPath.Text);
+            SettingReadings.Add(_newEntry);
         }
         /// <summary>
         /// Deletes an entry from the list of settings.
@@ -331,11 +332,10 @@ namespace SimpleBackup
         {
             if (ListBox_SavedSettings.SelectedItem == null) return;
             SettingReadings[ListBox_SavedSettings.SelectedIndex] = "";
-            ListBox_SavedSettings.Items.RemoveAt(ListBox_SavedSettings.SelectedIndex);
+            int _selectedIndex = ListBox_SavedSettings.SelectedIndex;
+            ListBox_SavedSettings.Items.RemoveAt(_selectedIndex);
             TextBox_SourcePath.Text = "";
             TextBox_DestinationPath.Text = "";
-            MainForm.ReloadSettingsListBoxEntries(MainForm.ListBox_ListOfSettings, SettingReadings);
         }
-        // todo listbox für settings zeug: anklicken, in input boxen, neu, speichern, etc.
     }
 }

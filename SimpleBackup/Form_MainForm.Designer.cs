@@ -553,7 +553,7 @@
             this.MainMenuStrip = this.MenuStrip_MainStrip;
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
-            this.Text = "Simple Backup - ver.4.0.30319.34209 - made by Hauke Stieler";
+            this.Text = "Simple Backup - ver.1.2.0.4 - made by Hauke Stieler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_MainForm_FormClosing);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
