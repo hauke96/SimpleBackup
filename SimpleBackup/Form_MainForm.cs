@@ -429,12 +429,9 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ToolStripMenuItem_OpenHelpDialog_Click(object _sender, EventArgs _e)
         {
-        
-            //todo: file-not-found-exception with try and catch!
             try { 
-
-            if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
-            if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
+                if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
+                if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
             }
             catch (Exception e)
             {
@@ -526,7 +523,7 @@ namespace SimpleBackup
             if (ListBox_ListOfSettings.SelectedIndex != -1) ListBox_ListOfSettings.SelectedIndex = -1;
         }
 
-// LABEN
+// LABEL
         /// <summary>
         /// Hover effect: Shows the whole filename of the current file (if the filename goes beyond the window border).
         /// </summary>
