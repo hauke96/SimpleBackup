@@ -65,7 +65,7 @@ namespace SimpleBackup
         Form_MainForm MainForm;
         public List<string> SettingReadings = new List<string>(); // saves read data
 
-// INITIALIZING STUFF
+        // INITIALIZING STUFF
         /// <summary>
         /// Initializes the setting menu.
         /// </summary>
@@ -131,7 +131,7 @@ namespace SimpleBackup
         /// Changes the language to _language and reloads the label of every control.
         /// </summary>
         /// <param name="_language">The new language as string. Avalaible languages: "Deutsch" and "English".</param>
-        private void ChangeLanguage(string _language) 
+        private void ChangeLanguage(string _language)
         {
             switch (_language)
             {
@@ -162,13 +162,13 @@ namespace SimpleBackup
             this.Text = Language[SelectedLanguage, 12];
         }
 
-// EVENTS
+        // EVENTS
         /// <summary>
         /// Closes the Form when the cancel-button has been pressed.
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void Button_Cancel_Click(object _sender, EventArgs _e) 
+        private void Button_Cancel_Click(object _sender, EventArgs _e)
         {
             this.Close();
         }
@@ -177,7 +177,7 @@ namespace SimpleBackup
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void Button_Save_Click(object _sender, EventArgs _e) 
+        private void Button_Save_Click(object _sender, EventArgs _e)
         {
             MainForm.SelectedLanguage = SelectedLanguage;
             MainForm.SettingReadings = SettingReadings;
@@ -200,13 +200,13 @@ namespace SimpleBackup
             Close();
         }
 
-// TAB1: GENERAL SETTINGS
+        // TAB1: GENERAL SETTINGS
         /// <summary>
         /// Changes the current language and sets it via ChangeLanguage().
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void ComboBox_Language_SelectedIndexChanged(object _sender, EventArgs _e) 
+        private void ComboBox_Language_SelectedIndexChanged(object _sender, EventArgs _e)
         {
             if (ComboBox_Language.SelectedIndex == 1) ChangeLanguage("Deutsch");
             else if (ComboBox_Language.SelectedIndex == 0) ChangeLanguage("English");
@@ -216,12 +216,12 @@ namespace SimpleBackup
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void Button_CreateSettingsBackup_Click(object _sender, EventArgs _e) 
+        private void Button_CreateSettingsBackup_Click(object _sender, EventArgs _e)
         {
             int _i;
             for (_i = 0; QuickIOFile.Exists("some.settings.backup" + _i.ToString()); _i++) { }
             QuickIOFile.Copy("some.settings", "some.settings.backup" + _i.ToString());
-            
+
             // old version:
             //string str = "more.";
             //while (QuickIOFile.Exists("some." + str + "settings"))
@@ -235,16 +235,16 @@ namespace SimpleBackup
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void Button_CreateSettingsBackup_MouseHover(object _sender, EventArgs _e) 
+        private void Button_CreateSettingsBackup_MouseHover(object _sender, EventArgs _e)
         {
-           ToolTip_Info.Show(Language[SelectedLanguage, 11], Button_CreateSettingsBackup);
+            ToolTip_Info.Show(Language[SelectedLanguage, 11], Button_CreateSettingsBackup);
         }
         /// <summary>
         /// Resets the settings to the default values (language=english, no path-settings).
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="_e"></param>
-        private void Button_ResetSettings_Click(object _sender, EventArgs _e) 
+        private void Button_ResetSettings_Click(object _sender, EventArgs _e)
         {
             SelectedLanguage = 1;
             SettingReadings.Clear();
@@ -259,7 +259,7 @@ namespace SimpleBackup
             MainForm.CheckBox_ShutDown.Checked = false;
         }
 
-// TAB2: SAVED SETTINGS
+        // TAB2: SAVED SETTINGS
         /// <summary>
         /// Shows a info tooltip for the "new" button.
         /// </summary>
@@ -267,7 +267,7 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_NewSetting_MouseHover(object _sender, EventArgs _e)
         {
-           ToolTip_Info.Show(Language[SelectedLanguage, 10], Button_NewSetting);
+            ToolTip_Info.Show(Language[SelectedLanguage, 10], Button_NewSetting);
         }
         /// <summary>
         /// Shows path in text boxes when user clicked on an entry in the list of settings.
@@ -276,7 +276,7 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ListBox_SavedSettings_SelectedIndexChanged(object _sender, EventArgs _e) // when user choosed a list entry
         {
-            if (ListBox_SavedSettings.SelectedIndex == -1 
+            if (ListBox_SavedSettings.SelectedIndex == -1
                 || SettingReadings[ListBox_SavedSettings.SelectedIndex] == null
                 || SettingReadings[ListBox_SavedSettings.SelectedIndex] == "") return; // if index is invalid, the entry is null or empty
             string[] _t = SettingReadings[ListBox_SavedSettings.SelectedIndex].Split('?');
