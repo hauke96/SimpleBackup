@@ -75,13 +75,16 @@ namespace SimpleBackup
         public int Amount_FilesInSourcePath, // Amount of files in the original folder ( SourcePath )
             Amount_ProcessedFiles, // amount of processed files
             SelectedLanguage = 1, // 1=English; 0=German/Deutsch
-            CurrentFileInMBytes = 0; // size in mega-bytes (MBytes) of current file
+            CurrentFileInMBytes = 0, // size in mega-bytes (MBytes) of current file
+            SelectedErrorMessage = -1, // the selected error message in the notification list
+            ErrorMessageCounter = 0; // Amount of error messages for the list entry ( "ERROR(x): ... " ) ; imortant for SelectedErrorMessage
         public long Amount_BytesInSourcePath, // Amount of bytes in the original folder ( SourcePath )
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
         public TimeSpan PausedTime; // needed for pausing the timer in pause-mode; duration the process was paused
         public string[,] Language = new string[2, 52]; // Array with language strings
-        public List<string> SettingReadings = new List<string>(); // saves read data
+        public List<string> SettingReadings = new List<string>(), // saves read data
+            ErrorMessages = new List<string>(); // List of detailed error messages to copy via the notification list
 
         
         public Form_MainForm()
@@ -305,13 +308,17 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ListBox_Notifications_MouseDown(object _sender, MouseEventArgs _e)
         {
-            //todo: create index after "ERROR" for index in detailt error array (e.g.: "ERROR(5): ..." and in ErrorList[5] is a detailed error message)
             if (_e.Button == MouseButtons.Right && Button_StartStopBackup.Text == "OK" // right click and backup ended
                 && ListBox_Notifications.IndexFromPoint(_e.X, _e.Y) != -1
                 && ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)].ToString().Contains(Language[SelectedLanguage, 22])) // when entry is a error-entry
             {
                 ListBox_Notifications.SelectedItem = ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)];
                 ContextMenuStrip_ErrorMessage.Show(new Point(Form_MainForm.MousePosition.X, Form_MainForm.MousePosition.Y));
+
+                string _currentEntry = ListBox_Notifications.SelectedItem.ToString();
+                string _splitEntry = _currentEntry.Split('(')[1]; // [0] = "ERROR" , [1] = "x): ..."
+                _splitEntry = _splitEntry.Split(')')[0]; // [0] = "x", [1] = ": ..."
+                SelectedErrorMessage = Convert.ToInt32(_splitEntry);
             }
         }
         /// <summary>
@@ -371,7 +378,7 @@ namespace SimpleBackup
             }
             if (_e.ClickedItem.Text == Language[SelectedLanguage, 35])
             {
-                Clipboard.SetText(ListBox_Notifications.SelectedItem.ToString());
+                Clipboard.SetText(ErrorMessages[SelectedErrorMessage]);
             }
         }
 
@@ -853,16 +860,20 @@ namespace SimpleBackup
         /// <param name="stopBackup">When the error is so fatal that the backup has to be canceled set this to "true".</param>
         public void ErrorOccured(ErrorEventArgs _e, Boolean stopBackup = true)
         {
-            ListBox_Notifications.Items.Add(Language[SelectedLanguage, 22] + " " + _e.GetException().Message);
+            ListBox_Notifications.Items.Add(Language[SelectedLanguage, 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message);
             string _date = DateTime.Now.ToString().Replace(":", ".");
             ListBox_Notifications.Items.Add(Language[SelectedLanguage, 37] + _date + ".log");
+
+            string _temp_ErrorMessage = Language[SelectedLanguage, 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message + "\n"
+                + _e.GetException().StackTrace + "\n"
+                + _e.GetException().Data + "\n"
+                + _e.GetException().HelpLink + "\n"
+                + _e.GetException().InnerException + "\n"
+                + _e.GetException().TargetSite;
+
+            ErrorMessages.Add(_temp_ErrorMessage);
             StreamWriter _writer = new StreamWriter(_date + ".log");
-            _writer.Write(_e.GetException().Message + "\n" 
-                + _e.GetException().StackTrace + "\n" 
-                + _e.GetException().Data + "\n" 
-                + _e.GetException().HelpLink + "\n" 
-                + _e.GetException().InnerException + "\n" 
-                + _e.GetException().TargetSite);
+            _writer.Write(_temp_ErrorMessage);
             _writer.Close();
             ListBox_Notifications.Items.Add(Language[SelectedLanguage, 34]);
             BackupIsRunning = false;
