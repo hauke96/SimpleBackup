@@ -422,9 +422,18 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ToolStripMenuItem_OpenHelpDialog_Click(object _sender, EventArgs _e)
         {
+        
             //todo: file-not-found-exception with try and catch!
+            try { 
+
             if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
             if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
         /// <summary>
         /// Saves the current entry of the settings list to the SettingsRead-Array (will be saved on exit)
