@@ -82,6 +82,10 @@
             this.Label_Progress = new System.Windows.Forms.Label();
             this.Label_Notifications = new System.Windows.Forms.Label();
             this.Button_PauseResume = new System.Windows.Forms.Button();
+            this.ContextMenuStrip_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Button_AddEntry = new System.Windows.Forms.Button();
+            this.Button_DeleteEntry = new System.Windows.Forms.Button();
+            this.Button_SaveEntry = new System.Windows.Forms.Button();
             this.MenuStrip_MainStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +99,7 @@
             // 
             this.ListBox_Notifications.FormattingEnabled = true;
             this.ListBox_Notifications.HorizontalScrollbar = true;
-            this.ListBox_Notifications.Location = new System.Drawing.Point(12, 461);
+            this.ListBox_Notifications.Location = new System.Drawing.Point(13, 499);
             this.ListBox_Notifications.Name = "ListBox_Notifications";
             this.ListBox_Notifications.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBox_Notifications.Size = new System.Drawing.Size(577, 134);
@@ -277,7 +281,7 @@
             // CheckBox_ShutDown
             // 
             this.CheckBox_ShutDown.AutoSize = true;
-            this.CheckBox_ShutDown.Location = new System.Drawing.Point(248, 221);
+            this.CheckBox_ShutDown.Location = new System.Drawing.Point(249, 246);
             this.CheckBox_ShutDown.Name = "CheckBox_ShutDown";
             this.CheckBox_ShutDown.Size = new System.Drawing.Size(169, 17);
             this.CheckBox_ShutDown.TabIndex = 12;
@@ -289,7 +293,7 @@
             this.CheckBox_DeleteOldFiles.AutoSize = true;
             this.CheckBox_DeleteOldFiles.Checked = true;
             this.CheckBox_DeleteOldFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBox_DeleteOldFiles.Location = new System.Drawing.Point(248, 198);
+            this.CheckBox_DeleteOldFiles.Location = new System.Drawing.Point(249, 223);
             this.CheckBox_DeleteOldFiles.Name = "CheckBox_DeleteOldFiles";
             this.CheckBox_DeleteOldFiles.Size = new System.Drawing.Size(124, 17);
             this.CheckBox_DeleteOldFiles.TabIndex = 11;
@@ -300,7 +304,7 @@
             // RadioButton_CopyAll
             // 
             this.RadioButton_CopyAll.AutoSize = true;
-            this.RadioButton_CopyAll.Location = new System.Drawing.Point(18, 221);
+            this.RadioButton_CopyAll.Location = new System.Drawing.Point(19, 246);
             this.RadioButton_CopyAll.Name = "RadioButton_CopyAll";
             this.RadioButton_CopyAll.Size = new System.Drawing.Size(91, 17);
             this.RadioButton_CopyAll.TabIndex = 10;
@@ -311,7 +315,7 @@
             // 
             this.RadioButton_OverwriteIfNewer.AutoSize = true;
             this.RadioButton_OverwriteIfNewer.Checked = true;
-            this.RadioButton_OverwriteIfNewer.Location = new System.Drawing.Point(18, 198);
+            this.RadioButton_OverwriteIfNewer.Location = new System.Drawing.Point(19, 223);
             this.RadioButton_OverwriteIfNewer.Name = "RadioButton_OverwriteIfNewer";
             this.RadioButton_OverwriteIfNewer.Size = new System.Drawing.Size(182, 17);
             this.RadioButton_OverwriteIfNewer.TabIndex = 9;
@@ -321,7 +325,7 @@
             // 
             // Button_DestinationPath
             // 
-            this.Button_DestinationPath.Location = new System.Drawing.Point(554, 171);
+            this.Button_DestinationPath.Location = new System.Drawing.Point(555, 196);
             this.Button_DestinationPath.Name = "Button_DestinationPath";
             this.Button_DestinationPath.Size = new System.Drawing.Size(35, 20);
             this.Button_DestinationPath.TabIndex = 14;
@@ -331,7 +335,7 @@
             // 
             // TextBox_DestinationPath
             // 
-            this.TextBox_DestinationPath.Location = new System.Drawing.Point(100, 171);
+            this.TextBox_DestinationPath.Location = new System.Drawing.Point(101, 196);
             this.TextBox_DestinationPath.Name = "TextBox_DestinationPath";
             this.TextBox_DestinationPath.Size = new System.Drawing.Size(448, 20);
             this.TextBox_DestinationPath.TabIndex = 16;
@@ -339,7 +343,7 @@
             // 
             // TextBox_SourcePath
             // 
-            this.TextBox_SourcePath.Location = new System.Drawing.Point(100, 145);
+            this.TextBox_SourcePath.Location = new System.Drawing.Point(101, 170);
             this.TextBox_SourcePath.Name = "TextBox_SourcePath";
             this.TextBox_SourcePath.Size = new System.Drawing.Size(448, 20);
             this.TextBox_SourcePath.TabIndex = 15;
@@ -347,7 +351,7 @@
             // 
             // Button_SourcePath
             // 
-            this.Button_SourcePath.Location = new System.Drawing.Point(554, 145);
+            this.Button_SourcePath.Location = new System.Drawing.Point(555, 170);
             this.Button_SourcePath.Name = "Button_SourcePath";
             this.Button_SourcePath.Size = new System.Drawing.Size(35, 20);
             this.Button_SourcePath.TabIndex = 13;
@@ -358,7 +362,7 @@
             // Label_Source
             // 
             this.Label_Source.AutoSize = true;
-            this.Label_Source.Location = new System.Drawing.Point(12, 149);
+            this.Label_Source.Location = new System.Drawing.Point(13, 174);
             this.Label_Source.Name = "Label_Source";
             this.Label_Source.Size = new System.Drawing.Size(61, 13);
             this.Label_Source.TabIndex = 17;
@@ -367,7 +371,7 @@
             // Label_Destination
             // 
             this.Label_Destination.AutoSize = true;
-            this.Label_Destination.Location = new System.Drawing.Point(12, 174);
+            this.Label_Destination.Location = new System.Drawing.Point(13, 199);
             this.Label_Destination.Name = "Label_Destination";
             this.Label_Destination.Size = new System.Drawing.Size(54, 13);
             this.Label_Destination.TabIndex = 18;
@@ -387,7 +391,7 @@
             // 
             this.Label_Information.AutoSize = true;
             this.Label_Information.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Information.Location = new System.Drawing.Point(12, 280);
+            this.Label_Information.Location = new System.Drawing.Point(13, 318);
             this.Label_Information.Name = "Label_Information";
             this.Label_Information.Size = new System.Drawing.Size(74, 13);
             this.Label_Information.TabIndex = 30;
@@ -396,7 +400,7 @@
             // Label_RemainingTimeData
             // 
             this.Label_RemainingTimeData.AutoSize = true;
-            this.Label_RemainingTimeData.Location = new System.Drawing.Point(143, 355);
+            this.Label_RemainingTimeData.Location = new System.Drawing.Point(144, 393);
             this.Label_RemainingTimeData.Name = "Label_RemainingTimeData";
             this.Label_RemainingTimeData.Size = new System.Drawing.Size(286, 13);
             this.Label_RemainingTimeData.TabIndex = 29;
@@ -405,7 +409,7 @@
             // Label_ElapsedTimeData
             // 
             this.Label_ElapsedTimeData.AutoSize = true;
-            this.Label_ElapsedTimeData.Location = new System.Drawing.Point(143, 338);
+            this.Label_ElapsedTimeData.Location = new System.Drawing.Point(144, 376);
             this.Label_ElapsedTimeData.Name = "Label_ElapsedTimeData";
             this.Label_ElapsedTimeData.Size = new System.Drawing.Size(68, 13);
             this.Label_ElapsedTimeData.TabIndex = 28;
@@ -414,7 +418,7 @@
             // Label_FileProgress
             // 
             this.Label_FileProgress.AutoSize = true;
-            this.Label_FileProgress.Location = new System.Drawing.Point(143, 321);
+            this.Label_FileProgress.Location = new System.Drawing.Point(144, 359);
             this.Label_FileProgress.Name = "Label_FileProgress";
             this.Label_FileProgress.Size = new System.Drawing.Size(24, 13);
             this.Label_FileProgress.TabIndex = 27;
@@ -423,7 +427,7 @@
             // Label_CurrentFile_FileName
             // 
             this.Label_CurrentFile_FileName.AutoSize = true;
-            this.Label_CurrentFile_FileName.Location = new System.Drawing.Point(143, 304);
+            this.Label_CurrentFile_FileName.Location = new System.Drawing.Point(144, 342);
             this.Label_CurrentFile_FileName.Name = "Label_CurrentFile_FileName";
             this.Label_CurrentFile_FileName.Size = new System.Drawing.Size(10, 13);
             this.Label_CurrentFile_FileName.TabIndex = 26;
@@ -433,7 +437,7 @@
             // Label_RemainingTime
             // 
             this.Label_RemainingTime.AutoSize = true;
-            this.Label_RemainingTime.Location = new System.Drawing.Point(27, 355);
+            this.Label_RemainingTime.Location = new System.Drawing.Point(28, 393);
             this.Label_RemainingTime.Name = "Label_RemainingTime";
             this.Label_RemainingTime.Size = new System.Drawing.Size(93, 13);
             this.Label_RemainingTime.TabIndex = 24;
@@ -442,7 +446,7 @@
             // Label_ElapsedTime
             // 
             this.Label_ElapsedTime.AutoSize = true;
-            this.Label_ElapsedTime.Location = new System.Drawing.Point(27, 338);
+            this.Label_ElapsedTime.Location = new System.Drawing.Point(28, 376);
             this.Label_ElapsedTime.Name = "Label_ElapsedTime";
             this.Label_ElapsedTime.Size = new System.Drawing.Size(89, 13);
             this.Label_ElapsedTime.TabIndex = 23;
@@ -451,7 +455,7 @@
             // Label_AmountFiles
             // 
             this.Label_AmountFiles.AutoSize = true;
-            this.Label_AmountFiles.Location = new System.Drawing.Point(27, 321);
+            this.Label_AmountFiles.Location = new System.Drawing.Point(28, 359);
             this.Label_AmountFiles.Name = "Label_AmountFiles";
             this.Label_AmountFiles.Size = new System.Drawing.Size(82, 13);
             this.Label_AmountFiles.TabIndex = 22;
@@ -460,7 +464,7 @@
             // Label_CurrentFile
             // 
             this.Label_CurrentFile.AutoSize = true;
-            this.Label_CurrentFile.Location = new System.Drawing.Point(27, 304);
+            this.Label_CurrentFile.Location = new System.Drawing.Point(28, 342);
             this.Label_CurrentFile.Name = "Label_CurrentFile";
             this.Label_CurrentFile.Size = new System.Drawing.Size(94, 13);
             this.Label_CurrentFile.TabIndex = 21;
@@ -468,7 +472,7 @@
             // 
             // ProgressBar
             // 
-            this.ProgressBar.Location = new System.Drawing.Point(12, 400);
+            this.ProgressBar.Location = new System.Drawing.Point(13, 438);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(577, 26);
             this.ProgressBar.TabIndex = 20;
@@ -476,7 +480,7 @@
             // Button_StartStopBackup
             // 
             this.Button_StartStopBackup.Enabled = false;
-            this.Button_StartStopBackup.Location = new System.Drawing.Point(15, 244);
+            this.Button_StartStopBackup.Location = new System.Drawing.Point(16, 282);
             this.Button_StartStopBackup.Name = "Button_StartStopBackup";
             this.Button_StartStopBackup.Size = new System.Drawing.Size(284, 26);
             this.Button_StartStopBackup.TabIndex = 25;
@@ -488,7 +492,7 @@
             // 
             this.Label_Progress.AutoSize = true;
             this.Label_Progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Progress.Location = new System.Drawing.Point(12, 377);
+            this.Label_Progress.Location = new System.Drawing.Point(13, 415);
             this.Label_Progress.Name = "Label_Progress";
             this.Label_Progress.Size = new System.Drawing.Size(56, 13);
             this.Label_Progress.TabIndex = 31;
@@ -498,7 +502,7 @@
             // 
             this.Label_Notifications.AutoSize = true;
             this.Label_Notifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Notifications.Location = new System.Drawing.Point(12, 438);
+            this.Label_Notifications.Location = new System.Drawing.Point(13, 476);
             this.Label_Notifications.Name = "Label_Notifications";
             this.Label_Notifications.Size = new System.Drawing.Size(63, 13);
             this.Label_Notifications.TabIndex = 32;
@@ -508,7 +512,7 @@
             // 
             this.Button_PauseResume.Enabled = false;
             this.Button_PauseResume.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Button_PauseResume.Location = new System.Drawing.Point(306, 244);
+            this.Button_PauseResume.Location = new System.Drawing.Point(307, 282);
             this.Button_PauseResume.Name = "Button_PauseResume";
             this.Button_PauseResume.Size = new System.Drawing.Size(283, 26);
             this.Button_PauseResume.TabIndex = 33;
@@ -516,11 +520,50 @@
             this.Button_PauseResume.UseVisualStyleBackColor = true;
             this.Button_PauseResume.Click += new System.EventHandler(this.Button_PauseResume_Click);
             // 
+            // ContextMenuStrip_Settings
+            // 
+            this.ContextMenuStrip_Settings.Name = "ContextMenuStrip_Settings";
+            this.ContextMenuStrip_Settings.Size = new System.Drawing.Size(61, 4);
+            this.ContextMenuStrip_Settings.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ContextMenuStrip_Settings_ItemClicked);
+            // 
+            // Button_AddEntry
+            // 
+            this.Button_AddEntry.Location = new System.Drawing.Point(12, 141);
+            this.Button_AddEntry.Name = "Button_AddEntry";
+            this.Button_AddEntry.Size = new System.Drawing.Size(75, 23);
+            this.Button_AddEntry.TabIndex = 34;
+            this.Button_AddEntry.Text = "Neu";
+            this.Button_AddEntry.UseVisualStyleBackColor = true;
+            this.Button_AddEntry.Click += new System.EventHandler(this.Button_AddEntry_Click);
+            // 
+            // Button_DeleteEntry
+            // 
+            this.Button_DeleteEntry.Location = new System.Drawing.Point(174, 141);
+            this.Button_DeleteEntry.Name = "Button_DeleteEntry";
+            this.Button_DeleteEntry.Size = new System.Drawing.Size(75, 23);
+            this.Button_DeleteEntry.TabIndex = 36;
+            this.Button_DeleteEntry.Text = "Löschen";
+            this.Button_DeleteEntry.UseVisualStyleBackColor = true;
+            this.Button_DeleteEntry.Click += new System.EventHandler(this.Button_DeleteEntry_Click);
+            // 
+            // Button_SaveEntry
+            // 
+            this.Button_SaveEntry.Location = new System.Drawing.Point(93, 141);
+            this.Button_SaveEntry.Name = "Button_SaveEntry";
+            this.Button_SaveEntry.Size = new System.Drawing.Size(75, 23);
+            this.Button_SaveEntry.TabIndex = 37;
+            this.Button_SaveEntry.Text = "Speichern";
+            this.Button_SaveEntry.UseVisualStyleBackColor = true;
+            this.Button_SaveEntry.Click += new System.EventHandler(this.Button_SaveEntry_Click);
+            // 
             // Form_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 608);
+            this.ClientSize = new System.Drawing.Size(602, 645);
+            this.Controls.Add(this.Button_SaveEntry);
+            this.Controls.Add(this.Button_DeleteEntry);
+            this.Controls.Add(this.Button_AddEntry);
             this.Controls.Add(this.Button_PauseResume);
             this.Controls.Add(this.Label_Notifications);
             this.Controls.Add(this.Label_Progress);
@@ -595,7 +638,6 @@
         private System.Windows.Forms.Button Button_SourcePath;
         private System.Windows.Forms.Label Label_Source;
         private System.Windows.Forms.Label Label_Destination;
-        public System.Windows.Forms.ListBox ListBox_ListOfSettings;
         private System.Windows.Forms.Label Label_Information;
         private System.Windows.Forms.Label Label_RemainingTimeData;
         private System.Windows.Forms.Label Label_ElapsedTimeData;
@@ -616,6 +658,11 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ReportError;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_WriteReview;
         private System.Windows.Forms.Button Button_PauseResume;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip_Settings;
+        public System.Windows.Forms.ListBox ListBox_ListOfSettings;
+        private System.Windows.Forms.Button Button_AddEntry;
+        private System.Windows.Forms.Button Button_DeleteEntry;
+        private System.Windows.Forms.Button Button_SaveEntry;
     }
 }
 

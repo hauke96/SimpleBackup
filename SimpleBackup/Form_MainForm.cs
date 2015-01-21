@@ -77,12 +77,13 @@ namespace SimpleBackup
             SelectedLanguage = 1, // 1=English; 0=German/Deutsch
             CurrentFileInMBytes = 0, // size in mega-bytes (MBytes) of current file
             SelectedErrorMessage = -1, // the selected error message in the notification list
-            ErrorMessageCounter = 0; // Amount of error messages for the list entry ( "ERROR(x): ... " ) ; imortant for SelectedErrorMessage
+            ErrorMessageCounter = 0, // Amount of error messages for the list entry ( "ERROR(x): ... " ) ; imortant for SelectedErrorMessage
+            SettingsList_SelectedIndex = -1; // saves the last selected index if ListBox_ListOfSettings
         public long Amount_BytesInSourcePath, // Amount of bytes in the original folder ( SourcePath )
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
         public TimeSpan PausedTime; // needed for pausing the timer in pause-mode; duration the process was paused
-        public string[,] Language = new string[2, 52]; // Array with language strings
+        public string[,] Language = new string[2, 53]; // Array with language strings
         public List<string> SettingReadings = new List<string>(), // saves read data
             ErrorMessages = new List<string>(); // List of detailed error messages to copy via the notification list
 
@@ -111,10 +112,8 @@ namespace SimpleBackup
         }
 
 
-
-        /*
-         * Events
-         * */
+        
+        //Events
 
 
 
@@ -203,6 +202,53 @@ namespace SimpleBackup
             if (PauseBackup) Button_PauseResume.Text = Language[SelectedLanguage, 48];
             else Button_PauseResume.Text = Language[SelectedLanguage, 49];
             PauseBackup = false == PauseBackup; // switches between true/false
+        }
+        /// <summary>
+        /// Saves the current settings into a new list entry.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
+        private void Button_AddEntry_Click(object _sender, EventArgs _e)
+        {
+            string _newEntry = TextBox_SourcePath.Text + "?"
+                + TextBox_DestinationPath.Text + "?"
+                + RadioButton_OverwriteIfNewer.Checked + "?"
+                + RadioButton_CopyAll.Checked + "?"
+                + CheckBox_DeleteOldFiles.Checked + "?"
+                + SelectedLanguage + "?"
+                + CheckBox_ShutDown.Checked;
+
+            SettingReadings.Add(_newEntry);
+            ReloadSettingsListBoxEntries(ListBox_ListOfSettings, SettingReadings);
+        }
+        /// <summary>
+        /// Deletes current selected entry from list.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
+        private void Button_DeleteEntry_Click(object _sender, EventArgs _e)
+        {
+            SettingReadings.RemoveAt(SettingsList_SelectedIndex);
+            ListBox_ListOfSettings.Items.RemoveAt(SettingsList_SelectedIndex);
+        }
+        /// <summary>
+        /// Saves changes of the current selected entry if the list.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
+        private void Button_SaveEntry_Click(object _sender, EventArgs _e)
+        {
+            if (SettingsList_SelectedIndex == -1) return;
+            string _modifiedEntry = TextBox_SourcePath.Text + "?"
+                + TextBox_DestinationPath.Text + "?"
+                + RadioButton_OverwriteIfNewer.Checked + "?"
+                + RadioButton_CopyAll.Checked + "?"
+                + CheckBox_DeleteOldFiles.Checked + "?"
+                + SelectedLanguage + "?"
+                + CheckBox_ShutDown.Checked;
+
+            SettingReadings[SettingsList_SelectedIndex] = _modifiedEntry;
+            ReloadSettingsListBoxEntries(ListBox_ListOfSettings, SettingReadings);
         }
 
 // TIMER
@@ -315,6 +361,7 @@ namespace SimpleBackup
                 ListBox_Notifications.SelectedItem = ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)];
                 ContextMenuStrip_ErrorMessage.Show(new Point(Form_MainForm.MousePosition.X, Form_MainForm.MousePosition.Y));
 
+                // analyse the selected entry
                 string _currentEntry = ListBox_Notifications.SelectedItem.ToString();
                 string _splitEntry = _currentEntry.Split('(')[1]; // [0] = "ERROR" , [1] = "x): ..."
                 _splitEntry = _splitEntry.Split(')')[0]; // [0] = "x", [1] = ": ..."
@@ -328,6 +375,7 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ListBox_ListOfSettings_SelectedIndexChanged(object _sender, EventArgs _e)
         {
+            if (ListBox_ListOfSettings.SelectedIndex != -1) SettingsList_SelectedIndex = ListBox_ListOfSettings.SelectedIndex; // saves valid index
             if (BackupIsRunning == false && Button_StartStopBackup.Text == "OK")
             {
                 // return to screen befor backup started
@@ -339,18 +387,31 @@ namespace SimpleBackup
             if (ListBox_ListOfSettings.SelectedItem == null) return;
 
             // todo: options -> settings -> reset -> save -> klick on second entry in settings list -> error: ArgumentOutOfRangeException
+            int _i = ListBox_ListOfSettings.SelectedIndex;
             string[] _t = SettingReadings[ListBox_ListOfSettings.SelectedIndex].Split('?');
             if (_t.Length == 7)
             {
-                TextBox_SourcePath.Text = _t[0];
-                TextBox_DestinationPath.Text = _t[1];
-                RadioButton_OverwriteIfNewer.Checked = Convert.ToBoolean(_t[2]);
-                RadioButton_CopyAll.Checked = Convert.ToBoolean(_t[3]);
-                CheckBox_DeleteOldFiles.Checked = Convert.ToBoolean(_t[4]);
-                SelectedLanguage = Convert.ToInt32(_t[5]);
-                if (_t[5] == "0") ChangeLanguage("Deutsch");
-                if (_t[5] == "1") ChangeLanguage("English");
-                CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[6]);
+                if (_t[0] != TextBox_SourcePath.Text ||
+                    _t[1] != TextBox_DestinationPath.Text ||
+                    Convert.ToBoolean(_t[2]) != RadioButton_OverwriteIfNewer.Checked ||
+                    Convert.ToBoolean(_t[3]) != RadioButton_CopyAll.Checked ||
+                    Convert.ToBoolean(_t[4]) != CheckBox_DeleteOldFiles.Checked ||
+                    Convert.ToInt32(_t[5]) != SelectedLanguage || 
+                    Convert.ToBoolean(_t[6]) != CheckBox_ShutDown.Checked) // preventing de-selecting of the entry
+                {
+                    TextBox_SourcePath.Text = _t[0]; 
+                    TextBox_DestinationPath.Text = _t[1]; 
+                    RadioButton_OverwriteIfNewer.Checked = Convert.ToBoolean(_t[2]); 
+                    RadioButton_CopyAll.Checked = Convert.ToBoolean(_t[3]); 
+                    CheckBox_DeleteOldFiles.Checked = Convert.ToBoolean(_t[4]); 
+                    SelectedLanguage = Convert.ToInt32(_t[5]);
+                    CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[6]);
+
+                    if (_t[5] == "0") ChangeLanguage("Deutsch");
+                    if (_t[5] == "1") ChangeLanguage("English");
+
+                    ListBox_ListOfSettings.SetSelected(_i, true);
+                }
             }
         }
         /// <summary>
@@ -360,7 +421,11 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ListBox_ListOfSettings_MouseDown(object _sender, MouseEventArgs _e)
         {
-            //todo: context menu -> delete
+            if (_e.Button == MouseButtons.Right && ListBox_ListOfSettings.IndexFromPoint(_e.X, _e.Y) != -1) // is right-click
+            {
+                ListBox_ListOfSettings.SelectedItem = ListBox_ListOfSettings.Items[ListBox_ListOfSettings.IndexFromPoint(_e.X, _e.Y)];
+                ContextMenuStrip_Settings.Show(new Point(Form_MainForm.MousePosition.X, Form_MainForm.MousePosition.Y));
+            }
         }
 
 // CONTEXT MENU
@@ -371,7 +436,7 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ContextMenuStrip_ErrorMessage_ItemClicked(object _sender, ToolStripItemClickedEventArgs _e)
         {
-            if (ListBox_Notifications.SelectedItem.ToString().Contains(Language[SelectedLanguage, 22]) == false) return; // when entry is a error-entry
+            if (ListBox_Notifications.SelectedItem.ToString().Contains(Language[SelectedLanguage, 22]) == false) return; // when entry is no error-entry
             if (_e.ClickedItem.Text == Language[SelectedLanguage, 34])
             {
                 System.Diagnostics.Process.Start("https://sourceforge.net/p/simple-backup-tool/tickets/new/"); // Tickets on Sourceforge.net
@@ -379,6 +444,19 @@ namespace SimpleBackup
             if (_e.ClickedItem.Text == Language[SelectedLanguage, 35])
             {
                 Clipboard.SetText(ErrorMessages[SelectedErrorMessage]);
+            }
+        }
+        /// <summary>
+        /// Called after doing a right-click on an entry in the listbox you get an entry to delete it.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
+        private void ContextMenuStrip_Settings_ItemClicked(object _sender, ToolStripItemClickedEventArgs _e)
+        {
+            if (_e.ClickedItem.Text == Language[SelectedLanguage, 26]) // if the entry is "delete"
+            {
+                SettingReadings.RemoveAt(ListBox_ListOfSettings.SelectedIndex);
+                ListBox_ListOfSettings.Items.RemoveAt(ListBox_ListOfSettings.SelectedIndex);
             }
         }
 
@@ -539,9 +617,8 @@ namespace SimpleBackup
 
 
 
-        /*
-         * Buissenes logic
-         * */
+        //Buissenes logic
+
 
 
 
@@ -651,6 +728,7 @@ namespace SimpleBackup
             Language[_i, 49] = "Backup fortsetzen";
             Language[_i, 50] = "FEHLER: Der Pfad von";
             Language[_i, 51] = "ist zu lang.";
+            Language[_i, 52] = "Neu";
             #endregion
 
             #region English
@@ -713,6 +791,7 @@ namespace SimpleBackup
             Language[_i, 49] = "resume backup";
             Language[_i, 50] = "ERROR: The path";
             Language[_i, 51] = "is to long.";
+            Language[_i, 52] = "new";
             #endregion
             //ChangeLanguage("English");
         }
@@ -740,6 +819,9 @@ namespace SimpleBackup
             else Button_StartStopBackup.Text = Language[SelectedLanguage, 8];
             if (PauseBackup) Button_PauseResume.Text = Language[SelectedLanguage, 49];
             else Button_PauseResume.Text = Language[SelectedLanguage, 48];
+            Button_AddEntry.Text = Language[SelectedLanguage, 52];
+            Button_SaveEntry.Text = Language[SelectedLanguage, 25];
+            Button_DeleteEntry.Text = Language[SelectedLanguage, 26];
             // Radio-/Checkboxen
             RadioButton_OverwriteIfNewer.Text = Language[SelectedLanguage, 5];
             RadioButton_CopyAll.Text = Language[SelectedLanguage, 6];
@@ -763,6 +845,8 @@ namespace SimpleBackup
             ContextMenuStrip_ErrorMessage.Items.Clear();
             ContextMenuStrip_ErrorMessage.Items.Add(Language[SelectedLanguage, 34]);
             ContextMenuStrip_ErrorMessage.Items.Add(Language[SelectedLanguage, 35]);
+            ContextMenuStrip_Settings.Items.Clear();
+            ContextMenuStrip_Settings.Items.Add(Language[SelectedLanguage, 26]);
             // Menu items
             ToolStripMenuItem_File.Text = Language[SelectedLanguage, 13];
             ToolStripMenuItem_Open.Text = Language[SelectedLanguage, 42];
@@ -978,9 +1062,8 @@ namespace SimpleBackup
 
 
 
-        /*
-         * Backup stuff
-         * */
+        //Backup stuff
+
 
 
 // STEP 1: COUNT FILES
