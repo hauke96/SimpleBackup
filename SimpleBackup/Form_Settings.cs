@@ -337,8 +337,8 @@ namespace SimpleBackup
             SettingReadings[ListBox_SavedSettings.SelectedIndex] = "";
             int _selectedIndex = ListBox_SavedSettings.SelectedIndex;
             ListBox_SavedSettings.Items.RemoveAt(_selectedIndex);
-            TextBox_SourcePath.Text = "";
-            TextBox_DestinationPath.Text = "";
+            TextBox_SourcePath.Text = String.Empty;
+            TextBox_DestinationPath.Text = String.Empty;
         }
     }
 }
