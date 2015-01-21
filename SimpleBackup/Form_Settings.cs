@@ -319,9 +319,12 @@ namespace SimpleBackup
                 + MainForm.CheckBox_DeleteOldFiles.Checked + "?"
                 + SelectedLanguage + "?"
                 + MainForm.CheckBox_ShutDown.Checked;
+            
 
             ListBox_SavedSettings.Items.Add(TextBox_SourcePath.Text + "  ==>>  " + TextBox_DestinationPath.Text);
             SettingReadings.Add(_newEntry);
+            TextBox_DestinationPath.Text = String.Empty;
+            TextBox_SourcePath.Text = String.Empty;
         }
         /// <summary>
         /// Deletes an entry from the list of settings.
