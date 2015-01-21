@@ -793,7 +793,6 @@ namespace SimpleBackup
             Language[_i, 51] = "is to long.";
             Language[_i, 52] = "new";
             #endregion
-            //ChangeLanguage("English");
         }
         /// <summary>
         /// Changes the language to "Deutch" or "English".
