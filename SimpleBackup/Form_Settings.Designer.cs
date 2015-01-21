@@ -112,7 +112,7 @@
             this.ComboBox_Language.Items.AddRange(new object[] {
             "English",
             "Deutsch"});
-            this.ComboBox_Language.Location = new System.Drawing.Point(121, 6);
+            this.ComboBox_Language.Location = new System.Drawing.Point(129, 6);
             this.ComboBox_Language.Name = "ComboBox_Language";
             this.ComboBox_Language.Size = new System.Drawing.Size(135, 21);
             this.ComboBox_Language.TabIndex = 0;
@@ -222,12 +222,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(480, 302);
             this.Controls.Add(this.Button_Cancel);
             this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.TabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form2";
+            this.MaximizeBox = false;
+            this.Name = "Form_Settings";
             this.Text = "Form2";
             this.TabControl.ResumeLayout(false);
             this.TabPage_Language.ResumeLayout(false);
