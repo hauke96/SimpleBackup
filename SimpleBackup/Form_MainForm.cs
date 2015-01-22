@@ -670,126 +670,129 @@ namespace SimpleBackup
         /// </summary>
         private void InitializeLanguage()
         {
-            int _indexOfLanguage;
             string[] _filesInDir = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.txt");
             List<string> _langFilesInDir = new List<string>();
-            string[] _sub;
-            string _partOfSub;
+            string[] _temp; // Substring of Path, splitted by '\' character
+            string _data;
             foreach(string _s in _filesInDir)
             {
                 // Split file path to get "lang_xx.txt"-string
-                _sub = _s.Split('\\');
-                _partOfSub = _sub[_sub.Length - 1].Substring(0, 5);
-                if (_partOfSub == "lang_") // if it's a language file
+                _temp = _s.Split('\\');
+                _data = _temp[_temp.Length - 1].Substring(0, 5);
+                if (_data == "lang_") // if it's a language file
                 {
-                    _langFilesInDir.Add(_sub[_sub.Length - 1]);
+                    _langFilesInDir.Add(_temp[_temp.Length - 1]);
                 }
             }
-            string[] _tempLanguage = new string[54]; // saved language befor putting it into the LanguageList ; 53-language lines + 1 for the language name ("English", "Deutsch", ...)
+            _temp = new string[54]; // saved language befor putting it into the LanguageList ; 53-language lines + 1 for the language name ("English", "Deutsch", ...)
             List<string> _rowSplit; // elements split by '='
-            string _rowData = ""; // Everything after the first '='. So it's all the language Data without '=' and the english text of it
+            _data = ""; // Everything after the first '='. So it's all the language Data without '=' and the english text of it
             ToolStripMenuItem _ToolStripMenuItem;
-            for (_indexOfLanguage = 0; _indexOfLanguage < _langFilesInDir.Count; _indexOfLanguage++)
+            for (int _indexOfLanguage = 0; _indexOfLanguage < _langFilesInDir.Count; _indexOfLanguage++)
             {
                 StreamReader _reader = new StreamReader(_langFilesInDir[_indexOfLanguage]);
-                _tempLanguage[0] = _reader.ReadLine();
-                for (int _k = 1; _k < 54; _k++)
+                _temp[0] = _reader.ReadLine();
+                for (int _k = 1; _k < 54; _k++) // write language data into array
                 {
                     _rowSplit = _reader.ReadLine().Split('=').ToList<string>();
                     _rowSplit.RemoveAt(0);
-                    _rowData += _rowSplit[0];
+                    _data += _rowSplit[0];
                     _rowSplit.RemoveAt(0);
                     foreach(string _s in _rowSplit)
                     {
-                        _rowData += "=" + _s;
+                        _data += "=" + _s;
                     }
-                    _tempLanguage[_k] = _rowData;
-                    _rowData = "";
+                    _temp[_k] = _data;
+                    _data = "";
                 }
                 _reader.Close();
+                // create MenuItem
                 _ToolStripMenuItem = new ToolStripMenuItem();
                 _ToolStripMenuItem.CheckOnClick = true;
-                _ToolStripMenuItem.Name = "ToolStripMenuItem_" + _tempLanguage[0];
+                _ToolStripMenuItem.Name = "ToolStripMenuItem_" + _temp[0];
                 _ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-                _ToolStripMenuItem.Text = _tempLanguage[0];
+                _ToolStripMenuItem.Text = _temp[0];
                 _ToolStripMenuItem.Click += new System.EventHandler(ToolStripMenuItem_Click);
                 LanguageListItems.Add(_ToolStripMenuItem);
-                LanguageList.Add(_tempLanguage);
                 ToolStripMenuItem_Language.DropDownItems.Add(_ToolStripMenuItem);
+
+                LanguageList.Add(_temp); // add language data to list
             }
             #region English
             // last language is english
-            _tempLanguage = new string[54];
-            _tempLanguage[0] = "English";
-            _tempLanguage[1 + 0] = "Information:";
-            _tempLanguage[1 + 1] = "Progress:";
-            _tempLanguage[1 + 2] = "Options";
+            _temp = new string[54];
+            _temp[0] = "English";
+            _temp[1 + 0] = "Information:";
+            _temp[1 + 1] = "Progress:";
+            _temp[1 + 2] = "Options";
 
-            _tempLanguage[1 + 3] = "source folder";
-            _tempLanguage[1 + 4] = "destination folder";
+            _temp[1 + 3] = "source folder";
+            _temp[1 + 4] = "destination folder";
 
-            _tempLanguage[1 + 5] = "overwrite file, if newer";
-            _tempLanguage[1 + 6] = "copy everything";
-            _tempLanguage[1 + 7] = "delete old files";
+            _temp[1 + 5] = "overwrite file, if newer";
+            _temp[1 + 6] = "copy everything";
+            _temp[1 + 7] = "delete old files";
 
-            _tempLanguage[1 + 8] = "start backup";
-            _tempLanguage[1 + 9] = "Notification:";
-            _tempLanguage[1 + 10] = "elapsed time:";
-            _tempLanguage[1 + 11] = "current file:";
-            _tempLanguage[1 + 12] = "amount of files:";
-            _tempLanguage[1 + 13] = "file";
-            _tempLanguage[1 + 14] = "remaining time:";
-            _tempLanguage[1 + 15] = "If you'd start, I could calculate it ;)";
+            _temp[1 + 8] = "start backup";
+            _temp[1 + 9] = "Notification:";
+            _temp[1 + 10] = "elapsed time:";
+            _temp[1 + 11] = "current file:";
+            _temp[1 + 12] = "amount of files:";
+            _temp[1 + 13] = "file";
+            _temp[1 + 14] = "remaining time:";
+            _temp[1 + 15] = "If you'd start, I could calculate it ;)";
 
-            _tempLanguage[1 + 16] = "language";
-            _tempLanguage[1 + 17] = "If a file exists in the backup folder, \n" +
+            _temp[1 + 16] = "language";
+            _temp[1 + 17] = "If a file exists in the backup folder, \n" +
             "but not in the original folder, \n" +
             "it'll be deleted.";
-            _tempLanguage[1 + 18] = "stop backup";
-            _tempLanguage[1 + 19] = "The backup is still running!\nExit anyway?";
-            _tempLanguage[1 + 20] = "exit";
-            _tempLanguage[1 + 21] = "detecting files ...";
-            _tempLanguage[1 + 22] = "ERROR:";
-            _tempLanguage[1 + 23] = "finished";
-            _tempLanguage[1 + 24] = " not precise ( is subject to the law of large numbers )";
-            _tempLanguage[1 + 25] = "save";
-            _tempLanguage[1 + 26] = "delete";
-            _tempLanguage[1 + 27] = "copy files ...";
-            _tempLanguage[1 + 28] = "delete old files ...";
-            _tempLanguage[1 + 29] = "skipping files ...";
-            _tempLanguage[1 + 30] = "shutdown after finish";
-            _tempLanguage[1 + 31] = "detecting old files ...";
-            _tempLanguage[1 + 32] = " files has been detected";
-            _tempLanguage[1 + 33] = "backup successfully finished";
-            _tempLanguage[1 + 34] = "report error";
-            _tempLanguage[1 + 35] = "copy";
-            _tempLanguage[1 + 36] = "no file exists";
-            _tempLanguage[1 + 37] = "Please report the error and send the content of the following file:\n";
-            _tempLanguage[1 + 38] = "The backup is still running!\nAbord anyway??";
-            _tempLanguage[1 + 39] = "duration: ";
-            _tempLanguage[1 + 40] = "backup aborded";
-            _tempLanguage[1 + 41] = "about SimpleBackup";
-            _tempLanguage[1 + 42] = "open";
-            _tempLanguage[1 + 43] = "settings";
-            _tempLanguage[1 + 44] = "help";
-            _tempLanguage[1 + 45] = "to the Sourceforge projekt";
-            _tempLanguage[1 + 46] = "search for updates";
-            _tempLanguage[1 + 47] = "write review";
-            _tempLanguage[1 + 48] = "pause backup";
-            _tempLanguage[1 + 49] = "resume backup";
-            _tempLanguage[1 + 50] = "ERROR: The path";
-            _tempLanguage[1 + 51] = "is to long.";
-            _tempLanguage[1 + 52] = "new";
+            _temp[1 + 18] = "stop backup";
+            _temp[1 + 19] = "The backup is still running!\nExit anyway?";
+            _temp[1 + 20] = "exit";
+            _temp[1 + 21] = "detecting files ...";
+            _temp[1 + 22] = "ERROR:";
+            _temp[1 + 23] = "finished";
+            _temp[1 + 24] = " not precise ( is subject to the law of large numbers )";
+            _temp[1 + 25] = "save";
+            _temp[1 + 26] = "delete";
+            _temp[1 + 27] = "copy files ...";
+            _temp[1 + 28] = "delete old files ...";
+            _temp[1 + 29] = "skipping files ...";
+            _temp[1 + 30] = "shutdown after finish";
+            _temp[1 + 31] = "detecting old files ...";
+            _temp[1 + 32] = " files has been detected";
+            _temp[1 + 33] = "backup successfully finished";
+            _temp[1 + 34] = "report error";
+            _temp[1 + 35] = "copy";
+            _temp[1 + 36] = "no file exists";
+            _temp[1 + 37] = "Please report the error and send the content of the following file:\n";
+            _temp[1 + 38] = "The backup is still running!\nAbord anyway??";
+            _temp[1 + 39] = "duration: ";
+            _temp[1 + 40] = "backup aborded";
+            _temp[1 + 41] = "about SimpleBackup";
+            _temp[1 + 42] = "open";
+            _temp[1 + 43] = "settings";
+            _temp[1 + 44] = "help";
+            _temp[1 + 45] = "to the Sourceforge projekt";
+            _temp[1 + 46] = "search for updates";
+            _temp[1 + 47] = "write review";
+            _temp[1 + 48] = "pause backup";
+            _temp[1 + 49] = "resume backup";
+            _temp[1 + 50] = "ERROR: The path";
+            _temp[1 + 51] = "is to long.";
+            _temp[1 + 52] = "new";
 
-            _ToolStripMenuItem = new ToolStripMenuItem();//_tempLanguage[0]);
+            // create MenuItem
+            _ToolStripMenuItem = new ToolStripMenuItem();//_temp[0]);
             _ToolStripMenuItem.CheckOnClick = true;
-            _ToolStripMenuItem.Name = "ToolStripMenuItem_" + _tempLanguage[0];
+            _ToolStripMenuItem.Name = "ToolStripMenuItem_" + _temp[0];
             _ToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            _ToolStripMenuItem.Text = _tempLanguage[0];
+            _ToolStripMenuItem.Text = _temp[0];
             _ToolStripMenuItem.Click += new System.EventHandler(ToolStripMenuItem_Click);
             LanguageListItems.Add(_ToolStripMenuItem);
-            LanguageList.Add(_tempLanguage);
             ToolStripMenuItem_Language.DropDownItems.Add(_ToolStripMenuItem);
+
+            LanguageList.Add(_temp); // add language data to list
             #endregion
         }
         /// <summary>
