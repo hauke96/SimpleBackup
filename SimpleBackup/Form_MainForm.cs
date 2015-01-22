@@ -409,8 +409,7 @@ namespace SimpleBackup
                     SelectedLanguage = Convert.ToInt32(_t[5]);
                     CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[6]);
 
-                    if (_t[5] == "0") ChangeLanguage("Deutsch");
-                    if (_t[5] == "1") ChangeLanguage("English");
+                    ChangeLanguage(SelectedLanguage);
 
                     ListBox_ListOfSettings.SetSelected(_i, true);
                 }
