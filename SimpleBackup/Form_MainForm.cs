@@ -83,7 +83,7 @@ namespace SimpleBackup
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
         public TimeSpan PausedTime; // needed for pausing the timer in pause-mode; duration the process was paused
-        public string[,] Language = new string[2, 53]; // Array with language strings
+        //public string[,] Language = new string[2, 53]; // Array with language strings
         public List<string> SettingReadings = new List<string>(), // saves read data
             ErrorMessages = new List<string>(), // List of detailed error messages to copy via the notification list
             AvalaibleLanguages = new List<string>();
@@ -152,8 +152,7 @@ namespace SimpleBackup
         {
             if (BackupIsRunning && Button_StartStopBackup.Text != "OK")// Stop Backup
             {
-                
-                DialogResult ds = MessageBox.Show(Language[SelectedLanguage, 19], Language[SelectedLanguage, 20], MessageBoxButtons.YesNo);
+                DialogResult ds = MessageBox.Show((LanguageList[SelectedLanguage])[1 + 19], (LanguageList[SelectedLanguage])[1 + 20], MessageBoxButtons.YesNo);
                 if (ds == System.Windows.Forms.DialogResult.Yes)
                 {
                     Button_PauseResume.Enabled = false;
@@ -171,7 +170,7 @@ namespace SimpleBackup
             else if (BackupIsRunning == false && Button_StartStopBackup.Text == "OK") // backup finished, return to start
             {
                 // return to screen befor backup started
-                Button_StartStopBackup.Text = Language[SelectedLanguage, 8];
+                Button_StartStopBackup.Text = (LanguageList[SelectedLanguage])[1 + 8];
                 ListBox_Notifications.Items.Clear();
                 ResetSimpleBackup();
             }
@@ -182,7 +181,7 @@ namespace SimpleBackup
                 StartTime = DateTime.Now;
                 if (TextBox_SourcePath.Text[TextBox_SourcePath.Text.Length - 1] != '\\') TextBox_SourcePath.Text += "\\";
                 if (TextBox_DestinationPath.Text[TextBox_DestinationPath.Text.Length - 1] != '\\') TextBox_DestinationPath.Text += "\\";
-                Button_StartStopBackup.Text = Language[SelectedLanguage, 18];
+                Button_StartStopBackup.Text = (LanguageList[SelectedLanguage])[1 + 18];
                 SourcePath = TextBox_SourcePath.Text;
                 DestinationPath = TextBox_DestinationPath.Text;
                 BackupIsRunning = true;
@@ -202,8 +201,8 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void Button_PauseResume_Click(object _sender, EventArgs _e)
         {
-            if (PauseBackup) Button_PauseResume.Text = Language[SelectedLanguage, 48];
-            else Button_PauseResume.Text = Language[SelectedLanguage, 49];
+            if (PauseBackup) Button_PauseResume.Text = (LanguageList[SelectedLanguage])[1 + 48];
+            else Button_PauseResume.Text = (LanguageList[SelectedLanguage])[1 + 49];
             PauseBackup = false == PauseBackup; // switches between true/false
         }
         /// <summary>
@@ -264,7 +263,7 @@ namespace SimpleBackup
         {
             if (CountingFiles)
             {
-                Label_CurrentFile_FileName_setText(Language[SelectedLanguage, 21] + " (" + Amount_FilesInSourcePath + ")");
+                Label_CurrentFile_FileName_setText((LanguageList[SelectedLanguage])[1 + 21] + " (" + Amount_FilesInSourcePath + ")");
             }
             else if (CurrentFile != "")
             {
@@ -317,7 +316,7 @@ namespace SimpleBackup
         {
             if (BackupIsRunning)
             {
-                DialogResult _ds = MessageBox.Show(Language[SelectedLanguage, 19], Language[SelectedLanguage, 20], MessageBoxButtons.YesNo);
+                DialogResult _ds = MessageBox.Show((LanguageList[SelectedLanguage])[1 + 19], (LanguageList[SelectedLanguage])[1 + 20], MessageBoxButtons.YesNo);
                 if (_ds == System.Windows.Forms.DialogResult.Yes)
                 {
                     BackupIsRunning = false;
@@ -346,7 +345,7 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void CheckBox_DeleteOldFiles_MouseHover(object _sender, EventArgs _e) 
         {
-            ToolTip.Show(Language[SelectedLanguage, 17], CheckBox_DeleteOldFiles);
+            ToolTip.Show((LanguageList[SelectedLanguage])[1 + 17], CheckBox_DeleteOldFiles);
         }
 
 //LISTBOX
@@ -359,7 +358,7 @@ namespace SimpleBackup
         {
             if (_e.Button == MouseButtons.Right && Button_StartStopBackup.Text == "OK" // right click and backup ended
                 && ListBox_Notifications.IndexFromPoint(_e.X, _e.Y) != -1
-                && ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)].ToString().Contains(Language[SelectedLanguage, 22])) // when entry is a error-entry
+                && ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)].ToString().Contains((LanguageList[SelectedLanguage])[1 + 22])) // when entry is a error-entry
             {
                 ListBox_Notifications.SelectedItem = ListBox_Notifications.Items[ListBox_Notifications.IndexFromPoint(_e.X, _e.Y)];
                 ContextMenuStrip_ErrorMessage.Show(new Point(Form_MainForm.MousePosition.X, Form_MainForm.MousePosition.Y));
@@ -382,7 +381,7 @@ namespace SimpleBackup
             if (BackupIsRunning == false && Button_StartStopBackup.Text == "OK")
             {
                 // return to screen befor backup started
-                Button_StartStopBackup.Text = Language[SelectedLanguage, 8];
+                Button_StartStopBackup.Text = (LanguageList[SelectedLanguage])[1 + 8];
                 ListBox_Notifications.Items.Clear();
                 ResetSimpleBackup();
             }
@@ -439,12 +438,12 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ContextMenuStrip_ErrorMessage_ItemClicked(object _sender, ToolStripItemClickedEventArgs _e)
         {
-            if (ListBox_Notifications.SelectedItem.ToString().Contains(Language[SelectedLanguage, 22]) == false) return; // when entry is no error-entry
-            if (_e.ClickedItem.Text == Language[SelectedLanguage, 34])
+            if (ListBox_Notifications.SelectedItem.ToString().Contains((LanguageList[SelectedLanguage])[1 + 22]) == false) return; // when entry is no error-entry
+            if (_e.ClickedItem.Text == (LanguageList[SelectedLanguage])[1 + 34])
             {
                 System.Diagnostics.Process.Start("https://sourceforge.net/p/simple-backup-tool/tickets/new/"); // Tickets on Sourceforge.net
             }
-            if (_e.ClickedItem.Text == Language[SelectedLanguage, 35])
+            if (_e.ClickedItem.Text == (LanguageList[SelectedLanguage])[1 + 35])
             {
                 Clipboard.SetText(ErrorMessages[SelectedErrorMessage]);
             }
@@ -456,7 +455,7 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void ContextMenuStrip_Settings_ItemClicked(object _sender, ToolStripItemClickedEventArgs _e)
         {
-            if (_e.ClickedItem.Text == Language[SelectedLanguage, 26]) // if the entry is "delete"
+            if (_e.ClickedItem.Text == (LanguageList[SelectedLanguage])[1 + 26]) // if the entry is "delete"
             {
                 SettingReadings.RemoveAt(ListBox_ListOfSettings.SelectedIndex);
                 ListBox_ListOfSettings.Items.RemoveAt(ListBox_ListOfSettings.SelectedIndex);
@@ -650,7 +649,7 @@ namespace SimpleBackup
             RadioButton_OverwriteIfNewer.Enabled = false;
             RadioButton_CopyAll.Enabled = false;
             CheckBox_DeleteOldFiles.Enabled = false;
-            Button_StartStopBackup.Text = Language[SelectedLanguage, 8];
+            Button_StartStopBackup.Text = (LanguageList[SelectedLanguage])[1 + 8];
             Button_StartStopBackup.Enabled = false;
             Amount_BytesInSourcePath = 0;
             Amount_FilesInSourcePath = 0;
@@ -659,7 +658,7 @@ namespace SimpleBackup
             Label_CurrentFile_FileName.Text = "-";
             Label_FileProgress.Text = "0/0";
             //Label_ElapsedTimeData.Text = "00h:00m:00s";
-            Label_RemainingTimeData.Text = Language[SelectedLanguage, 15];
+            Label_RemainingTimeData.Text = (LanguageList[SelectedLanguage])[1 + 15];
             ListBox_ListOfSettings.Enabled = true;
             ProgressBar.Value = 0;
             Timer_FileProgressDisplay.Enabled = false;
@@ -920,7 +919,7 @@ namespace SimpleBackup
                     _s *= ((float)Amount_BytesInSourcePath / (float)Amount_CopiedBytes);
                     TimeSpan _ts = TimeSpan.FromSeconds(_s);
                     Label_RemainingTimeData.Text = string.Format("{0:D2}h:{1:D2}m:{2:D2}s", _ts.Hours, _ts.Minutes, _ts.Seconds)
-                        + Language[SelectedLanguage, 24];
+                        + (LanguageList[SelectedLanguage])[1 + 24];
                 }
             });
         }
@@ -962,11 +961,11 @@ namespace SimpleBackup
         /// <param name="stopBackup">When the error is so fatal that the backup has to be canceled set this to "true".</param>
         public void ErrorOccured(ErrorEventArgs _e, Boolean stopBackup = true)
         {
-            ListBox_Notifications.Items.Add(Language[SelectedLanguage, 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message);
+            ListBox_Notifications.Items.Add((LanguageList[SelectedLanguage])[1 + 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message);
             string _date = DateTime.Now.ToString().Replace(":", ".");
-            ListBox_Notifications.Items.Add(Language[SelectedLanguage, 37] + _date + ".log");
+            ListBox_Notifications.Items.Add((LanguageList[SelectedLanguage])[1 + 37] + _date + ".log");
 
-            string _temp_ErrorMessage = Language[SelectedLanguage, 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message + "\n"
+            string _temp_ErrorMessage = (LanguageList[SelectedLanguage])[1 + 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message + "\n"
                 + _e.GetException().StackTrace + "\n"
                 + _e.GetException().Data + "\n"
                 + _e.GetException().HelpLink + "\n"
@@ -977,7 +976,7 @@ namespace SimpleBackup
             StreamWriter _writer = new StreamWriter(_date + ".log");
             _writer.Write(_temp_ErrorMessage);
             _writer.Close();
-            ListBox_Notifications.Items.Add(Language[SelectedLanguage, 34]);
+            ListBox_Notifications.Items.Add((LanguageList[SelectedLanguage])[1 + 34]);
             BackupIsRunning = false;
         }
 
@@ -997,19 +996,19 @@ namespace SimpleBackup
         private void BackgroundWorker_Backup_DoWork(object _sender, DoWorkEventArgs _e)
         {
             BackupAborded = true; // when no return; is called it'll be set to false for a successfully completed backup
-            Label_CurrentFile_FileName_setText(Language[SelectedLanguage, 21]);
-            ListBox_Notifications_AddEntry(DateTime.Now + " : " + Language[SelectedLanguage, 21]); // Detecting files ...
+            Label_CurrentFile_FileName_setText((LanguageList[SelectedLanguage])[1 + 21]);
+            ListBox_Notifications_AddEntry(DateTime.Now + " : " + (LanguageList[SelectedLanguage])[1 + 21]); // Detecting files ...
             Amount_FilesInSourcePath = 0;
             CountingFiles = true;
             Amount_FilesInSourcePath = CountFiles(SourcePath, 0);
             if (BackupIsRunning == false) return;
-            ListBox_Notifications_AddEntry(DateTime.Now + " : " + Amount_FilesInSourcePath + Language[SelectedLanguage, 32]); // x files has been detected
+            ListBox_Notifications_AddEntry(DateTime.Now + " : " + Amount_FilesInSourcePath + (LanguageList[SelectedLanguage])[1 + 32]); // x files has been detected
             CountingFiles = false;
 
             if (Amount_FilesInSourcePath != 0)
             {
                 if (BackupIsRunning == false) return;
-                ListBox_Notifications_AddEntry(DateTime.Now + " : " + Language[SelectedLanguage, 27]); // copy files ...
+                ListBox_Notifications_AddEntry(DateTime.Now + " : " + (LanguageList[SelectedLanguage])[1 + 27]); // copy files ...
                 BackupFiles(new QuickIODirectoryInfo(SourcePath), 0);
                 if (BackupIsRunning == false) return;
                 ListBox_Notifications_AddEntry(DateTime.Now + " : OK");
@@ -1021,15 +1020,15 @@ namespace SimpleBackup
                     Amount_BytesInSourcePath = -1; // CountFiles() won't count bytes
                     Amount_FilesInSourcePath = 0;
                     if (BackupIsRunning == false) return;
-                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + Language[SelectedLanguage, 31]); // detecting old files ...
+                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + (LanguageList[SelectedLanguage])[1 + 31]); // detecting old files ...
                     CountingFiles = true;
                     Amount_FilesInSourcePath = CountFiles(DestinationPath, 0);
                     if (BackupIsRunning == false) return;
-                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + Amount_FilesInSourcePath + Language[SelectedLanguage, 32]); // x files has been detected
+                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + Amount_FilesInSourcePath + (LanguageList[SelectedLanguage])[1 + 32]); // x files has been detected
                     // start cleanup
                     CountingFiles = false;
                     if (BackupIsRunning == false) return;
-                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + Language[SelectedLanguage, 28]); // cleanup ...
+                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + (LanguageList[SelectedLanguage])[1 + 28]); // cleanup ...
                     Amount_BytesInSourcePath = 0; // MBs are not important for cleanup. Label will not show MBs anymore ( no MB/MB anymore )
                     Label_CurrentFile_FileName_setText("");
                     // cleanup
@@ -1039,7 +1038,7 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + Language[SelectedLanguage, 36]); // no file exists
+                    ListBox_Notifications_AddEntry(DateTime.Now + " : " + (LanguageList[SelectedLanguage])[1 + 36]); // no file exists
                 }
             }
             BackupAborded = false; // successfully completed
@@ -1060,11 +1059,11 @@ namespace SimpleBackup
             Amount_FilesInSourcePath = 0;
             Amount_ProcessedFiles = 0;
             if (BackupAborded)
-                ListBox_Notifications.Items.Add(Language[SelectedLanguage, 40]);
+                ListBox_Notifications.Items.Add((LanguageList[SelectedLanguage])[1 + 40]);
             else
-                ListBox_Notifications.Items.Add(Language[SelectedLanguage, 33]);
+                ListBox_Notifications.Items.Add((LanguageList[SelectedLanguage])[1 + 33]);
             TimeSpan _ts = (DateTime.Now - StartTime - PausedTime);
-            ListBox_Notifications_AddEntry(Language[SelectedLanguage, 39] + string.Format("{0:D2}h:{1:D2}m:{2:D2}s", _ts.Hours, _ts.Minutes, _ts.Seconds));
+            ListBox_Notifications_AddEntry((LanguageList[SelectedLanguage])[1 + 39] + string.Format("{0:D2}h:{1:D2}m:{2:D2}s", _ts.Hours, _ts.Minutes, _ts.Seconds));
             if (_e.Error != null)
             {
                 BeginInvoke((EventHandler)delegate { ErrorOccured(new ErrorEventArgs(_e.Error)); });
@@ -1165,7 +1164,7 @@ namespace SimpleBackup
                     }
                     else
                     {
-                        if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText(Language[SelectedLanguage, 29]);
+                        if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText((LanguageList[SelectedLanguage])[1 + 29]);
                     }
                     Amount_CopiedBytes += (int)_file.Bytes;
                     _amount++;
@@ -1173,7 +1172,7 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    ListBox_Notifications_AddEntry(Language[SelectedLanguage, 50] + " \"" + _file.Name + "\" " + Language[SelectedLanguage, 51]);
+                    ListBox_Notifications_AddEntry((LanguageList[SelectedLanguage])[1 + 50] + " \"" + _file.Name + "\" " + (LanguageList[SelectedLanguage])[1 + 51]);
                 }
             }
             return _amount;
@@ -1237,7 +1236,7 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText(Language[SelectedLanguage, 29]);
+                    if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText((LanguageList[SelectedLanguage])[1 + 29]);
                 }
             }
             return _amount;
