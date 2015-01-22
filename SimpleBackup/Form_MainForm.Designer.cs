@@ -47,8 +47,6 @@
             this.ToolStripMenuItem_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Options = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Language = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_English = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Deutsch = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Settings = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_OpenHelpDialog = new System.Windows.Forms.ToolStripMenuItem();
@@ -192,30 +190,9 @@
             // 
             // ToolStripMenuItem_Language
             // 
-            this.ToolStripMenuItem_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_English,
-            this.ToolStripMenuItem_Deutsch});
             this.ToolStripMenuItem_Language.Name = "ToolStripMenuItem_Language";
             this.ToolStripMenuItem_Language.Size = new System.Drawing.Size(145, 22);
             this.ToolStripMenuItem_Language.Text = "Sprache";
-            // 
-            // ToolStripMenuItem_English
-            // 
-            this.ToolStripMenuItem_English.Checked = true;
-            this.ToolStripMenuItem_English.CheckOnClick = true;
-            this.ToolStripMenuItem_English.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ToolStripMenuItem_English.Name = "ToolStripMenuItem_English";
-            this.ToolStripMenuItem_English.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItem_English.Text = "English";
-            this.ToolStripMenuItem_English.Click += new System.EventHandler(this.ToolStripMenuItem_English_Click);
-            // 
-            // ToolStripMenuItem_Deutsch
-            // 
-            this.ToolStripMenuItem_Deutsch.CheckOnClick = true;
-            this.ToolStripMenuItem_Deutsch.Name = "ToolStripMenuItem_Deutsch";
-            this.ToolStripMenuItem_Deutsch.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItem_Deutsch.Text = "Deutsch";
-            this.ToolStripMenuItem_Deutsch.Click += new System.EventHandler(this.ToolStripMenuItem_Deutsch_Click);
             // 
             // ToolStripMenuItem_Settings
             // 
@@ -651,8 +628,6 @@
         private System.Windows.Forms.Button Button_StartStopBackup;
         private System.Windows.Forms.Label Label_Progress;
         private System.Windows.Forms.Label Label_Notifications;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_English;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Deutsch;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SaveEntryToSettings;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ReportError;
