@@ -83,7 +83,6 @@ namespace SimpleBackup
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
         public TimeSpan PausedTime; // needed for pausing the timer in pause-mode; duration the process was paused
-        //public string[,] Language = new string[2, 53]; // Array with language strings
         public List<string> SettingReadings = new List<string>(), // saves read data
             ErrorMessages = new List<string>(), // List of detailed error messages to copy via the notification list
             AvalaibleLanguages = new List<string>();
