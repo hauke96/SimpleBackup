@@ -51,15 +51,17 @@
             this.Button_DownloadUpdate.UseVisualStyleBackColor = true;
             this.Button_DownloadUpdate.Click += new System.EventHandler(this.Button_DownloadUpdate_Click);
             // 
-            // Form4
+            // Form_Updates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 110);
             this.Controls.Add(this.Button_DownloadUpdate);
             this.Controls.Add(this.ListBox_UpdateLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form4";
+            this.MaximizeBox = false;
+            this.Name = "Form_Updates";
             this.Text = "Form4";
             this.ResumeLayout(false);
 
