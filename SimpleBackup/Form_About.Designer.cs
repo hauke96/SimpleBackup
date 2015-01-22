@@ -41,7 +41,7 @@
             // PictureBox_Logo
             // 
             this.PictureBox_Logo.ErrorImage = null;
-            this.PictureBox_Logo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.PictureBox_Logo.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox_Logo.Image")));
             this.PictureBox_Logo.InitialImage = null;
             this.PictureBox_Logo.Location = new System.Drawing.Point(87, 13);
             this.PictureBox_Logo.Name = "PictureBox_Logo";
@@ -106,6 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(334, 352);
             this.Controls.Add(this.Label_Author);
             this.Controls.Add(this.Button_Back);
@@ -114,6 +115,7 @@
             this.Controls.Add(this.Label_SimpleBackupTitle);
             this.Controls.Add(this.PictureBox_Logo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form_About";
             this.Text = "Form3";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Logo)).EndInit();
