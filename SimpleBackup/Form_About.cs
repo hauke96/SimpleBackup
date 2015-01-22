@@ -70,38 +70,18 @@ namespace SimpleBackup
         {
             this.MainForm = MainForm;
             InitializeComponent();
-            InitializeLanguageuage();
             ChangeLanguageuage();
-        }
-        /// <summary>
-        /// Loads the language content to the Language array.
-        /// </summary>
-        private void InitializeLanguageuage()
-        {
-            int _i = 0;
-            Language[_i, 0] = "Über SimpleBackup";
-            Language[_i, 1] = "SimpleBackup ist ein Open-Source Backup Tool.\nEs soll dazu dienen einfach und schnell simpel\nBackup zu erstellen, wobei auf \nkomplizierten \nund teils unnötigen \"Schnick Schnack\" \nverzichtet wird.";
-            Language[_i, 2] = "Auf Updates prüfen";
-            Language[_i, 3] = "Zurück";
-            Language[_i, 4] = "von Hauke L. Stieler";
-
-            _i = 1;
-            Language[_i, 0] = "About SimpleBackup";
-            Language[_i, 1] = "SimpleBackup is a open source backup tool.\nIt's intended to create quickly and easily a backup\nin which unnecessary paraphernalia is left off.";//"SimpleBackup ist ein Open-Source Backup Tool.\nEs soll dazu dienen einfach und schnell simple\nBackup zu erstellen, wobei auf \nomplizierten \nund teils unnötigen \"Schnick Schnack\" \nverzichtet wird.";
-            Language[_i, 2] = "check for updates";
-            Language[_i, 3] = "back";
-            Language[_i, 4] = "by Hauke L. Stieler";
         }
         /// <summary>
         /// Changes the language to the current language of the MainForm.
         /// </summary>
         private void ChangeLanguageuage()
         {
-            Text = Language[MainForm.SelectedLanguage, 0];
-            Label_Author.Text = Language[MainForm.SelectedLanguage, 4];
-            Label_Description.Text = Language[MainForm.SelectedLanguage, 1];
-            Button_CheckForUpdates.Text = Language[MainForm.SelectedLanguage, 2];
-            Button_Back.Text = Language[MainForm.SelectedLanguage, 3];
+            Text = MainForm.LanguageList[MainForm.SelectedLanguage][54];
+            Label_Description.Text = MainForm.LanguageList[MainForm.SelectedLanguage][55];
+            Button_CheckForUpdates.Text = MainForm.LanguageList[MainForm.SelectedLanguage][56];
+            Button_Back.Text = MainForm.LanguageList[MainForm.SelectedLanguage][57];
+            Label_Author.Text = MainForm.LanguageList[MainForm.SelectedLanguage][58];
         }
         /// <summary>
         /// Shows the Form_Update Dialog after pressing this button.

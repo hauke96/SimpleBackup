@@ -60,7 +60,6 @@ namespace SimpleBackup
 {
     public partial class Form_Settings : Form
     {
-        string[,] Language = new string[2, 14]; // for the setting window
         int SelectedLanguage;
         Form_MainForm MainForm;
         public List<string> SettingReadings = new List<string>(); // saves read data
@@ -69,13 +68,12 @@ namespace SimpleBackup
         /// <summary>
         /// Initializes the setting menu.
         /// </summary>
-        /// <param name="_form"></param>
+        /// <param name="_form">The reference to the main Form.</param>
         public Form_Settings(Form_MainForm _form)
         {
             SelectedLanguage = _form.SelectedLanguage;
             this.MainForm = _form;
             InitializeComponent();
-            InitializeLanguage();
             if (SelectedLanguage == 0) ChangeLanguage("Deutsch");
             else if (SelectedLanguage == 1) ChangeLanguage("English");
             SettingReadings = MainForm.SettingReadings.ToList<string>(); // not just copies the reference, but creates a new list
@@ -89,77 +87,37 @@ namespace SimpleBackup
             TextBox_DestinationPath.Text = MainForm.TextBox_DestinationPath.Text;
         }
         /// <summary>
-        /// Load the language content into the language array.
+        /// Changes the global language to _language.
         /// </summary>
-        private void InitializeLanguage() // Loads the Languageuage texts
+        /// <param name="_language">New language.</param>
+        private void ChangeLanguage(string _language)
         {
-            //Deutsch
-            int _i = 0;
-            Language[_i, 0] = "Allgemeine Einstellungen";
-            Language[_i, 1] = "Gespeicherte Einstellungen";
-            Language[_i, 2] = "Sprache Auswählen";
-            Language[_i, 3] = "Alles zurücksetzen";
-            Language[_i, 4] = "Speichern";
-            Language[_i, 5] = "Abbrechen";
-            Language[_i, 6] = "Liste aller gespeicherten Einstellungen";
-            Language[_i, 7] = "OK";
-            Language[_i, 8] = "Neu";
-            Language[_i, 9] = "Löschen";
-            Language[_i, 10] = "Erstellt einen neuen Eintrag mit den eingegebenen Pfaden und momentanen Einstellungen.";
-            Language[_i, 11] = "Kopiert die Einstellungsdatei ( some.settings ).\nSpeichern sie vorher um momentane Einstellungen zu kopieren.";
-            Language[_i, 12] = "Einstellungen";
-            Language[_i, 13] = "Backup der Einstellungen erstellen";
-
-            //English
-            _i = 1;
-            Language[_i, 0] = "general settings";
-            Language[_i, 1] = "saved settings";
-            Language[_i, 2] = "choose Languageuage";
-            Language[_i, 3] = "reset all";
-            Language[_i, 4] = "save";
-            Language[_i, 5] = "cancel";
-            Language[_i, 6] = "list of all saved settings";
-            Language[_i, 7] = "ok";
-            Language[_i, 8] = "new";
-            Language[_i, 9] = "delete";
-            Language[_i, 10] = "creates a new entry with the entered paths and current settings.";
-            Language[_i, 11] = "copies the settings file ( some.settings ).\nSave previousley to copy current settings.";
-            Language[_i, 12] = "settings";
-            Language[_i, 13] = "create backup of settings";
+            MainForm.ChangeLanguage(_language);
+            ChangeLanguage();
         }
         /// <summary>
         /// Changes the language to _language and reloads the label of every control.
         /// </summary>
         /// <param name="_language">The new language as string. Avalaible languages: "Deutsch" and "English".</param>
-        private void ChangeLanguage(string _language)
+        private void ChangeLanguage()//string _language)
         {
-            switch (_language)
-            {
-                case "Deutsch":
-                    SelectedLanguage = 0;
-                    ComboBox_Language.Text = "Deutsch";
-                    break;
-                case "English":
-                    SelectedLanguage = 1;
-                    ComboBox_Language.Text = "English";
-                    break;
-            }
+            ComboBox_Language.Text = MainForm.LanguageList[MainForm.SelectedLanguage][0];
             //Label
-            Label_ChooseLanguage.Text = Language[SelectedLanguage, 2];
-            Label_ListOfSettings.Text = Language[SelectedLanguage, 6];
+            Label_ChooseLanguage.Text = MainForm.LanguageList[MainForm.SelectedLanguage][61];
+            Label_ListOfSettings.Text = MainForm.LanguageList[MainForm.SelectedLanguage][65];
             // Button
-            Button_Save.Text = Language[SelectedLanguage, 4];
-            Button_Cancel.Text = Language[SelectedLanguage, 5];
-            Button_DeleteSetting.Text = Language[SelectedLanguage, 9];
-            Button_NewSetting.Text = Language[SelectedLanguage, 8];
-            Button_ApplySetting.Text = Language[SelectedLanguage, 7];
-            Button_ResetSettings.Text = Language[SelectedLanguage, 3];
-            Button_CreateSettingsBackup.Text = Language[SelectedLanguage, 13];
+            Button_Save.Text = MainForm.LanguageList[MainForm.SelectedLanguage][63];
+            Button_Cancel.Text = MainForm.LanguageList[MainForm.SelectedLanguage][64];
+            Button_DeleteSetting.Text = MainForm.LanguageList[MainForm.SelectedLanguage][67];
+            Button_NewSetting.Text = MainForm.LanguageList[MainForm.SelectedLanguage][53];
+            Button_ApplySetting.Text = MainForm.LanguageList[MainForm.SelectedLanguage][66];
+            Button_ResetSettings.Text = MainForm.LanguageList[MainForm.SelectedLanguage][62];
+            Button_CreateSettingsBackup.Text = MainForm.LanguageList[MainForm.SelectedLanguage][71];
             // tabs
-            TabPage_SavedSettings.Text = Language[SelectedLanguage, 1];
-            TabPage_Language.Text = Language[SelectedLanguage, 0];
+            TabPage_SavedSettings.Text = MainForm.LanguageList[MainForm.SelectedLanguage][60]; // saved settings
+            TabPage_Language.Text = MainForm.LanguageList[MainForm.SelectedLanguage][59]; // general settings
             //window
-            this.Text = Language[SelectedLanguage, 12];
+            this.Text = MainForm.LanguageList[MainForm.SelectedLanguage][70];
         }
 
         // EVENTS
@@ -237,7 +195,7 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_CreateSettingsBackup_MouseHover(object _sender, EventArgs _e)
         {
-            ToolTip_Info.Show(Language[SelectedLanguage, 11], Button_CreateSettingsBackup);
+            ToolTip_Info.Show(MainForm.LanguageList[MainForm.SelectedLanguage][69], Button_CreateSettingsBackup);
         }
         /// <summary>
         /// Resets the settings to the default values (language=english, no path-settings).
@@ -267,7 +225,7 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_NewSetting_MouseHover(object _sender, EventArgs _e)
         {
-            ToolTip_Info.Show(Language[SelectedLanguage, 10], Button_NewSetting);
+            ToolTip_Info.Show(MainForm.LanguageList[MainForm.SelectedLanguage][68], Button_NewSetting);
         }
         /// <summary>
         /// Shows path in text boxes when user clicked on an entry in the list of settings.
