@@ -55,7 +55,10 @@
             // TabControl
             // 
             this.TabControl.Controls.Add(this.TabPage_Language);
-            this.TabControl.Controls.Add(this.TabPage_SavedSettings);
+            if (TabPage_SavedSettings_Visible)
+            {
+                this.TabControl.Controls.Add(this.TabPage_SavedSettings);
+            }
             this.TabControl.Location = new System.Drawing.Point(13, 13);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;

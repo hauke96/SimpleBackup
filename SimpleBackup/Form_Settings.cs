@@ -63,6 +63,7 @@ namespace SimpleBackup
         int SelectedLanguage;
         Form_MainForm MainForm;
         public List<string> SettingReadings = new List<string>(); // saves read data
+        Boolean TabPage_SavedSettings_Visible = false; // dis-/enables visibility of second tab page
 
         // INITIALIZING STUFF
         /// <summary>
