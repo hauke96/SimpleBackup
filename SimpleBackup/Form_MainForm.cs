@@ -95,8 +95,24 @@ namespace SimpleBackup
         {
             InitializeComponent();
             InitializeLanguage();
-            ChangeLanguage("English");
             StreamReader _reader = new StreamReader("some.settings");
+
+            // read language from settings file
+            string _newLang = _reader.ReadLine();
+            // go through all languages that we have and check if the language in the some.settings file exists here
+            for(int i = 0; i < LanguageList.Count; i++)
+            {
+                if (LanguageList[i][0] == _newLang)
+                {
+                    ChangeLanguage(_newLang); // set language, that stands in the some.settings file
+                    break;
+                }
+                else
+                {
+                    ChangeLanguage("English"); // as default language
+                }
+            }
+            // read other settings
             for (int _i = 0; _i < File.ReadAllLines("some.settings").Length; _i++)
             {
                 string _str = _reader.ReadLine();
@@ -115,9 +131,7 @@ namespace SimpleBackup
         }
 
 
-        
         //Events
-
 
 
 // BUTTONS:
@@ -217,7 +231,6 @@ namespace SimpleBackup
                 + RadioButton_OverwriteIfNewer.Checked + "?"
                 + RadioButton_CopyAll.Checked + "?"
                 + CheckBox_DeleteOldFiles.Checked + "?"
-                + SelectedLanguage + "?"
                 + CheckBox_ShutDown.Checked;
 
             SettingReadings.Add(_newEntry);
@@ -246,7 +259,6 @@ namespace SimpleBackup
                 + RadioButton_OverwriteIfNewer.Checked + "?"
                 + RadioButton_CopyAll.Checked + "?"
                 + CheckBox_DeleteOldFiles.Checked + "?"
-                + SelectedLanguage + "?"
                 + CheckBox_ShutDown.Checked;
 
             SettingReadings[SettingsList_SelectedIndex] = _modifiedEntry;
@@ -329,6 +341,7 @@ namespace SimpleBackup
                 }
             }
             StreamWriter _writer = new StreamWriter("some.settings");
+            _writer.WriteLine(LanguageList[SelectedLanguage][0]);
             for (int _i = 0; _i < SettingReadings.Count; _i++)
             {
                 _writer.WriteLine(SettingReadings[_i]);
@@ -406,10 +419,10 @@ namespace SimpleBackup
                     RadioButton_OverwriteIfNewer.Checked = Convert.ToBoolean(_t[2]); 
                     RadioButton_CopyAll.Checked = Convert.ToBoolean(_t[3]); 
                     CheckBox_DeleteOldFiles.Checked = Convert.ToBoolean(_t[4]); 
-                    SelectedLanguage = Convert.ToInt32(_t[5]);
+                    //SelectedLanguage = Convert.ToInt32(_t[5]);
                     CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[6]);
 
-                    ChangeLanguage(SelectedLanguage);
+                    //ChangeLanguage(SelectedLanguage);
 
                     ListBox_ListOfSettings.SetSelected(_i, true);
                 }
@@ -530,7 +543,6 @@ namespace SimpleBackup
                 + RadioButton_OverwriteIfNewer.Checked + "?"
                 + RadioButton_CopyAll.Checked + "?"
                 + CheckBox_DeleteOldFiles.Checked + "?"
-                + SelectedLanguage + "?"
                 + CheckBox_ShutDown.Checked);
             ListBox_ListOfSettings.Items.Add(TextBox_SourcePath.Text + "  ==>>  " + TextBox_DestinationPath.Text);
         }
@@ -622,7 +634,6 @@ namespace SimpleBackup
 
 
 
-
         /// <summary>
         /// Enables all radio- and check-boxes after any text is typed in.
         /// </summary>
@@ -688,11 +699,11 @@ namespace SimpleBackup
             ToolStripMenuItem _ToolStripMenuItem;
             for (int _indexOfLanguage = 0; _indexOfLanguage < _langFilesInDir.Count; _indexOfLanguage++)
             {
-                StreamReader _reader = new StreamReader(_langFilesInDir[_indexOfLanguage]);
+                StreamReader _reader = new StreamReader(_langFilesInDir[_indexOfLanguage], Encoding.Default);
                 _temp[0] = _reader.ReadLine();
                 for (int _k = 1; _k < AmountOfLanguageRows; _k++) // write language data into array
                 {
-                    _rowSplit = _reader.ReadLine().Split('=').ToList<string>();
+                    _rowSplit = _reader.ReadLine().Split('=').ToList<String>();
                     _rowSplit.RemoveAt(0);
                     _data += _rowSplit[0];
                     _rowSplit.RemoveAt(0);
@@ -1008,9 +1019,7 @@ namespace SimpleBackup
 
 
 
-        /*
-         * Backgroundworker stuff
-         * */
+        // Backgroundworker stuff
 
 
 

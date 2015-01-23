@@ -259,7 +259,6 @@ namespace SimpleBackup
                  + MainForm.RadioButton_OverwriteIfNewer.Checked + "?"
                  + MainForm.RadioButton_CopyAll.Checked + "?"
                  + MainForm.CheckBox_DeleteOldFiles.Checked + "?"
-                 + SelectedLanguage + "?"
                  + MainForm.CheckBox_ShutDown.Checked;
             ListBox_SavedSettings.SelectedIndex = _i;
         }
@@ -275,7 +274,6 @@ namespace SimpleBackup
                 + MainForm.RadioButton_OverwriteIfNewer.Checked + "?"
                 + MainForm.RadioButton_CopyAll.Checked + "?"
                 + MainForm.CheckBox_DeleteOldFiles.Checked + "?"
-                + SelectedLanguage + "?"
                 + MainForm.CheckBox_ShutDown.Checked;
             
 
