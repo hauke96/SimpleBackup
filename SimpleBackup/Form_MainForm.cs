@@ -628,7 +628,7 @@ namespace SimpleBackup
         /// </summary>
         private void enableAfterInput()
         {
-            if (TextBox_SourcePath.Text != "" && TextBox_DestinationPath.Text != "")
+            if (TextBox_SourcePath.Text != string.Empty && TextBox_DestinationPath.Text != string.Empty)
             {
                 this.RadioButton_OverwriteIfNewer.Enabled = true;
                 RadioButton_OverwriteIfNewer.Enabled = true;
@@ -684,7 +684,7 @@ namespace SimpleBackup
             }
             _temp = new string[AmountOfLanguageRows]; // saved language befor putting it into the LanguageList ; 53-language lines + 1 for the language name ("English", "Deutsch", ...)
             List<string> _rowSplit; // elements split by '='
-            _data = ""; // Everything after the first '='. So it's all the language Data without '=' and the english text of it
+            _data = string.Empty; // Everything after the first '='. So it's all the language Data without '=' and the english text of it
             ToolStripMenuItem _ToolStripMenuItem;
             for (int _indexOfLanguage = 0; _indexOfLanguage < _langFilesInDir.Count; _indexOfLanguage++)
             {
@@ -871,7 +871,7 @@ namespace SimpleBackup
             Label_RemainingTime.Text = _languageData[1 + 14];
             Label_Source.Text = _languageData[1 + 3];
             Label_Destination.Text = _languageData[1 + 4];
-            if (BackupIsRunning) Label_RemainingTimeData.Text = "";
+            if (BackupIsRunning) Label_RemainingTimeData.Text = string.Empty;
             else Label_RemainingTimeData.Text = _languageData[1 + 15];
             Label_Information.Text = _languageData[1 + 0];
             Label_Source.Text = _languageData[1 + 3];
@@ -975,7 +975,7 @@ namespace SimpleBackup
             listbox.Items.Clear();
             foreach (string str in entries)
             {
-                if (str == "") continue;
+                if (str == string.Empty) continue;
                 string[] _t = str.Split('?');
                 listbox.Items.Add(_t[0] + "  ==>>  " + _t[1]);
             }
@@ -1056,7 +1056,7 @@ namespace SimpleBackup
                     if (BackupIsRunning == false) return;
                     ListBox_Notifications_AddEntry(DateTime.Now + " : " + LanguageList[SelectedLanguage][1 + 28]); // cleanup ...
                     Amount_BytesInSourcePath = 0; // MBs are not important for cleanup. Label will not show MBs anymore ( no MB/MB anymore )
-                    Label_CurrentFile_FileName_setText("");
+                    Label_CurrentFile_FileName_setText(string.Empty);
                     // cleanup
                     CleanUpBackup(new QuickIODirectoryInfo(DestinationPath), 0);
                     if (BackupIsRunning == false) return;
@@ -1167,7 +1167,7 @@ namespace SimpleBackup
             foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles())
             {
                 if (PauseBackup == false) Pause();
-                string _str = DestinationPath + _file.FullName.Replace(SourcePath, "");
+                string _str = DestinationPath + _file.FullName.Replace(SourcePath, string.Empty);
                 if (_str.Length <= 260)
                 {
                     DateTime _dt = File.GetLastWriteTime(_str);
@@ -1223,7 +1223,7 @@ namespace SimpleBackup
                 foreach (QuickIODirectoryInfo _dir in _directories)
                 {
                     if (PauseBackup == false) Pause();
-                    string _str = SourcePath + _dir.FullName.Replace(DestinationPath, "");
+                    string _str = SourcePath + _dir.FullName.Replace(DestinationPath, string.Empty);
                     if (QuickIO.DirectoryExists(_str) == false)
                     {
                         CleanUpBackup(_dir, _amount);
@@ -1245,7 +1245,7 @@ namespace SimpleBackup
             foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles()) // for every file in current folder ( without subfolders )
             {
                 if (PauseBackup == false) Pause();
-                string _str = SourcePath + _file.FullName.Replace(DestinationPath, "");
+                string _str = SourcePath + _file.FullName.Replace(DestinationPath, string.Empty);
                 _amount++;
                 Amount_ProcessedFiles++;
                 if (QuickIO.FileExists(_str) == false)
@@ -1262,7 +1262,7 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
+                    if (Label_CurrentFile_FileName.Text != string.Empty) Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
                 }
             }
             return _amount;

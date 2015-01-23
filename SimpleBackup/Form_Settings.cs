@@ -79,7 +79,7 @@ namespace SimpleBackup
             SettingReadings = MainForm.SettingReadings.ToList<string>(); // not just copies the reference, but creates a new list
             foreach (string _str in SettingReadings)
             {
-                if (_str == "") continue;
+                if (_str == string.Empty) continue;
                 string[] _t = _str.Split('?'); // Add only paths to the listbox
                 ListBox_SavedSettings.Items.Add(_t[0] + "  ==>>  " + _t[1]);
             }
@@ -236,7 +236,7 @@ namespace SimpleBackup
         {
             if (ListBox_SavedSettings.SelectedIndex == -1
                 || SettingReadings[ListBox_SavedSettings.SelectedIndex] == null
-                || SettingReadings[ListBox_SavedSettings.SelectedIndex] == "") return; // if index is invalid, the entry is null or empty
+                || SettingReadings[ListBox_SavedSettings.SelectedIndex] == string.Empty) return; // if index is invalid, the entry is null or empty
             string[] _t = SettingReadings[ListBox_SavedSettings.SelectedIndex].Split('?');
             TextBox_SourcePath.Text = _t[0];
             TextBox_DestinationPath.Text = _t[1];
@@ -292,7 +292,7 @@ namespace SimpleBackup
         private void Button_DeleteSetting_Click(object _sender, EventArgs _e) // delete-button clicked
         {
             if (ListBox_SavedSettings.SelectedItem == null) return;
-            SettingReadings[ListBox_SavedSettings.SelectedIndex] = "";
+            SettingReadings[ListBox_SavedSettings.SelectedIndex] = string.Empty;
             int _selectedIndex = ListBox_SavedSettings.SelectedIndex;
             ListBox_SavedSettings.Items.RemoveAt(_selectedIndex);
             TextBox_SourcePath.Text = String.Empty;
