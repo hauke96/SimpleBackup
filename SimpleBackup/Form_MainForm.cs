@@ -69,9 +69,9 @@ namespace SimpleBackup
             CountingFiles = false, // to show the right text to Label_CurrentFile_FileName
             BackupAborded = false, // for the right output in ListBox_Notifications when a backup has been aborded
             PauseBackup = false; // interrupts the backup process
-        public string SourcePath = "", // Path to the original/source data
-            DestinationPath = "", // Path to the backup folder
-            CurrentFile = ""; //for Label_CurrentFile_FileName to show the current path
+        public string SourcePath = string.Empty, // Path to the original/source data
+            DestinationPath = string.Empty, // Path to the backup folder
+            CurrentFile = string.Empty; //for Label_CurrentFile_FileName to show the current path
         public int Amount_FilesInSourcePath, // Amount of files in the original folder ( SourcePath )
             Amount_ProcessedFiles, // amount of processed files
             SelectedLanguage = 1, // 1=English; 0=German/Deutsch
@@ -100,7 +100,7 @@ namespace SimpleBackup
             for (int _i = 0; _i < File.ReadAllLines("some.settings").Length; _i++)
             {
                 string _str = _reader.ReadLine();
-                if (_str == "")
+                if (_str == string.Empty)
                 {
                     _i--;
                     continue;
@@ -185,7 +185,7 @@ namespace SimpleBackup
                 SourcePath = TextBox_SourcePath.Text;
                 DestinationPath = TextBox_DestinationPath.Text;
                 BackupIsRunning = true;
-                Label_CurrentFile_FileName.Text = "";
+                Label_CurrentFile_FileName.Text = string.Empty;
                 Label_ElapsedTimeData.Text = "00h:00m:00s";
                 ListBox_Notifications.Items.Clear(); // Clears notification list
                 ListBox_ListOfSettings.Enabled = false;
@@ -265,10 +265,10 @@ namespace SimpleBackup
             {
                 Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 21] + " (" + Amount_FilesInSourcePath + ")");
             }
-            else if (CurrentFile != "")
+            else if (CurrentFile != string.Empty)
             {
                 Label_CurrentFile_FileName_setText(CurrentFile + " ( " + CurrentFileInMBytes.ToString() + " MB ) ");
-                CurrentFile = "";
+                CurrentFile = string.Empty;
             }
             if (Amount_BytesInSourcePath <= 0) // can also be -1 for not counting the bytes in CountFiles()
             {
@@ -643,8 +643,8 @@ namespace SimpleBackup
         private void ResetSimpleBackup()
         {
             BackupIsRunning = false;
-            SourcePath = "";
-            DestinationPath = "";
+            SourcePath = string.Empty;
+            DestinationPath = string.Empty;
             RadioButton_OverwriteIfNewer.Enabled = false;
             RadioButton_CopyAll.Enabled = false;
             CheckBox_DeleteOldFiles.Enabled = false;
@@ -701,7 +701,7 @@ namespace SimpleBackup
                         _data += "=" + _s;
                     }
                     _temp[_k] = _data;
-                    _data = "";
+                    _data = string.Empty;
                 }
                 _temp[72] += ProductVersion;
                 _reader.Close();
@@ -821,7 +821,7 @@ namespace SimpleBackup
             #endregion
         }
         /// <summary>
-        /// Changes the language to "Deutch" or "English".
+        /// Changes the language to "Deutsch" or "English".
         /// </summary>
         /// <param name="to">Desired language. E.g.: "English". Avalaible languages: "Deutsch", "English", more coming ... some day ...</param>
         public void ChangeLanguage(string _newLanguage)
@@ -1080,7 +1080,7 @@ namespace SimpleBackup
             Button_PauseResume.Enabled = false;
             BackupIsRunning = false;
             ListBox_ListOfSettings.Enabled = true;
-            Label_CurrentFile_FileName_setText("");
+            Label_CurrentFile_FileName_setText(string.Empty);
             SetProgressbar(0, 1);
             Amount_FilesInSourcePath = 0;
             Amount_ProcessedFiles = 0;
@@ -1157,7 +1157,7 @@ namespace SimpleBackup
                 foreach (QuickIODirectoryInfo _dir in _directories)
                 {
                     if (PauseBackup == false) Pause();
-                    string str = DestinationPath + _dir.FullName.Replace(SourcePath, ""); // find name of Folder in the Destination path
+                    string str = DestinationPath + _dir.FullName.Replace(SourcePath, string.Empty); // find name of Folder in the Destination path
                     if (QuickIO.DirectoryExists(str) == false)
                         QuickIO.CreateDirectory(str, true);
                     _amount = BackupFiles(new QuickIODirectoryInfo(_dir.FullName), _amount); // goes deeper into folders
@@ -1190,7 +1190,7 @@ namespace SimpleBackup
                     }
                     else
                     {
-                        if (Label_CurrentFile_FileName.Text != "") Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
+                        if (Label_CurrentFile_FileName.Text != string.Empty) Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
                     }
                     Amount_CopiedBytes += (int)_file.Bytes;
                     _amount++;

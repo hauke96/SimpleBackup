@@ -207,8 +207,8 @@ namespace SimpleBackup
             SelectedLanguage = 1;
             SettingReadings.Clear();
             ListBox_SavedSettings.Items.Clear();
-            TextBox_SourcePath.Text = "";
-            TextBox_DestinationPath.Text = "";
+            TextBox_SourcePath.Text = String.Empty;
+            TextBox_DestinationPath.Text = String.Empty;
             MainForm.RadioButton_OverwriteIfNewer.Checked = true;
             MainForm.RadioButton_CopyAll.Checked = false;
             MainForm.CheckBox_DeleteOldFiles.Checked = false;
