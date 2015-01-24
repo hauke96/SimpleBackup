@@ -58,7 +58,7 @@
             this.Label_SimpleBackupTitle.Name = "Label_SimpleBackupTitle";
             this.Label_SimpleBackupTitle.Size = new System.Drawing.Size(245, 26);
             this.Label_SimpleBackupTitle.TabIndex = 1;
-            this.Label_SimpleBackupTitle.Text = "SimpleBackup 1.2.0.4";
+            this.Label_SimpleBackupTitle.Text = "SimpleBackup " + ProductVersion;
             this.Label_SimpleBackupTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Label_Description

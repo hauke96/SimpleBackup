@@ -102,7 +102,8 @@ namespace SimpleBackup
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][72]);
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][73]);
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][74] + _str);
-                if (_str != ProductVersion)
+                _str = _str.Replace(".", "");
+                if (Convert.ToInt32(_str) >= Convert.ToInt32(ProductVersion.Replace(".", ""))) // newer version number withput "." is higher
                 {
                     ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][75]); // update avalaible
                     Button_DownloadUpdate.Text = MainForm.LanguageList[MainForm.SelectedLanguage][77];
