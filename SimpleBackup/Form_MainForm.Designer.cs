@@ -449,6 +449,7 @@
             // 
             // ProgressBar
             // 
+            this.ProgressBar.BackColor = System.Drawing.SystemColors.Control;
             this.ProgressBar.Location = new System.Drawing.Point(13, 438);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(577, 26);

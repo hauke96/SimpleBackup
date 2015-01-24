@@ -954,7 +954,6 @@ namespace SimpleBackup
                 {
                     int _value = (int)((float)a / (float)b * 100);
                     if (_value > 100)_value = 100;
-                    //else if (value < 0) value = 0;
                     ProgressBar.Value = _value;
                 }
             });
@@ -962,10 +961,12 @@ namespace SimpleBackup
             {
                 if (Amount_CopiedBytes != 0 && PauseBackup == false)
                 {
-                    double _s = (DateTime.Now - StartTime - PausedTime).Hours * 3600;
-                    _s += (DateTime.Now - StartTime - PausedTime).Minutes * 60;
-                    _s += (DateTime.Now - StartTime - PausedTime).Seconds;
-                    _s *= ((float)Amount_BytesInSourcePath / (float)Amount_CopiedBytes);
+                    double _s; // elapsed time
+                    _s = (DateTime.Now - StartTime - PausedTime).Hours * 3600
+                        + (DateTime.Now - StartTime - PausedTime).Minutes * 60
+                        + (DateTime.Now - StartTime - PausedTime).Seconds;
+                    _s /= (float)Amount_CopiedBytes; // seconds per byte
+                    _s *= (Amount_BytesInSourcePath - Amount_CopiedBytes); // time for the rest
                     TimeSpan _ts = TimeSpan.FromSeconds(_s);
                     Label_RemainingTimeData.Text = string.Format("{0:D2}h:{1:D2}m:{2:D2}s", _ts.Hours, _ts.Minutes, _ts.Seconds)
                         + LanguageList[SelectedLanguage][1 + 24];
@@ -1110,7 +1111,7 @@ namespace SimpleBackup
             BackupIsRunning = false;
             ListBox_ListOfSettings.Enabled = true;
             Label_CurrentFile_FileName_setText(string.Empty);
-            SetProgressbar(0, 1);
+            SetProgressbar(100, 1);
             Amount_FilesInSourcePath = 0;
             Amount_ProcessedFiles = 0;
             if (BackupAborded)
