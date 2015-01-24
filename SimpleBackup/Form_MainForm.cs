@@ -59,6 +59,7 @@ using System.IO;
 using System.Threading;
 using SchwabenCode.QuickIO;
 using SchwabenCode.QuickIO.Transfer;
+using System.Collections;
 
 namespace SimpleBackup
 {
@@ -77,9 +78,9 @@ namespace SimpleBackup
             SelectedLanguage = 1, // 1=English; 0=German/Deutsch
             CurrentFileInMBytes = 0, // size in mega-bytes (MBytes) of current file
             SelectedErrorMessage = -1, // the selected error message in the notification list
-            ErrorMessageCounter = 0, // Amount of error messages for the list entry ( "ERROR(x): ... " ) ; imortant for SelectedErrorMessage
             SettingsList_SelectedIndex = -1, // saves the last selected index if ListBox_ListOfSettings
-            AmountOfLanguageRows = 80; // Amount of rows in a language file
+            AmountOfLanguageRows = 80, // Amount of rows in a language file
+            ErrorLogFileID = 0; // the number of error log file
         public long Amount_BytesInSourcePath, // Amount of bytes in the original folder ( SourcePath )
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
@@ -128,6 +129,13 @@ namespace SimpleBackup
                 ListBox_ListOfSettings.Items.Add(_t[0] + "  ==>>  " + _t[1]);
             }
             _reader.Close();
+
+            // count log files:
+            List<QuickIOFileInfo> _info = QuickIODirectory.EnumerateFiles(Directory.GetCurrentDirectory(), SearchOption.TopDirectoryOnly, QuickIOEnumerateOptions.None).ToList<QuickIOFileInfo>();
+            foreach (QuickIOFileInfo _i in _info)
+            {
+                if (_i.Name.Substring(_i.Name.Length - 4, 4) == ".log") ErrorLogFileID++;
+            }
         }
 
 
@@ -253,7 +261,6 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_SaveEntry_Click(object _sender, EventArgs _e)
         {
-            if (SettingsList_SelectedIndex == -1) return;
             string _modifiedEntry = TextBox_SourcePath.Text + "?"
                 + TextBox_DestinationPath.Text + "?"
                 + RadioButton_OverwriteIfNewer.Checked + "?"
@@ -261,7 +268,14 @@ namespace SimpleBackup
                 + CheckBox_DeleteOldFiles.Checked + "?"
                 + CheckBox_ShutDown.Checked;
 
-            SettingReadings[SettingsList_SelectedIndex] = _modifiedEntry;
+            if (SettingsList_SelectedIndex >= SettingReadings.Count || SettingsList_SelectedIndex == -1)
+            {
+                SettingReadings.Add(_modifiedEntry);
+            }
+            else
+            {
+                SettingReadings[SettingsList_SelectedIndex] = _modifiedEntry;
+            }
             ReloadSettingsListBoxEntries(ListBox_ListOfSettings, SettingReadings);
         }
 
@@ -314,7 +328,6 @@ namespace SimpleBackup
             }
             else
             {
-                // Abfrage, wenn jemand etwas per hand eingiebt
                 enableAfterInput();
             }
         }
@@ -404,15 +417,14 @@ namespace SimpleBackup
             // todo: options -> settings -> reset -> save -> klick on second entry in settings list -> error: ArgumentOutOfRangeException
             int _i = ListBox_ListOfSettings.SelectedIndex;
             string[] _t = SettingReadings[ListBox_ListOfSettings.SelectedIndex].Split('?');
-            if (_t.Length == 7)
+            if (_t.Length == 6)
             {
                 if (_t[0] != TextBox_SourcePath.Text ||
                     _t[1] != TextBox_DestinationPath.Text ||
                     Convert.ToBoolean(_t[2]) != RadioButton_OverwriteIfNewer.Checked ||
                     Convert.ToBoolean(_t[3]) != RadioButton_CopyAll.Checked ||
                     Convert.ToBoolean(_t[4]) != CheckBox_DeleteOldFiles.Checked ||
-                    Convert.ToInt32(_t[5]) != SelectedLanguage || 
-                    Convert.ToBoolean(_t[6]) != CheckBox_ShutDown.Checked) // preventing de-selecting of the entry
+                    Convert.ToBoolean(_t[5]) != CheckBox_ShutDown.Checked) // preventing de-selecting of the entry
                 {
                     TextBox_SourcePath.Text = _t[0]; 
                     TextBox_DestinationPath.Text = _t[1]; 
@@ -420,7 +432,7 @@ namespace SimpleBackup
                     RadioButton_CopyAll.Checked = Convert.ToBoolean(_t[3]); 
                     CheckBox_DeleteOldFiles.Checked = Convert.ToBoolean(_t[4]); 
                     //SelectedLanguage = Convert.ToInt32(_t[5]);
-                    CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[6]);
+                    CheckBox_ShutDown.Checked = Convert.ToBoolean(_t[5]);
 
                     //ChangeLanguage(SelectedLanguage);
 
@@ -622,7 +634,7 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void Label_CurrentFile_FileName_MouseHover(object _sender, EventArgs _e)
         {
-            if (Label_CurrentFile_FileName.Size.Width + Label_CurrentFile_FileName.Left >= Form_MainForm.ActiveForm.Width)
+            if (Label_CurrentFile_FileName.Size.Width + Label_CurrentFile_FileName.Left >= ((Form)this).Width)
             {
                 ToolTip.Show(Label_CurrentFile_FileName.Text, Label_CurrentFile_FileName);
             }
@@ -998,23 +1010,31 @@ namespace SimpleBackup
         /// <param name="stopBackup">When the error is so fatal that the backup has to be canceled set this to "true".</param>
         public void ErrorOccured(ErrorEventArgs _e, Boolean stopBackup = true)
         {
-            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message);
-            string _date = DateTime.Now.ToString().Replace(":", ".");
-            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 37] + _date + ".log");
+            ErrorOccured(_e.GetException(), stopBackup);
+        }
+        /// <summary>
+        /// Shows an error message on the notification list box.
+        /// </summary>
+        /// <param name="_ex">Exception with many information.</param>
+        /// <param name="stopBackup">When the error is so fatal that the backup has to be canceled set this to "true".</param>
+        public void ErrorOccured(Exception _ex, Boolean stopBackup = true)
+        {
+            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogFileID + ") " + _ex.Message);
+            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 37] + ErrorLogFileID + ".log");
 
-            string _temp_ErrorMessage = LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorMessageCounter + ") " + _e.GetException().Message + "\n"
-                + _e.GetException().StackTrace + "\n"
-                + _e.GetException().Data + "\n"
-                + _e.GetException().HelpLink + "\n"
-                + _e.GetException().InnerException + "\n"
-                + _e.GetException().TargetSite;
+            string _temp_ErrorMessage = LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogFileID + ") " + _ex.Message + "\n"
+                + _ex.StackTrace + "\n"
+                + _ex.Data + "\n"
+                + _ex.HelpLink + "\n"
+                + _ex.InnerException + "\n"
+                + _ex.TargetSite;
 
             ErrorMessages.Add(_temp_ErrorMessage);
-            StreamWriter _writer = new StreamWriter(_date + ".log");
-            _writer.Write(_temp_ErrorMessage);
+            StreamWriter _writer = new StreamWriter(ErrorLogFileID + ".log", true);
+            _writer.WriteLine(_temp_ErrorMessage + "\n");
             _writer.Close();
             ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 34]);
-            BackupIsRunning = false;
+            BackupIsRunning = stopBackup == false;
         }
 
 
@@ -1123,25 +1143,34 @@ namespace SimpleBackup
         {
             if (BackupIsRunning == false) return _amount;
             int _dirLength = 0;
-            QuickIODirectoryInfo _dInfo = new QuickIODirectoryInfo(_path);
-            IEnumerable<QuickIODirectoryInfo> _directories = _dInfo.EnumerateDirectories(SearchOption.TopDirectoryOnly);
-            _dirLength = _directories.Count();
-
-            if (_dirLength != 0)
+            IEnumerable<QuickIODirectoryInfo> _directories = null;// new IEnumerable<QuickIODirectoryInfo>();
+            QuickIODirectoryInfo _dInfo = null;// new QuickIODirectoryInfo("");
+            try
             {
-                foreach (QuickIODirectoryInfo _dir in _directories)
+                _dInfo = new QuickIODirectoryInfo(_path);
+                _directories = _dInfo.EnumerateDirectories(SearchOption.TopDirectoryOnly);
+                _dirLength = _directories.Count();
+
+                if (_dirLength != 0)
                 {
-                    if (PauseBackup == false) Pause();
-                    _amount = CountFiles(_dir.FullName, _amount); // goes deeper into folders
-                    if (BackupIsRunning == false) return _amount;
+                    foreach (QuickIODirectoryInfo _dir in _directories)
+                    {
+                        if (PauseBackup) Pause();
+                        _amount = CountFiles(_dir.FullName, _amount); // goes deeper into folders
+                        if (BackupIsRunning == false) return _amount;
+                    }
+                }
+                foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles()) // for every existing file in current folder ( without subfolders )
+                {
+                    if (PauseBackup) Pause();
+                    if (Amount_BytesInSourcePath != -1) Amount_BytesInSourcePath += (int)_file.Bytes;
+                    Amount_FilesInSourcePath++;
+                    _amount++;
                 }
             }
-            foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles()) // for every existing file in current folder ( without subfolders )
+            catch (Exception _ex)
             {
-                if (PauseBackup == false) Pause();
-                if (Amount_BytesInSourcePath != -1) Amount_BytesInSourcePath += (int)_file.Bytes;
-                Amount_FilesInSourcePath++;
-                _amount++;
+                BeginInvoke((EventHandler)delegate { ErrorOccured(_ex, false); });
             }
 
             return _amount;
@@ -1165,45 +1194,59 @@ namespace SimpleBackup
             {
                 foreach (QuickIODirectoryInfo _dir in _directories)
                 {
-                    if (PauseBackup == false) Pause();
-                    string str = DestinationPath + _dir.FullName.Replace(SourcePath, string.Empty); // find name of Folder in the Destination path
-                    if (QuickIO.DirectoryExists(str) == false)
-                        QuickIO.CreateDirectory(str, true);
-                    _amount = BackupFiles(new QuickIODirectoryInfo(_dir.FullName), _amount); // goes deeper into folders
-                    if (BackupIsRunning == false) return _amount;
+                    try
+                    {
+                        if (PauseBackup) Pause();
+                        string str = DestinationPath + _dir.FullName.Replace(SourcePath, string.Empty); // find name of Folder in the Destination path
+                        if (QuickIO.DirectoryExists(str) == false)
+                            QuickIO.CreateDirectory(str, true);
+                        _amount = BackupFiles(new QuickIODirectoryInfo(_dir.FullName), _amount); // goes deeper into folders
+                        if (BackupIsRunning == false) return _amount;
+                    }
+                    catch (Exception _ex)
+                    {
+                        BeginInvoke((EventHandler)delegate { ErrorOccured(_ex, false); });
+                    }
                 }
             }
             foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles())
             {
-                if (PauseBackup == false) Pause();
+                if (PauseBackup) Pause();
                 string _str = DestinationPath + _file.FullName.Replace(SourcePath, string.Empty);
                 if (_str.Length <= 260)
                 {
-                    DateTime _dt = File.GetLastWriteTime(_str);
-                    DateTime _dt_old = File.GetLastWriteTime(_file.FullName);
-                    if (QuickIO.FileExists(_str) == false || _dt != _dt_old)
+                    try
                     {
-                        if (RadioButton_OverwriteIfNewer.Checked || RadioButton_CopyAll.Checked)
+                        DateTime _dt = File.GetLastWriteTime(_str);
+                        DateTime _dt_old = File.GetLastWriteTime(_file.FullName);
+                        if (QuickIO.FileExists(_str) == false || _dt != _dt_old)
                         {
-                            CurrentFile = _file.FullName;
-                            CurrentFileInMBytes = (int)(_file.Bytes / 1000000);
-                            try
+                            if (RadioButton_OverwriteIfNewer.Checked || RadioButton_CopyAll.Checked)
                             {
-                                QuickIOFile.Copy(_file.FullName, _str, true);
-                            }
-                            catch (Exception _ex)
-                            {
-                                ListBox_Notifications_AddEntry(_ex.Message);
+                                CurrentFile = _file.FullName;
+                                CurrentFileInMBytes = (int)(_file.Bytes / 1000000);
+                                try
+                                {
+                                    QuickIOFile.Copy(_file.FullName, _str, true);
+                                }
+                                catch (Exception _ex)
+                                {
+                                    ListBox_Notifications_AddEntry(_ex.Message);
+                                }
                             }
                         }
+                        else
+                        {
+                            if (Label_CurrentFile_FileName.Text != string.Empty) Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
+                        }
+                        Amount_CopiedBytes += (int)_file.Bytes;
+                        _amount++;
+                        Amount_ProcessedFiles++;
                     }
-                    else
+                    catch (Exception _ex)
                     {
-                        if (Label_CurrentFile_FileName.Text != string.Empty) Label_CurrentFile_FileName_setText(LanguageList[SelectedLanguage][1 + 29]);
+                        BeginInvoke((EventHandler)delegate { ErrorOccured(_ex, false); });
                     }
-                    Amount_CopiedBytes += (int)_file.Bytes;
-                    _amount++;
-                    Amount_ProcessedFiles++;
                 }
                 else
                 {
@@ -1231,29 +1274,30 @@ namespace SimpleBackup
             {
                 foreach (QuickIODirectoryInfo _dir in _directories)
                 {
-                    if (PauseBackup == false) Pause();
-                    string _str = SourcePath + _dir.FullName.Replace(DestinationPath, string.Empty);
-                    if (QuickIO.DirectoryExists(_str) == false)
+                    try
                     {
-                        CleanUpBackup(_dir, _amount);
-                        if (BackupIsRunning == false) return _amount;
-                        try
+                        if (PauseBackup) Pause();
+                        string _str = SourcePath + _dir.FullName.Replace(DestinationPath, string.Empty);
+                        if (QuickIO.DirectoryExists(_str) == false)
                         {
-                            QuickIODirectory.Delete(_dir.FullName, true); // delete non existing folders
+                            CleanUpBackup(_dir, _amount);
+                            if (BackupIsRunning == false) return _amount;
+                                QuickIODirectory.Delete(_dir.FullName, true); // delete non existing folders
                         }
-                        catch (Exception _ex)
+                        else
                         {
-                        } // no exception handling; the notification list would be crowded ;)
+                            _amount = CleanUpBackup(new QuickIODirectoryInfo(_dir.FullName), _amount); // goes deeper into folders
+                        }
                     }
-                    else
+                    catch (Exception _ex)
                     {
-                        _amount = CleanUpBackup(new QuickIODirectoryInfo(_dir.FullName), _amount); // goes deeper into folders
+                        BeginInvoke((EventHandler)delegate { ErrorOccured(_ex, false); });
                     }
                 }
             }
             foreach (QuickIOFileInfo _file in _dInfo.EnumerateFiles()) // for every file in current folder ( without subfolders )
             {
-                if (PauseBackup == false) Pause();
+                if (PauseBackup) Pause();
                 string _str = SourcePath + _file.FullName.Replace(DestinationPath, string.Empty);
                 _amount++;
                 Amount_ProcessedFiles++;
@@ -1267,7 +1311,8 @@ namespace SimpleBackup
                     }
                     catch (Exception _ex)
                     {
-                    } // no exception handling; the notification list would be crowded ;)
+                        BeginInvoke((EventHandler)delegate { ErrorOccured(_ex, false); });
+                    }
                 }
                 else
                 {
@@ -1283,7 +1328,8 @@ namespace SimpleBackup
         private void Pause() // checks if PauseBackup is true or not. If it's true, the process will be paused
         {
             DateTime _dt = DateTime.Now;
-            while (PauseBackup) { Thread.Sleep(10); } // waits until PauseBakcup is false; 10ms wait time for not killing the cpu ;)
+            while (PauseBackup) { 
+                Thread.Sleep(10); } // waits until PauseBakcup is false; 10ms wait time for not killing the cpu ;)
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
     }
