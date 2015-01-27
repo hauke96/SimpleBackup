@@ -84,7 +84,11 @@
             this.Button_AddEntry = new System.Windows.Forms.Button();
             this.Button_DeleteEntry = new System.Windows.Forms.Button();
             this.Button_SaveEntry = new System.Windows.Forms.Button();
+            this.SystemTray = new System.Windows.Forms.NotifyIcon(this.components);
+            this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Beenden_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip_MainStrip.SuspendLayout();
+            this.TrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // Timer_TimeProgressDisplay
@@ -534,6 +538,31 @@
             this.Button_SaveEntry.UseVisualStyleBackColor = true;
             this.Button_SaveEntry.Click += new System.EventHandler(this.Button_SaveEntry_Click);
             // 
+            // SystemTray
+            // 
+            this.SystemTray.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.SystemTray.BalloonTipTitle = "SimpleBackup";
+            this.SystemTray.ContextMenuStrip = this.TrayMenu;
+            this.SystemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("SystemTray.Icon")));
+            this.SystemTray.Text = "SimpleBackup";
+            this.SystemTray.Visible = true;
+            this.SystemTray.DoubleClick += new System.EventHandler(this.SystemTray_DoubleClick);
+            // 
+            // TrayMenu
+            // 
+            this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Beenden_ToolStripMenuItem});
+            this.TrayMenu.Name = "trayMenu";
+            this.TrayMenu.Size = new System.Drawing.Size(153, 48);
+            this.TrayMenu.TabStop = true;
+            // 
+            // Beenden_ToolStripMenuItem
+            // 
+            this.Beenden_ToolStripMenuItem.Name = "Beenden_ToolStripMenuItem";
+            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Beenden_ToolStripMenuItem.Text = "Beenden";
+            this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
+            // 
             // Form_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,8 +605,10 @@
             this.Name = "Form_MainForm";
             this.Text = "Simple Backup - ver.1.2.0.4 - made by Hauke Stieler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_MainForm_FormClosing);
+            this.SizeChanged += new System.EventHandler(this.Form_MainForm_SizeChanged);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
+            this.TrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,6 +670,9 @@
         private System.Windows.Forms.Button Button_AddEntry;
         private System.Windows.Forms.Button Button_DeleteEntry;
         private System.Windows.Forms.Button Button_SaveEntry;
+        private System.Windows.Forms.NotifyIcon SystemTray;
+        private System.Windows.Forms.ContextMenuStrip TrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem Beenden_ToolStripMenuItem;
     }
 }
 
