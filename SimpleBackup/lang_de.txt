@@ -78,3 +78,5 @@ no update avalaible=Kein Update verfügbar
 download update=Update herunterladen
 back=Zurück
 SimpleBackup update=SimpleBackup Aktualisierung
+Program runs in background=Programm läuft im Hintergrund
+Program back on top=Programm im Vordergrund

@@ -536,6 +536,7 @@ namespace SimpleBackup
             try { 
                 if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
                 if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
+                
             }
             catch (Exception e)
             {
@@ -1333,5 +1334,44 @@ namespace SimpleBackup
                 Thread.Sleep(10); } // waits until PauseBakcup is false; 10ms wait time for not killing the cpu ;)
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
+
+
+        /// <summary>
+        /// Minimize the Window in the system tray .
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="e"></param>
+        private void Form_MainForm_SizeChanged(object _sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                SystemTray.BalloonTipText = "Program run in background";//LanguageList[SelectedLanguage][81]; // Display text
+                SystemTray.ShowBalloonTip(300); //how long displayed the text, of milliseconds
+                this.ShowInTaskbar = false;
+                
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                SystemTray.BalloonTipText = "Program back on top";//LanguageList[SelectedLanguage][82]; // Display text
+                SystemTray.ShowBalloonTip(400);
+            }
+        }   
+
+        // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
+        private void SystemTray_DoubleClick(object _sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        // Right Click on Icon in the taskbar, terminated SimpleBackup
+        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+                     
     }
 }
