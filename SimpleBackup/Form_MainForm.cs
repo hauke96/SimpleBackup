@@ -726,7 +726,7 @@ namespace SimpleBackup
                     _temp[_k] = _data;
                     _data = string.Empty;
                 }
-                _temp[72] += ProductVersion;
+                _temp[73] += ProductVersion; // current version ...
                 _reader.Close();
                 // create MenuItem
                 _ToolStripMenuItem = new ToolStripMenuItem();
