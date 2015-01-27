@@ -111,7 +111,7 @@ namespace SimpleBackup
                 else
                 {
                     ChangeLanguage("English"); // as default language
-                } //Anpassungen ab Zeile 534 
+                }
             }
             // read other settings
             for (int _i = 0; _i < File.ReadAllLines("some.settings").Length; _i++)
@@ -533,11 +533,9 @@ namespace SimpleBackup
         /// <param name="e"></param>
         private void ToolStripMenuItem_OpenHelpDialog_Click(object _sender, EventArgs _e)
         {
-            try {
-                
+            try { 
                 if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
                 if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
-                //this.Refresh();
             }
             catch (Exception e)
             {
@@ -701,10 +699,10 @@ namespace SimpleBackup
             {
                 // Split file path to get "lang_xx.txt"-string
                 _temp = _s.Split('\\');
-                _data = _temp[_temp.Length - 1].Substring(0, 5); 
+                _data = _temp[_temp.Length - 1].Substring(0, 5);
                 if (_data == "lang_") // if it's a language file
                 {
-                    _langFilesInDir.Add(_temp[_temp.Length - 1]); 
+                    _langFilesInDir.Add(_temp[_temp.Length - 1]);
                 }
             }
             _temp = new string[AmountOfLanguageRows]; // saved language befor putting it into the LanguageList ; 53-language lines + 1 for the language name ("English", "Deutsch", ...)
@@ -1335,45 +1333,5 @@ namespace SimpleBackup
                 Thread.Sleep(10); } // waits until PauseBakcup is false; 10ms wait time for not killing the cpu ;)
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
-
-
-        /// <summary>
-        /// Minimize the Window in the system tray .
-        /// </summary>
-        /// <param name="_sender"></param>
-        /// <param name="e"></param>
-        // Change MainForm in different windows 
-        private void Form_MainForm_SizeChanged(object _sender, EventArgs e)
-        {
-
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-                SystemTray.BalloonTipText = "Program runs in background"; //LanguageList[SelectedLanguage][81]; // Display text
-                SystemTray.ShowBalloonTip(300); //show, how long displayed the text, of milliseconds
-                this.ShowInTaskbar = false;
-            }
-            else if(this.WindowState == FormWindowState.Normal)
-            {
-
-                SystemTray.BalloonTipText = "Program back on top"; //LanguageList[SelectedLanguage][82]; //display text
-                SystemTray.ShowBalloonTip(400); //show, how long displayed the text, of milliseconds
-            }
-        }
-
-        // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
-        private void SystemTray_DoubleClick(object _sender, EventArgs e)
-        {
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
-        }
-        // Right Click on Icon in the taskbar, terminated SimpleBackup
-        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        
     }
 }
