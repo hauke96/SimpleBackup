@@ -538,6 +538,7 @@ namespace SimpleBackup
             try { 
                 if (SelectedLanguage == 0) System.Diagnostics.Process.Start("help_de.html");
                 if (SelectedLanguage == 1) System.Diagnostics.Process.Start("help_en.html");
+                
             }
             catch (Exception e)
             {
@@ -1336,6 +1337,7 @@ namespace SimpleBackup
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
 
+<<<<<<< HEAD
         #region
         //(new Form_Settings(this)).Show();
         // initialsize Window in Tray System 
@@ -1383,5 +1385,45 @@ namespace SimpleBackup
             //(new Form_Settings(this)).Show();
         #endregion
 
+=======
+
+        /// <summary>
+        /// Minimize the Window in the system tray .
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="e"></param>
+        private void Form_MainForm_SizeChanged(object _sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                SystemTray.BalloonTipText = "Program run in background";//LanguageList[SelectedLanguage][81]; // Display text
+                SystemTray.ShowBalloonTip(300); //how long displayed the text, of milliseconds
+                this.ShowInTaskbar = false;
+                
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                SystemTray.BalloonTipText = "Program back on top";//LanguageList[SelectedLanguage][82]; // Display text
+                SystemTray.ShowBalloonTip(400);
+            }
+        }   
+
+        // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
+        private void SystemTray_DoubleClick(object _sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        // Right Click on Icon in the taskbar, terminated SimpleBackup
+        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+                     
+>>>>>>> 05014e44c243157d60c78a5671ea87dedb1c2a23
     }
     }

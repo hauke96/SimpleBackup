@@ -84,7 +84,11 @@
             this.Button_AddEntry = new System.Windows.Forms.Button();
             this.Button_DeleteEntry = new System.Windows.Forms.Button();
             this.Button_SaveEntry = new System.Windows.Forms.Button();
+            this.ContextMenuStrip_TrayContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Beenden_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SystemTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.MenuStrip_MainStrip.SuspendLayout();
+            this.ContextMenuStrip_TrayContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // Timer_TimeProgressDisplay
@@ -534,6 +538,29 @@
             this.Button_SaveEntry.UseVisualStyleBackColor = true;
             this.Button_SaveEntry.Click += new System.EventHandler(this.Button_SaveEntry_Click);
             // 
+            // ContextMenuStrip_TrayContext
+            // 
+            this.ContextMenuStrip_TrayContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Beenden_ToolStripMenuItem});
+            this.ContextMenuStrip_TrayContext.Name = "ContextMenuStrip_TrayContext";
+            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(121, 26);
+            // 
+            // Beenden_ToolStripMenuItem
+            // 
+            this.Beenden_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Beenden_ToolStripMenuItem.Image")));
+            this.Beenden_ToolStripMenuItem.Name = "Beenden_ToolStripMenuItem";
+            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.Beenden_ToolStripMenuItem.Text = "Beenden";
+            this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
+            // 
+            // SystemTray
+            // 
+            this.SystemTray.ContextMenuStrip = this.ContextMenuStrip_TrayContext;
+            this.SystemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("SystemTray.Icon")));
+            this.SystemTray.Text = "SystemTray";
+            this.SystemTray.Visible = true;
+            this.SystemTray.DoubleClick += new System.EventHandler(this.SystemTray_DoubleClick);
+            // 
             // Form_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -574,10 +601,11 @@
             this.MainMenuStrip = this.MenuStrip_MainStrip;
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
-            this.Text = "Simple Backup - ver." + ProductVersion + " - made by Hauke Stieler";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_MainForm_FormClosing);
+            this.Text = "Simple Backup - ver.4.0.30319.34209 - made by Hauke Stieler";
+            this.SizeChanged += new System.EventHandler(this.Form_MainForm_SizeChanged);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
+            this.ContextMenuStrip_TrayContext.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,6 +667,9 @@
         private System.Windows.Forms.Button Button_AddEntry;
         private System.Windows.Forms.Button Button_DeleteEntry;
         private System.Windows.Forms.Button Button_SaveEntry;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip_TrayContext;
+        private System.Windows.Forms.ToolStripMenuItem Beenden_ToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon SystemTray;
     }
 }
 
