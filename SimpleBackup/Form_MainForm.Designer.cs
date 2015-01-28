@@ -147,7 +147,7 @@
             // ToolStripMenuItem_Open
             // 
             this.ToolStripMenuItem_Open.Name = "ToolStripMenuItem_Open";
-            this.ToolStripMenuItem_Open.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Open.Size = new System.Drawing.Size(126, 22);
             this.ToolStripMenuItem_Open.Text = "Öffnen";
             // 
             // ToolStripMenuItem_Save
@@ -156,7 +156,7 @@
             this.logToolStripMenuItem,
             this.ToolStripMenuItem_SaveEntryToSettings});
             this.ToolStripMenuItem_Save.Name = "ToolStripMenuItem_Save";
-            this.ToolStripMenuItem_Save.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Save.Size = new System.Drawing.Size(126, 22);
             this.ToolStripMenuItem_Save.Text = "Speichern";
             // 
             // logToolStripMenuItem
@@ -175,7 +175,7 @@
             // ToolStripMenuItem_Exit
             // 
             this.ToolStripMenuItem_Exit.Name = "ToolStripMenuItem_Exit";
-            this.ToolStripMenuItem_Exit.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Exit.Size = new System.Drawing.Size(126, 22);
             this.ToolStripMenuItem_Exit.Text = "Beenden";
             this.ToolStripMenuItem_Exit.Click += new System.EventHandler(this.ToolStripMenuItem_Exit_Click);
             // 
@@ -574,9 +574,8 @@
             this.MainMenuStrip = this.MenuStrip_MainStrip;
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
-            this.Text = "Simple Backup - ver.4.0.30319.36323 - made by Hauke Stieler";
+            this.Text = "Simple Backup - ver." + ProductVersion + " - made by Hauke Stieler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.Form_MainForm_Load);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
             this.ResumeLayout(false);
