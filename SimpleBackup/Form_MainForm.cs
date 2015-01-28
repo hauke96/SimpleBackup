@@ -89,13 +89,15 @@ namespace SimpleBackup
             ErrorMessages = new List<string>(), // List of detailed error messages to copy via the notification list
             AvalaibleLanguages = new List<string>();
         public List<string[]> LanguageList = new List<string[]>();
-        private List<ToolStripMenuItem> LanguageListItems = new List<ToolStripMenuItem>();
+        private List<ToolStripMenuItem> LanguageListItems = new List<ToolStripMenuItem>(); 
+        
 
         
         public Form_MainForm()
         {
             InitializeComponent();
             InitializeLanguage();
+            //tray_Load();
             StreamReader _reader = new StreamReader("some.settings");
 
             // read language from settings file
@@ -1335,6 +1337,55 @@ namespace SimpleBackup
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
 
+<<<<<<< HEAD
+        #region
+        //(new Form_Settings(this)).Show();
+        // initialsize Window in Tray System 
+        //[STAThread] <- gilt nur für Methoden
+        
+        public void Form_MainForm_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.NotifyIcon trayIcon;
+    
+        public void main_Tray()
+        {
+            Application.Run();
+            tray_Load();
+            tray_Resize();
+            tray_MouseDoubleClick();
+        }
+
+        public void tray_Load()
+        {
+            trayIcon.Text = "App Minimiert";
+            trayIcon.BalloonTipTitle = "test";
+        }
+
+        public void tray_Resize()
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+            ShowInTaskbar = false;
+            trayIcon.Visible = true;
+            trayIcon.ShowBalloonTip(100);
+            trayIcon.Icon = new Icon("icon.ico");
+            }
+        }
+
+        public void tray_MouseDoubleClick()
+        {
+            ShowInTaskbar = true;
+            trayIcon.Visible = false;
+            WindowState = FormWindowState.Normal;
+            
+        }
+
+        }
+    
+            //(new Form_Settings(this)).Show();
+        #endregion
+
+=======
 
         /// <summary>
         /// Minimize the Window in the system tray .
@@ -1378,5 +1429,6 @@ namespace SimpleBackup
         }
 
                      
+>>>>>>> 05014e44c243157d60c78a5671ea87dedb1c2a23
     }
-}
+    }
