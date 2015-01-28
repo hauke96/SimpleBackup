@@ -54,6 +54,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
@@ -79,7 +80,7 @@ namespace SimpleBackup
             CurrentFileInMBytes = 0, // size in mega-bytes (MBytes) of current file
             SelectedErrorMessage = -1, // the selected error message in the notification list
             SettingsList_SelectedIndex = -1, // saves the last selected index if ListBox_ListOfSettings
-            AmountOfLanguageRows = 80, // Amount of rows in a language file
+            AmountOfLanguageRows = 90, // Amount of rows in a language file
             ErrorLogFileID = 0; // the number of error log file
         public long Amount_BytesInSourcePath, // Amount of bytes in the original folder ( SourcePath )
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
@@ -832,6 +833,8 @@ namespace SimpleBackup
             _temp[1 + 76] = "download update";
             _temp[1 + 77] = "back";
             _temp[1 + 78] = "SimpleBackup update";
+            _temp[1 + 79] = "Program runs in background";
+            _temp[1 + 80] = "Program back on top";
 
             // create MenuItem
             _ToolStripMenuItem = new ToolStripMenuItem();//_temp[0]);
@@ -1337,26 +1340,26 @@ namespace SimpleBackup
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
 
-        #region
+        #region Systemtray
         /// <summary>
         /// Minimize the Window in the system tray .
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="e"></param>
-        private void Form_MainForm_SizeChanged(object _sender, EventArgs e)
+        private void Form_MainForm_SizeChanged(object _sender, EventArgs _e)
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
                 SystemTray.Visible = true; //Program is shown in taskbar
-                SystemTray.BalloonTipText = "Program run in background";//LanguageList[SelectedLanguage][81]; // Display text
-                SystemTray.ShowBalloonTip(300); //how long displayed the text, of milliseconds
+                SystemTray.BalloonTipText = LanguageList[SelectedLanguage][1+79]; // Display text
+                SystemTray.ShowBalloonTip(500); //how long displayed the text, of milliseconds
                 this.ShowInTaskbar = false;
                 
                 
             }
             else if (this.WindowState == FormWindowState.Normal)
             {
-                SystemTray.BalloonTipText = "Program back on top";//LanguageList[SelectedLanguage][82]; // Display text
+                SystemTray.BalloonTipText = LanguageList[SelectedLanguage][1 + 80]; // Display text
                 SystemTray.ShowBalloonTip(400);
                 this.ShowInTaskbar = true; //Program appear in taskbar
                 SystemTray.Visible = false; //Program is not shown in taskbar
@@ -1365,7 +1368,7 @@ namespace SimpleBackup
 
 
         // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
-        private void SystemTray_DoubleClick(object _sender, EventArgs e)
+        private void SystemTray_DoubleClick(object _sender, EventArgs _e)
         {
             this.Show(); //Apperas Program
             this.WindowState = FormWindowState.Normal;
@@ -1375,11 +1378,25 @@ namespace SimpleBackup
         }
 
         // right click on Icon in the taskbar, terminated SimpleBackup
-        private void Beenden_ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Beenden_ToolStripMenuItem_Click(object sender, EventArgs _e)
         {
             Application.Exit(); //Terminated Application
         }
+        #endregion
 
+        /*
+        private void UpdateThread()
+        {
+            Thread _thread = new Thread(Update);
+            _thread.Start();
+            Check
+           ("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar");  
+
+        }*/
      }
 }
-        #endregion
+        
+
+
+        
+        
