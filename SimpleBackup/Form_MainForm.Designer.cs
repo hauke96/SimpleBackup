@@ -543,13 +543,13 @@
             this.ContextMenuStrip_TrayContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Beenden_ToolStripMenuItem});
             this.ContextMenuStrip_TrayContext.Name = "ContextMenuStrip_TrayContext";
-            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(121, 26);
+            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(153, 48);
             // 
             // Beenden_ToolStripMenuItem
             // 
             this.Beenden_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Beenden_ToolStripMenuItem.Image")));
             this.Beenden_ToolStripMenuItem.Name = "Beenden_ToolStripMenuItem";
-            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.Beenden_ToolStripMenuItem.Text = "Beenden";
             this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
             // 

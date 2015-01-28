@@ -97,7 +97,7 @@ namespace SimpleBackup
         {
             InitializeComponent();
             InitializeLanguage();
-            //tray_Load();
+            
             StreamReader _reader = new StreamReader("some.settings");
 
             // read language from settings file
@@ -1337,56 +1337,7 @@ namespace SimpleBackup
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
 
-<<<<<<< HEAD
         #region
-        //(new Form_Settings(this)).Show();
-        // initialsize Window in Tray System 
-        //[STAThread] <- gilt nur für Methoden
-        
-        public void Form_MainForm_Load(object sender, EventArgs e)
-        {
-            System.Windows.Forms.NotifyIcon trayIcon;
-    
-        public void main_Tray()
-        {
-            Application.Run();
-            tray_Load();
-            tray_Resize();
-            tray_MouseDoubleClick();
-        }
-
-        public void tray_Load()
-        {
-            trayIcon.Text = "App Minimiert";
-            trayIcon.BalloonTipTitle = "test";
-        }
-
-        public void tray_Resize()
-        {
-            if (WindowState == FormWindowState.Minimized)
-            {
-            ShowInTaskbar = false;
-            trayIcon.Visible = true;
-            trayIcon.ShowBalloonTip(100);
-            trayIcon.Icon = new Icon("icon.ico");
-            }
-        }
-
-        public void tray_MouseDoubleClick()
-        {
-            ShowInTaskbar = true;
-            trayIcon.Visible = false;
-            WindowState = FormWindowState.Normal;
-            
-        }
-
-        }
-    
-            //(new Form_Settings(this)).Show();
-        #endregion
-
-=======
-
         /// <summary>
         /// Minimize the Window in the system tray .
         /// </summary>
@@ -1410,7 +1361,8 @@ namespace SimpleBackup
                 this.ShowInTaskbar = true; //Program appear in taskbar
                 SystemTray.Visible = false; //Program is not shown in taskbar
             }
-        }   
+        }
+
 
         // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
         private void SystemTray_DoubleClick(object _sender, EventArgs e)
@@ -1422,13 +1374,12 @@ namespace SimpleBackup
             
         }
 
-        // Right Click on Icon in the taskbar, terminated SimpleBackup
-        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs e)
+        // right click on Icon in the taskbar, terminated SimpleBackup
+        private void Beenden_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit(); //Terminated Application
         }
 
-                     
->>>>>>> 05014e44c243157d60c78a5671ea87dedb1c2a23
-    }
-    }
+     }
+}
+        #endregion
