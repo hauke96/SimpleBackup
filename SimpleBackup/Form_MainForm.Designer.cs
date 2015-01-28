@@ -555,10 +555,12 @@
             // 
             // SystemTray
             // 
+            this.SystemTray.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.SystemTray.BalloonTipText = "Ohne Schnick Schnack Backups erstellen";
+            this.SystemTray.BalloonTipTitle = "SimpleBackup";
             this.SystemTray.ContextMenuStrip = this.ContextMenuStrip_TrayContext;
             this.SystemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("SystemTray.Icon")));
             this.SystemTray.Text = "SystemTray";
-            this.SystemTray.Visible = true;
             this.SystemTray.DoubleClick += new System.EventHandler(this.SystemTray_DoubleClick);
             // 
             // Form_MainForm
@@ -566,6 +568,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 645);
+            this.ContextMenuStrip = this.ContextMenuStrip_TrayContext;
             this.Controls.Add(this.Button_SaveEntry);
             this.Controls.Add(this.Button_DeleteEntry);
             this.Controls.Add(this.Button_AddEntry);
@@ -598,7 +601,6 @@
             this.Controls.Add(this.ListBox_Notifications);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.MenuStrip_MainStrip;
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
             this.Text = "Simple Backup - ver.4.0.30319.34209 - made by Hauke Stieler";
