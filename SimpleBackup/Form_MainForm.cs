@@ -835,6 +835,8 @@ namespace SimpleBackup
             _temp[1 + 78] = "SimpleBackup update";
             _temp[1 + 79] = "Program runs in background";
             _temp[1 + 80] = "Program back on top";
+            _temp[1 + 81] = "Exit";
+            _temp[1 + 82] = "Info";
 
             // create MenuItem
             _ToolStripMenuItem = new ToolStripMenuItem();//_temp[0]);
@@ -930,6 +932,7 @@ namespace SimpleBackup
             logToolStripMenuItem.Text = "Log " + _languageData[1 + 13];
             ToolStripMenuItem_SaveEntryToSettings.Text = _languageData[1 + 43];
             ToolStripMenuItem_WriteReview.Text = _languageData[1 + 47];
+            Beenden_ToolStripMenuItem.Text = _languageData[1 + 81];
         }
         /// <summary>
         /// Sets the label that shows the name of the current file.
@@ -1366,7 +1369,11 @@ namespace SimpleBackup
             }
         }
 
-
+        /// <summary>
+        /// Icon is visible in taskbar.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="e"></param>
         // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
         private void SystemTray_DoubleClick(object _sender, EventArgs _e)
         {
@@ -1377,12 +1384,24 @@ namespace SimpleBackup
             
         }
 
+        /// <summary>
+        /// Terminated SimpleBackup.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="e"></param>
         // right click on Icon in the taskbar, terminated SimpleBackup
-        private void Beenden_ToolStripMenuItem_Click(object sender, EventArgs _e)
+        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs _e)
         {
             Application.Exit(); //Terminated Application
         }
         #endregion
+
+        // Is pointing to About SimpleBackupt, without to start the main program
+        private void ToolStripMenuItem_Info_Click(object sender, EventArgs e)
+        {
+
+            (new Form_About(this)).Show();
+        }
 
         /*
         private void UpdateThread()

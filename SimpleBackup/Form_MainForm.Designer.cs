@@ -86,6 +86,7 @@
             this.Button_SaveEntry = new System.Windows.Forms.Button();
             this.ContextMenuStrip_TrayContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Beenden_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.SystemTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.MenuStrip_MainStrip.SuspendLayout();
             this.ContextMenuStrip_TrayContext.SuspendLayout();
@@ -541,9 +542,10 @@
             // ContextMenuStrip_TrayContext
             // 
             this.ContextMenuStrip_TrayContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Beenden_ToolStripMenuItem});
+            this.Beenden_ToolStripMenuItem,
+            this.ToolStripMenuItem_Info});
             this.ContextMenuStrip_TrayContext.Name = "ContextMenuStrip_TrayContext";
-            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(153, 48);
+            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(153, 70);
             // 
             // Beenden_ToolStripMenuItem
             // 
@@ -552,6 +554,13 @@
             this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.Beenden_ToolStripMenuItem.Text = "Beenden";
             this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItem_Info
+            // 
+            this.ToolStripMenuItem_Info.Name = "ToolStripMenuItem_Info";
+            this.ToolStripMenuItem_Info.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Info.Text = "Info";
+            this.ToolStripMenuItem_Info.Click += new System.EventHandler(this.ToolStripMenuItem_Info_Click);
             // 
             // SystemTray
             // 
@@ -672,6 +681,7 @@
         private System.Windows.Forms.ContextMenuStrip ContextMenuStrip_TrayContext;
         private System.Windows.Forms.ToolStripMenuItem Beenden_ToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon SystemTray;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Info;
     }
 }
 

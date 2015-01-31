@@ -80,3 +80,5 @@ back=Zurück
 SimpleBackup update=SimpleBackup Aktualisierung
 Program runs in background=Programm läuft im Hintergrund
 Program back on top=Programm im Vordergrund
+Exit=Beenden
+Info=Info
