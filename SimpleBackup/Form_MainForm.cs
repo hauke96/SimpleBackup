@@ -98,6 +98,11 @@ namespace SimpleBackup
             InitializeComponent();
             InitializeLanguage();
             //UpdateThread();
+            
+           if (!QuickIOFile.Exists("some.settings"))
+                {
+                    QuickIOFile.Create("some.settings");
+                }
             StreamReader _reader = new StreamReader("some.settings");
 
             // read language from settings file
@@ -1408,7 +1413,7 @@ namespace SimpleBackup
         
 
         // Is pointing to About SimpleBackup, without to start the main program
-        private void ToolStripMenuItem_Info_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Info_Click(object _sender, EventArgs _e)
         {
 
             (new Form_About(this)).Show();

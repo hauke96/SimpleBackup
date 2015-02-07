@@ -6,13 +6,13 @@
    <Modules>
     <Module Name="simplebackup.exe">
      <Messages>
-      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+      <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
        <Issue Name="NoStrongName" Certainty="95" Level="CriticalError">Signieren Sie "'SimpleBackup.exe'" mit einem Schlüssel mit starkem Namen.</Issue>
       </Message>
-      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+      <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
        <Issue Certainty="95" Level="Error">Markieren Sie "'SimpleBackup.exe'" mit CLSCompliant(true), da so extern sichtbare Typen verfügbar gemacht werden.</Issue>
       </Message>
-      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
        <Issue Certainty="95" Level="Warning">Da die Assembly 'SimpleBackup.exe' eine ResX-basierte Ressourcendatei enthält, markieren Sie sie mit dem NeutralResourcesLanguage-Attribut, und geben Sie die Sprache der Ressourcen innerhalb der Assembly an. Möglicherweise wird so die Suchleistung beim ersten Abrufen einer Ressource gesteigert.</Issue>
       </Message>
      </Messages>
@@ -21,28 +21,28 @@
        <Types>
         <Type Name="Form_About" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Entfernen Sie die Unterstriche aus dem Typnamen "'Form_About'".</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#.ctor(SimpleBackup.Form_MainForm)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Main" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message Id="Main" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_About.cs" Line="62">Korrigieren Sie im Member 'Form_About.Form_About(Form_MainForm)' die Schreibweise von "Main" im Parameternamen 'MainForm' in main.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_CheckForUpdates_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_About.cs" Line="93">Rufen Sie in der 'Form_About.Button_CheckForUpdates_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'_f4'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_About.Designer.cs" Line="82">Die Methode "'Form_About.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Auf Updates prüfen".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_About.Designer.cs" Line="120">Die Methode "'Form_About.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Form3".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_About.Designer.cs" Line="61">Die Methode "'Form_About.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "SimpleBackup ".</Issue>
@@ -54,10 +54,10 @@
           </Member>
           <Member Name="#Language" Kind="Field" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Certainty="75" Level="Warning">Das Feld "'Form_About.Language'" wird scheinbar nie verwendet, oder diesem Feld werden nur Werte zugewiesen. Verwenden Sie dieses Feld, oder entfernen Sie es.</Issue>
             </Message>
-            <Message Id="Member" TypeName="PreferJaggedArraysOverMultidimensional" Category="Microsoft.Performance" CheckId="CA1814" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message Id="Member" TypeName="PreferJaggedArraysOverMultidimensional" Category="Microsoft.Performance" CheckId="CA1814" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="25" Level="Warning">'Form_About.Language' ist ein mehrdimensionales Array. Ersetzen Sie es, wenn möglich, durch ein verzweigtes Array.</Issue>
             </Message>
            </Messages>
@@ -66,276 +66,276 @@
         </Type>
         <Type Name="Form_MainForm" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Entfernen Sie die Unterstriche aus dem Typnamen "'Form_MainForm'".</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="System.Windows.Forms.ToolStripItemCollection.Add(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="130">Die Methode "'Form_MainForm.Form_MainForm()'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'ToolStripItemCollection.Add(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "  ==&gt;&gt;  ".</Issue>
+            <Message Id="System.Windows.Forms.ToolStripItemCollection.Add(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="135">Die Methode "'Form_MainForm.Form_MainForm()'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'ToolStripItemCollection.Add(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "  ==&gt;&gt;  ".</Issue>
             </Message>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="101">In 'Form_MainForm.Form_MainForm()'-Methode wird das Objekt "'_reader'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_reader'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="122">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_MainForm.Form_MainForm()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="127">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_MainForm.Form_MainForm()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Amount_BytesInSourcePath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.Amount_BytesInSourcePath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Amount_CopiedBytes" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.Amount_CopiedBytes'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Amount_FilesInSourcePath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.Amount_FilesInSourcePath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Amount_ProcessedFiles" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.Amount_ProcessedFiles'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#AmountOfLanguageRows" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.AmountOfLanguageRows'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#AvalaibleLanguages" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.AvalaibleLanguages'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Ändern Sie 'List&lt;string&gt;' in 'Form_MainForm.AvalaibleLanguages', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BackgroundWorker_Backup_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="SimpleBackup.Form_MainForm.Button_StartStopBackup_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1147">Die Methode "'Form_MainForm.BackgroundWorker_Backup_RunWorkerCompleted(object, RunWorkerCompletedEventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Button_StartStopBackup_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "OK".</Issue>
+            <Message Id="SimpleBackup.Form_MainForm.Button_StartStopBackup_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1152">Die Methode "'Form_MainForm.BackgroundWorker_Backup_RunWorkerCompleted(object, RunWorkerCompletedEventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Button_StartStopBackup_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "OK".</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1142">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.BackgroundWorker_Backup_RunWorkerCompleted(object, RunWorkerCompletedEventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1147">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.BackgroundWorker_Backup_RunWorkerCompleted(object, RunWorkerCompletedEventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BackupAborded" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.BackupAborded'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BackupFiles(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1227">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1253">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1267">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1232">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1258">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1272">Ändern Sie "'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1261">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1266">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.BackupFiles(QuickIODirectoryInfo, int)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BackupIsRunning" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.BackupIsRunning'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_DeleteEntry_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="263">Ändern Sie "'Form_MainForm.Button_DeleteEntry_Click(object, EventArgs)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="268">Ändern Sie "'Form_MainForm.Button_DeleteEntry_Click(object, EventArgs)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
-            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Name="Reserved" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="261">'Form_MainForm.Button_DeleteEntry_Click(object, EventArgs)' erstellt eine Ausnahme vom Typ 'ExecutionEngineException', einem Ausnahmetyp, der von der Laufzeit reserviert ist und nie von verwaltetem Code ausgelöst werden darf. Wenn diese Ausnahmeinstanz ausgelöst werden kann, verwenden Sie einen anderen Ausnahmetyp.</Issue>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Name="Reserved" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="266">'Form_MainForm.Button_DeleteEntry_Click(object, EventArgs)' erstellt eine Ausnahme vom Typ 'ExecutionEngineException', einem Ausnahmetyp, der von der Laufzeit reserviert ist und nie von verwaltetem Code ausgelöst werden darf. Wenn diese Ausnahmeinstanz ausgelöst werden kann, verwenden Sie einen anderen Ausnahmetyp.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_StartStopBackup_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="213">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "00h:00m:00s".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="183">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "OK".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="206">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "\\".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="207">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "\\".</Issue>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="218">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "00h:00m:00s".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="188">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "OK".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="211">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "\\".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="212">Die Methode "'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "\\".</Issue>
             </Message>
-            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="179">Ändern Sie 'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)' so, dass die MessageBox.Show-Überladung aufgerufen wird, die MessageBoxOptions angibt, und legen Sie MessageBoxOptions.RightAlign und MessageBoxOptions.RtlReading fest, wenn RightToLeft im übergeordneten Steuerelement auf RightToLeft.Yes festgelegt ist.</Issue>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="184">Ändern Sie 'Form_MainForm.Button_StartStopBackup_Click(object, EventArgs)' so, dass die MessageBox.Show-Überladung aufgerufen wird, die MessageBoxOptions angibt, und legen Sie MessageBoxOptions.RightAlign und MessageBoxOptions.RtlReading fest, wenn RightToLeft im übergeordneten Steuerelement auf RightToLeft.Yes festgelegt ist.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ChangeLanguage(System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="883">Entfernen Sie im Member 'Form_MainForm.ChangeLanguage(int)' die Unterstriche aus dem Parameternamen "'_index'".</Issue>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="888">Entfernen Sie im Member 'Form_MainForm.ChangeLanguage(int)' die Unterstriche aus dem Parameternamen "'_index'".</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.ToolStripItem.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="940">Die Methode "'Form_MainForm.ChangeLanguage(int)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'ToolStripItem.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Log ".</Issue>
+            <Message Id="System.Windows.Forms.ToolStripItem.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="945">Die Methode "'Form_MainForm.ChangeLanguage(int)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'ToolStripItem.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Log ".</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ChangeLanguage(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="868">Entfernen Sie im Member 'Form_MainForm.ChangeLanguage(string)' die Unterstriche aus dem Parameternamen "'_newLanguage'".</Issue>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="873">Entfernen Sie im Member 'Form_MainForm.ChangeLanguage(string)' die Unterstriche aus dem Parameternamen "'_newLanguage'".</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CheckBox_DeleteOldFiles" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.CheckBox_DeleteOldFiles'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CheckBox_ShutDown" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.CheckBox_ShutDown'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CleanUpBackup(SchwabenCode.QuickIO.QuickIODirectoryInfo,System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1313">Ändern Sie "'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1333">Ändern Sie "'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1318">Ändern Sie "'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1338">Ändern Sie "'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1340">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1345">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.CleanUpBackup(QuickIODirectoryInfo, int)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CountFiles(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1192">Ändern Sie "'Form_MainForm.CountFiles(string, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1197">Ändern Sie "'Form_MainForm.CountFiles(string, int)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CountingFiles" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.CountingFiles'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CurrentFile" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.CurrentFile'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CurrentFileInMBytes" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.CurrentFileInMBytes'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#DestinationPath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.DestinationPath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#enableAfterInput()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="666">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.enableAfterInput()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="666">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.enableAfterInput()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="671">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.enableAfterInput()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="671">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.enableAfterInput()' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ErrorLogFileID" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.ErrorLogFileID'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ErrorMessages" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.ErrorMessages'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Ändern Sie 'List&lt;string&gt;' in 'Form_MainForm.ErrorMessages', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ErrorOccured(System.Exception,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1043">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ErrorOccured(Exception, bool)'" den Parameter "_ex" vor der Verwendung.</Issue>
+            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1048">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ErrorOccured(Exception, bool)'" den Parameter "_ex" vor der Verwendung.</Issue>
             </Message>
-            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Certainty="75" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1043">Ersetzen Sie die 'Form_MainForm.ErrorOccured(Exception, bool)'-Methode durch eine Überladung, die alle Standardargumente bereitstellt.</Issue>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1048">Ersetzen Sie die 'Form_MainForm.ErrorOccured(Exception, bool)'-Methode durch eine Überladung, die alle Standardargumente bereitstellt.</Issue>
             </Message>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1043">Entfernen Sie im Member 'Form_MainForm.ErrorOccured(Exception, bool)' die Unterstriche aus dem Parameternamen "'_ex'".</Issue>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1048">Entfernen Sie im Member 'Form_MainForm.ErrorOccured(Exception, bool)' die Unterstriche aus dem Parameternamen "'_ex'".</Issue>
             </Message>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1054">In 'Form_MainForm.ErrorOccured(Exception, bool)'-Methode wird das Objekt "'_writer'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_writer'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1059">In 'Form_MainForm.ErrorOccured(Exception, bool)'-Methode wird das Objekt "'_writer'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_writer'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ErrorOccured(System.IO.ErrorEventArgs,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1034">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)'" den Parameter "_e" vor der Verwendung.</Issue>
+            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1039">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)'" den Parameter "_e" vor der Verwendung.</Issue>
             </Message>
-            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Certainty="75" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1034">Ersetzen Sie die 'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)'-Methode durch eine Überladung, die alle Standardargumente bereitstellt.</Issue>
+            <Message TypeName="DefaultParametersShouldNotBeUsed" Category="Microsoft.Design" CheckId="CA1026" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1039">Ersetzen Sie die 'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)'-Methode durch eine Überladung, die alle Standardargumente bereitstellt.</Issue>
             </Message>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1034">Entfernen Sie im Member 'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)' die Unterstriche aus dem Parameternamen "'_e'".</Issue>
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1039">Entfernen Sie im Member 'Form_MainForm.ErrorOccured(ErrorEventArgs, bool)' die Unterstriche aus dem Parameternamen "'_e'".</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Form_MainForm_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="367">In 'Form_MainForm.Form_MainForm_FormClosing(object, FormClosingEventArgs)'-Methode wird das Objekt "'_writer'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_writer'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="372">In 'Form_MainForm.Form_MainForm_FormClosing(object, FormClosingEventArgs)'-Methode wird das Objekt "'_writer'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_writer'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
-            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="355">Ändern Sie 'Form_MainForm.Form_MainForm_FormClosing(object, FormClosingEventArgs)' so, dass die MessageBox.Show-Überladung aufgerufen wird, die MessageBoxOptions angibt, und legen Sie MessageBoxOptions.RightAlign und MessageBoxOptions.RtlReading fest, wenn RightToLeft im übergeordneten Steuerelement auf RightToLeft.Yes festgelegt ist.</Issue>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="360">Ändern Sie 'Form_MainForm.Form_MainForm_FormClosing(object, FormClosingEventArgs)' so, dass die MessageBox.Show-Überladung aufgerufen wird, die MessageBoxOptions angibt, und legen Sie MessageBoxOptions.RightAlign und MessageBoxOptions.RtlReading fest, wenn RightToLeft im übergeordneten Steuerelement auf RightToLeft.Yes festgelegt ist.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotUseTimersThatPreventPowerStateChanges" Category="Microsoft.Mobility" CheckId="CA1601" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotUseTimersThatPreventPowerStateChanges" Category="Microsoft.Mobility" CheckId="CA1601" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="98">Ändern Sie den Aufruf von 'Timer.Interval.set(int)' in der 'Form_MainForm.InitializeComponent()'-Methode, um das Zeitgeberintervall auf einen Wert größer oder gleich 1 Sekunde festzulegen.</Issue>
              <Issue Certainty="90" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="114">Ändern Sie den Aufruf von 'Timer.Interval.set(int)' in der 'Form_MainForm.InitializeComponent()'-Methode, um das Zeitgeberintervall auf einen Wert größer oder gleich 1 Sekunde festzulegen.</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="418">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "-".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="314">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "...".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="342">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "...".</Issue>
@@ -363,16 +363,16 @@
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="391">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Wenn du anfangen würdest, könnte ich es dir berechnen ;)".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="362">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Zielordner".</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.NotifyIcon.set_BalloonTipText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.NotifyIcon.set_BalloonTipText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="570">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'NotifyIcon.BalloonTipText.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Ohne Schnick Schnack Backups erstellen".</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.NotifyIcon.set_BalloonTipTitle(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.NotifyIcon.set_BalloonTipTitle(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="571">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'NotifyIcon.BalloonTipTitle.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "SimpleBackup".</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.NotifyIcon.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.NotifyIcon.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="574">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'NotifyIcon.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "SimpleBackup".</Issue>
             </Message>
-            <Message Id="System.Windows.Forms.ToolStripItem.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.ToolStripItem.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="246">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'ToolStripItem.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Auf Updates prüfen".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="184">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'ToolStripItem.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Beenden".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.Designer.cs" Line="557">Die Methode "'Form_MainForm.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'ToolStripItem.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Beenden".</Issue>
@@ -396,248 +396,248 @@
           </Member>
           <Member Name="#InitializeLanguage()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="744">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_ToolStripMenuItem'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_ToolStripMenuItem'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
-             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="850">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_ToolStripMenuItem'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_ToolStripMenuItem'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
-             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="726">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_reader'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_reader'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="749">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_ToolStripMenuItem'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_ToolStripMenuItem'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="855">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_ToolStripMenuItem'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_ToolStripMenuItem'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+             <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="731">In 'Form_MainForm.InitializeLanguage()'-Methode wird das Objekt "'_reader'" nicht entlang allen Ausnahmepfaden verworfen. Rufen Sie System.IDisposable.Dispose für das Objekt "'_reader'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#LanguageList" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.LanguageList'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Ändern Sie 'List&lt;string[]&gt;' in 'Form_MainForm.LanguageList', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ListBox_ListOfSettings" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.ListBox_ListOfSettings'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ListBox_ListOfSettings_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Convert.ToBoolean(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="433">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="433">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="433">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="433">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="442">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="443">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="444">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="446">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.Convert.ToBoolean(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="438">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="438">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="438">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="438">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="447">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="448">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="449">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="451">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_ListOfSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ListBox_Notifications_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="407">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_Notifications_MouseDown(object, MouseEventArgs)' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="412">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.ListBox_Notifications_MouseDown(object, MouseEventArgs)' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PauseBackup" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.PauseBackup'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PausedTime" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.PausedTime'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#RadioButton_CopyAll" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.RadioButton_CopyAll'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#RadioButton_OverwriteIfNewer" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.RadioButton_OverwriteIfNewer'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ReloadSettingsListBoxEntries(System.Windows.Forms.ListBox,System.Collections.Generic.List`1&lt;System.String&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1016">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)'" den Parameter "listbox" vor der Verwendung.</Issue>
+            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1021">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)'" den Parameter "listbox" vor der Verwendung.</Issue>
             </Message>
-            <Message Id="1" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1017">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)'" den Parameter "entries" vor der Verwendung.</Issue>
+            <Message Id="1" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1022">Überprüfen Sie in der extern sichtbaren Methode "'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)'" den Parameter "entries" vor der Verwendung.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
-             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1016">Ändern Sie 'List&lt;string&gt;' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1021">Ändern Sie 'List&lt;string&gt;' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
-            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1016">Der this-Parameter (oder "Me" in Visual Basic) von 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' wird nie verwendet. Markieren Sie den Member als statisch (oder "Shared" in Visual Basic), oder verwenden Sie "this"/"Me" im Methodentext oder ggf. mindestens einen Eigenschaftenaccessor.</Issue>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1021">Der this-Parameter (oder "Me" in Visual Basic) von 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' wird nie verwendet. Markieren Sie den Member als statisch (oder "Shared" in Visual Basic), oder verwenden Sie "this"/"Me" im Methodentext oder ggf. mindestens einen Eigenschaftenaccessor.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1021">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1021">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1019">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1026">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1026">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1024">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_MainForm.ReloadSettingsListBoxEntries(ListBox, List&lt;string&gt;)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ResetAll" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.ResetAll'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ResetSimpleBackup()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="692">Die Methode "'Form_MainForm.ResetSimpleBackup()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "-".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="693">Die Methode "'Form_MainForm.ResetSimpleBackup()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "0/0".</Issue>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="697">Die Methode "'Form_MainForm.ResetSimpleBackup()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "-".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="698">Die Methode "'Form_MainForm.ResetSimpleBackup()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "0/0".</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SelectedErrorMessage" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.SelectedErrorMessage'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SelectedLanguage" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.SelectedLanguage'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SetProgressbar(System.Int64,System.Int64)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="988">Die Methode "'Form_MainForm.SetProgressbar(long, long)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "h:, m:, s".</Issue>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="993">Die Methode "'Form_MainForm.SetProgressbar(long, long)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "h:, m:, s".</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="988">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.SetProgressbar(long, long)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="993">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.SetProgressbar(long, long)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SettingReadings" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.SettingReadings'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Ändern Sie 'List&lt;string&gt;' in 'Form_MainForm.SettingReadings', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SettingsList_SelectedIndex" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.SettingsList_SelectedIndex'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SourcePath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.SourcePath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#StartTime" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.StartTime'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#TextBox_DestinationPath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.TextBox_DestinationPath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#TextBox_SourcePath" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_MainForm.TextBox_SourcePath'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Timer_FileProgressDisplay_Tick(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="SimpleBackup.Form_MainForm.Label_CurrentFile_FileName_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="307">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_CurrentFile_FileName_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " ( ,  MB ) ".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="303">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_CurrentFile_FileName_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " (, )".</Issue>
+            <Message Id="SimpleBackup.Form_MainForm.Label_CurrentFile_FileName_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="312">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_CurrentFile_FileName_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " ( ,  MB ) ".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="308">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_CurrentFile_FileName_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " (, )".</Issue>
             </Message>
-            <Message Id="SimpleBackup.Form_MainForm.Label_FileProgress_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="312">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_FileProgress_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " / ".</Issue>
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="317">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_FileProgress_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " / ,  ( , MB / , MB )".</Issue>
+            <Message Id="SimpleBackup.Form_MainForm.Label_FileProgress_setText(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="317">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_FileProgress_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " / ".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="322">Die Methode "'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "text" eines Aufrufs von 'Form_MainForm.Label_FileProgress_setText(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: " / ,  ( , MB / , MB )".</Issue>
             </Message>
-            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="307">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="312">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="312">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="317">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="317">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="322">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="322">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="305">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="310">Ersetzen Sie den Aufruf von 'string.operator !=(string, string)' in 'Form_MainForm.Timer_FileProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Timer_TimeProgressDisplay_Tick(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="338">Die Methode "'Form_MainForm.Timer_TimeProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "h:, m:, s".</Issue>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="343">Die Methode "'Form_MainForm.Timer_TimeProgressDisplay_Tick(object, EventArgs)'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "h:, m:, s".</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="338">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_TimeProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="343">Da das Verhalten von 'string.Format(string, object, object, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_MainForm.Timer_TimeProgressDisplay_Tick(object, EventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToolStripMenuItem_About_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="589">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_About_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_About(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="594">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_About_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_About(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToolStripMenuItem_Info_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1414">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_Info_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_About(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="1419">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_Info_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_About(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToolStripMenuItem_OpenHelpDialog_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
-             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="552">Ändern Sie "'Form_MainForm.ToolStripMenuItem_OpenHelpDialog_Click(object, EventArgs)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="557">Ändern Sie "'Form_MainForm.ToolStripMenuItem_OpenHelpDialog_Click(object, EventArgs)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToolStripMenuItem_SearchForUpdates_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="616">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_SearchForUpdates_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'_fu'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="621">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_SearchForUpdates_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'_fu'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToolStripMenuItem_Settings_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
-             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="538">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_Settings_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_Settings(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
+             <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_MainForm.cs" Line="543">Rufen Sie in der 'Form_MainForm.ToolStripMenuItem_Settings_Click(object, EventArgs)'-Methode System.IDisposable.Dispose für das Objekt "'new Form_Settings(this)'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -645,34 +645,34 @@
         </Type>
         <Type Name="Form_Settings" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Entfernen Sie die Unterstriche aus dem Typnamen "'Form_Settings'".</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#.ctor(SimpleBackup.Form_MainForm)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="0" TypeName="Argumente von öffentlichen Methoden validieren" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="75">Überprüfen Sie in der extern sichtbaren Methode "'Form_Settings.Form_Settings(Form_MainForm)'" den Parameter "_form" vor der Verwendung.</Issue>
             </Message>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="65">Entfernen Sie im Member 'Form_Settings.Form_Settings(Form_MainForm)' die Unterstriche aus dem Parameternamen "'_form'".</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="83">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_Settings.Form_Settings(Form_MainForm)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_ApplySetting_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Split(System.Char[])" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Split(System.Char[])" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="StringCreation" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="255">'Form_Settings.Button_ApplySetting_Click(object, EventArgs)' ruft 'string.Split(params char[])' auf, verwendet aber die neue Zeichenfolgeninstanz nicht, die von der Methode zurückgegeben wird. Übergeben Sie die Instanz als Argument an eine andere Methode, weisen Sie die Instanz einer Variablen zu, oder entfernen Sie ggf. die Objekterstellung, wenn sie nicht erforderlich ist.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_CreateSettingsBackup_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="181">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_CreateSettingsBackup_Click(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="182">Da das Verhalten von 'int.ToString()' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_CreateSettingsBackup_Click(object, EventArgs)' durch einen Aufruf von 'int.ToString(IFormatProvider)'. Wenn das Ergebnis von 'int.ToString(IFormatProvider)' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
@@ -680,20 +680,20 @@
           </Member>
           <Member Name="#Button_Save_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Convert.ToBoolean(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.Convert.ToBoolean(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="150">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_Save_Click(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="151">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_Save_Click(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="152">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_Save_Click(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="156">Da das Verhalten von 'Convert.ToBoolean(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_Save_Click(object, EventArgs)' durch einen Aufruf von 'Convert.ToBoolean(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToBoolean(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
-            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="153">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.Button_Save_Click(object, EventArgs)' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.Designer.cs" Line="220">Die Methode "'Form_Settings.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Abbrechen".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.Designer.cs" Line="99">Die Methode "'Form_Settings.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Alles zurücksetzen".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.Designer.cs" Line="88">Die Methode "'Form_Settings.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Einstellungen sichern".</Issue>
@@ -711,20 +711,20 @@
           </Member>
           <Member Name="#ListBox_SavedSettings_SelectedIndexChanged(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="244">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Settings.ListBox_SavedSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
-            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IsNullOrEmpty" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Settings.cs" Line="238">Ersetzen Sie den Aufruf von 'string.operator ==(string, string)' in 'Form_Settings.ListBox_SavedSettings_SelectedIndexChanged(object, EventArgs)' durch einen Aufruf von String.IsNullOrEmpty.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SettingReadings" Kind="Field" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="90" Level="Error">Da das Feld "'Form_Settings.SettingReadings'" außerhalb des deklarierenden Typs sichtbar ist, ändern Sie dessen Zugriff in "private", und fügen Sie eine Eigenschaft hinzu, die den gleichen Zugriff wie derzeit das Feld besitzt, um Zugriff auf diese bereitzustellen.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Ändern Sie 'List&lt;string&gt;' in 'Form_Settings.SettingReadings', um Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; oder KeyedCollection&lt;K,V&gt; zu verwenden.</Issue>
             </Message>
            </Messages>
@@ -733,49 +733,49 @@
         </Type>
         <Type Name="Form_Updates" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+          <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="95" Level="Error">Entfernen Sie die Unterstriche aus dem Typnamen "'Form_Updates'".</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#.ctor(SimpleBackup.Form_MainForm)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Main" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message Id="Main" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="69">Korrigieren Sie im Member 'Form_Updates.Form_Updates(Form_MainForm)' die Schreibweise von "Main" im Parameternamen '_MainForm' in main.</Issue>
             </Message>
-            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="Breaking">
+            <Message TypeName="IdentifiersShouldNotContainUnderscores" Category="Microsoft.Naming" CheckId="CA1707" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="69">Entfernen Sie im Member 'Form_Updates.Form_Updates(Form_MainForm)' die Unterstriche aus dem Parameternamen "'_MainForm'".</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Button_DownloadUpdate_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="106">Ändern Sie "'Form_Updates.Button_DownloadUpdate_Click(object, EventArgs)'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="StringCreation" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="108">'Form_Updates.Button_DownloadUpdate_Click(object, EventArgs)' ruft 'string.Format(string, object)' auf, verwendet aber die neue Zeichenfolgeninstanz nicht, die von der Methode zurückgegeben wird. Übergeben Sie die Instanz als Argument an eine andere Methode, weisen Sie die Instanz einer Variablen zu, oder entfernen Sie ggf. die Objekterstellung, wenn sie nicht erforderlich ist.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object[])" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object[])" TypeName="DoNotIgnoreMethodResults" Category="Microsoft.Usage" CheckId="CA1806" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="StringCreation" Certainty="95" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="103">'Form_Updates.Button_DownloadUpdate_Click(object, EventArgs)' ruft 'string.Format(string, params object[])' auf, verwendet aber die neue Zeichenfolgeninstanz nicht, die von der Methode zurückgegeben wird. Übergeben Sie die Instanz als Argument an eine andere Methode, weisen Sie die Instanz einer Variablen zu, oder entfernen Sie ggf. die Objekterstellung, wenn sie nicht erforderlich ist.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="108">Da das Verhalten von 'string.Format(string, object)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Updates.Button_DownloadUpdate_Click(object, EventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="103">Da das Verhalten von 'string.Format(string, params object[])' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Updates.Button_DownloadUpdate_Click(object, EventArgs)' durch einen Aufruf von 'string.Format(IFormatProvider, string, params object[])'. Wenn das Ergebnis von 'string.Format(IFormatProvider, string, params object[])' dem Benutzer angezeigt wird, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis gespeichert wird und die Software darauf zugreift, z.B. wenn es auf einem Datenträger oder in einer Datenbank gespeichert wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CheckForUpdates()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalError" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="138">Ändern Sie "'Form_Updates.CheckForUpdates()'", damit eine spezifischere Ausnahme als "'Exception'" abgefangen wird, oder lösen Sie die Ausnahme erneut aus.</Issue>
             </Message>
-            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message TypeName="Objekte verwerfen, bevor Bereich verloren geht" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="120">Rufen Sie in der 'Form_Updates.CheckForUpdates()'-Methode System.IDisposable.Dispose für das Objekt "'_wclient'" auf, bevor alle Verweise darauf außerhalb des gültigen Bereichs liegen.</Issue>
             </Message>
-            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="NonBreaking">
+            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="127">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Updates.CheckForUpdates()' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.cs" Line="127">Da das Verhalten von 'Convert.ToInt32(string)' basierend auf den aktuellen Gebietsschemaeinstellungen des Benutzers variieren könnte, ersetzen Sie diesen Aufruf in 'Form_Updates.CheckForUpdates()' durch einen Aufruf von 'Convert.ToInt32(string, IFormatProvider)'. Wenn das Ergebnis von 'Convert.ToInt32(string, IFormatProvider)' auf der Eingabe des Benutzers basiert, geben Sie "'CultureInfo.CurrentCulture'" als IFormatProvider-Parameter an. Wenn das Ergebnis auf der gespeicherten Eingabe basiert und die Software darauf zugreift, z.B. wenn es von einem Datenträger oder aus einer Datenbank geladen wird, geben Sie "'CultureInfo.InvariantCulture'" an.</Issue>
             </Message>
@@ -783,7 +783,7 @@
           </Member>
           <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 11:21:43Z" FixCategory="DependsOnFix">
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Literale nicht als lokalisierte Parameter übergeben" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2015-02-07 12:14:17Z" FixCategory="DependsOnFix">
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.Designer.cs" Line="65">Die Methode "'Form_Updates.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Form4".</Issue>
              <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="c:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup" File="Form_Updates.Designer.cs" Line="50">Die Methode "'Form_Updates.InitializeComponent()'" übergibt eine Literalzeichenfolge als Parameter "value" eines Aufrufs von 'Control.Text.set(string)'. Rufen Sie die folgende(n) Zeichenfolge(n) stattdessen von einer Ressourcentabelle ab: "Update runterladen".</Issue>
             </Message>

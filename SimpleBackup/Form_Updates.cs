@@ -98,14 +98,14 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    Close();
-                    //MessageBox.Show("Current Version");
                     string.Format("CurrentVerison");
+                    Close();
                 }
             }
             catch (Exception _ex)
             {
                 string.Format("Fehler: {0}", _ex);
+                Close();
             }
             }
 
