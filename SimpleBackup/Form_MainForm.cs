@@ -1415,6 +1415,16 @@ namespace SimpleBackup
         }
         #endregion
 
+        private void TextBox_SourcePath_KeyPress(object _sender, KeyPressEventArgs _kpe)
+        {
+            _kpe.Handled = true;
+        }
+
+        private void TextBox_DestinationPath_KeyPress(object _sender, KeyPressEventArgs _kpe)
+        {
+            _kpe.Handled = true;
+        }
+
 
         /*
         private void UpdateThread()

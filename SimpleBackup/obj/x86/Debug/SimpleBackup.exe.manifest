@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleBackup.exe" size="194048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleBackup.exe" size="194560">
       <assemblyIdentity name="SimpleBackup" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/sWcVLCIHRmETdcOk/orPVcZ94U=</dsig:DigestValue>
+        <dsig:DigestValue>LpnEoyljqXnjBQELJsuxQzweWQU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

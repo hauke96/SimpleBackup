@@ -322,6 +322,7 @@
             this.TextBox_DestinationPath.Size = new System.Drawing.Size(448, 20);
             this.TextBox_DestinationPath.TabIndex = 16;
             this.TextBox_DestinationPath.TextChanged += new System.EventHandler(this.TextBox_DestinationPath_TextChanged);
+            this.TextBox_DestinationPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_DestinationPath_KeyPress);
             // 
             // TextBox_SourcePath
             // 
@@ -330,6 +331,7 @@
             this.TextBox_SourcePath.Size = new System.Drawing.Size(448, 20);
             this.TextBox_SourcePath.TabIndex = 15;
             this.TextBox_SourcePath.TextChanged += new System.EventHandler(this.TextBox_SourcePath_TextChanged);
+            this.TextBox_SourcePath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_SourcePath_KeyPress);
             // 
             // Button_SourcePath
             // 
