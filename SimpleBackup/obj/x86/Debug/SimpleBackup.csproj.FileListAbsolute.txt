@@ -41,3 +41,4 @@ C:\Users\Andreas\Desktop\SimpleBackup\SimpleBackup\SimpleBackup\obj\x86\Debug\Si
 C:\Users\Andreas\Desktop\SimpleBackup\SimpleBackup\SimpleBackup\obj\x86\Debug\SimpleBackup.csproj.GenerateResource.Cache
 C:\Users\Andreas\Desktop\SimpleBackup\SimpleBackup\SimpleBackup\obj\x86\Debug\SimpleBackup.exe.manifest
 C:\Users\Andreas\Desktop\SimpleBackup\SimpleBackup\SimpleBackup\obj\x86\Debug\SimpleBackup.application
+C:\Users\Administrator\Documents\GitHub\SimpleBackup\SimpleBackup\obj\x86\Debug\SimpleBackup.g.resources

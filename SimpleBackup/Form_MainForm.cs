@@ -57,7 +57,6 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
-using System.Threading;
 using SchwabenCode.QuickIO;
 using SchwabenCode.QuickIO.Transfer;
 using System.Collections;
@@ -98,7 +97,7 @@ namespace SimpleBackup
         {
             InitializeComponent();
             InitializeLanguage();
-            
+            //UpdateThread();
             StreamReader _reader = new StreamReader("some.settings");
 
             // read language from settings file
@@ -244,6 +243,7 @@ namespace SimpleBackup
                 + CheckBox_DeleteOldFiles.Checked + "?"
                 + CheckBox_ShutDown.Checked;
 
+
             SettingReadings.Add(_newEntry);
             ReloadSettingsListBoxEntries(ListBox_ListOfSettings, SettingReadings);
         }
@@ -254,8 +254,16 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_DeleteEntry_Click(object _sender, EventArgs _e)
         {
-            SettingReadings.RemoveAt(SettingsList_SelectedIndex);
-            ListBox_ListOfSettings.Items.RemoveAt(SettingsList_SelectedIndex);
+            try
+            {
+                SettingReadings.RemoveAt(SettingsList_SelectedIndex);
+                ListBox_ListOfSettings.Items.RemoveAt(SettingsList_SelectedIndex);
+                throw new System.ExecutionEngineException();
+            }
+            catch (Exception _ex)
+            {
+                Console.WriteLine(_ex.ToString());
+            }
         }
         /// <summary>
         /// Saves changes of the current selected entry if the list.
@@ -1010,7 +1018,10 @@ namespace SimpleBackup
             {
                 if (str == string.Empty) continue;
                 string[] _t = str.Split('?');
-                listbox.Items.Add(_t[0] + "  ==>>  " + _t[1]);
+                if (_t[0] != string.Empty && _t[1] != string.Empty)
+                {
+                    listbox.Items.Add(_t[0] + "  ==>>  " + _t[1]);
+                }
             }
         }
         /// <summary>
@@ -1394,24 +1405,65 @@ namespace SimpleBackup
         {
             Application.Exit(); //Terminated Application
         }
-        #endregion
+        
 
-        // Is pointing to About SimpleBackupt, without to start the main program
+        // Is pointing to About SimpleBackup, without to start the main program
         private void ToolStripMenuItem_Info_Click(object sender, EventArgs e)
         {
 
             (new Form_About(this)).Show();
         }
+        #endregion
+
 
         /*
         private void UpdateThread()
         {
-            Thread _thread = new Thread(Update);
-            _thread.Start();
-            Check
-           ("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar");  
+            System.Net.WebClient _wclient = new System.Net.WebClient();
+            _wclient.Proxy = null;
+            string _str = _wclient.DownloadString("http://master.dl.sourceforge.net/project/simple-backup-tool/ver.txt");
+            _str = _str.Replace(".", "");
+            
+            if (Convert.ToInt32(_str) >= Convert.ToInt32(ProductVersion.Replace(".", "")))
+            {
+                Thread _thread = new Thread(UpdateProgress);
+                //Thread.CurrentThread.Priority = 2; , Prioritätswert kann gesetzt werden
+                
+                
+                
+                
+                _thread.Start();
+                Thread.Sleep(20);
 
+                //_thread.Abort();
+                _thread.Join(); // wartet bis ein Thread zu ende gearbeitet hat, erst danach wird der neue Thread angestartet
+                if (_thread.IsAlive)
+                {
+                    Console.WriteLine("Der Thread lebt noch");
+                }
+                else
+                {
+                    Console.WriteLine("Thread wurde aufgegeben");
+                    Thread.Sleep(100);
+                }
+            }  
+        }
+
+        private void UpdateProgress()
+        {
+            System.Net.WebClient _wclient = new System.Net.WebClient();
+            try
+            {
+                System.Diagnostics.Process.Start("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar");
+                MessageBox.Show("Download wird angestartet");
+            }
+            catch (ThreadAbortException _tae)
+            {
+                Console.WriteLine(_tae);
+            }
         }*/
+
+
      }
 }
         

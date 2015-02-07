@@ -53,7 +53,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SimpleBackup
@@ -87,24 +87,44 @@ namespace SimpleBackup
         /// <param name="_e"></param>
         private void Button_DownloadUpdate_Click(object _sender, EventArgs _e) // search/back button clicked
         {
-            if (Button_DownloadUpdate.Text == MainForm.LanguageList[MainForm.SelectedLanguage][78]) Close();
-            else System.Diagnostics.Process.Start("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar"); // download newest
-        }
+            Thread _threadUpdate = new Thread(CheckForUpdates);
+            _threadUpdate.Name = MainForm.LanguageList[MainForm.SelectedLanguage][78];
+            _threadUpdate.Start();
+            try
+            {
+                if (ProductVersion != ProductVersion)
+                {
+                    System.Diagnostics.Process.Start("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar"); // download newest        
+                }
+                else
+                {
+                    Close();
+                    //MessageBox.Show("Current Version");
+                    string.Format("CurrentVerison");
+                }
+            }
+            catch (Exception _ex)
+            {
+                string.Format("Fehler: {0}", _ex);
+            }
+            }
+
         /// <summary>
         /// Checks for a newer version of SimpleBackup by download a simple text-file with the latest version number in it.
         /// </summary>
         public void CheckForUpdates() // download file from webspace and checks if update is avalaible
-        {
+        {            
+
             try
             {
                 System.Net.WebClient _wclient = new System.Net.WebClient();
-                _wclient.Proxy = null;
+                _wclient.Proxy = null;                
                 string _str = _wclient.DownloadString("http://master.dl.sourceforge.net/project/simple-backup-tool/ver.txt");
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][72]);
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][73]);
                 ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][74] + _str);
                 _str = _str.Replace(".", "");
-                if (Convert.ToInt32(_str) >= Convert.ToInt32(ProductVersion.Replace(".", ""))) // newer version number withput "." is higher
+                if (Convert.ToInt32(_str) > Convert.ToInt32(ProductVersion.Replace(".", ""))) // newer version number withput "." is higher
                 {
                     ListBox_UpdateLog.Items.Add(MainForm.LanguageList[MainForm.SelectedLanguage][75]); // update avalaible
                     Button_DownloadUpdate.Text = MainForm.LanguageList[MainForm.SelectedLanguage][77];

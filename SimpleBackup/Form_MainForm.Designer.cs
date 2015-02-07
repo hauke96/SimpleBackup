@@ -545,20 +545,20 @@
             this.Beenden_ToolStripMenuItem,
             this.ToolStripMenuItem_Info});
             this.ContextMenuStrip_TrayContext.Name = "ContextMenuStrip_TrayContext";
-            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(153, 70);
+            this.ContextMenuStrip_TrayContext.Size = new System.Drawing.Size(121, 48);
             // 
             // Beenden_ToolStripMenuItem
             // 
             this.Beenden_ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("Beenden_ToolStripMenuItem.Image")));
             this.Beenden_ToolStripMenuItem.Name = "Beenden_ToolStripMenuItem";
-            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.Beenden_ToolStripMenuItem.Text = "Beenden";
             this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Info
             // 
             this.ToolStripMenuItem_Info.Name = "ToolStripMenuItem_Info";
-            this.ToolStripMenuItem_Info.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItem_Info.Size = new System.Drawing.Size(120, 22);
             this.ToolStripMenuItem_Info.Text = "Info";
             this.ToolStripMenuItem_Info.Click += new System.EventHandler(this.ToolStripMenuItem_Info_Click);
             // 
@@ -569,7 +569,7 @@
             this.SystemTray.BalloonTipTitle = "SimpleBackup";
             this.SystemTray.ContextMenuStrip = this.ContextMenuStrip_TrayContext;
             this.SystemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("SystemTray.Icon")));
-            this.SystemTray.Text = "SystemTray";
+            this.SystemTray.Text = "SimpleBackup";
             this.SystemTray.DoubleClick += new System.EventHandler(this.SystemTray_DoubleClick);
             // 
             // Form_MainForm
@@ -577,7 +577,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 645);
-            this.ContextMenuStrip = this.ContextMenuStrip_TrayContext;
             this.Controls.Add(this.Button_SaveEntry);
             this.Controls.Add(this.Button_DeleteEntry);
             this.Controls.Add(this.Button_AddEntry);
