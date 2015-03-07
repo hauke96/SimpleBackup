@@ -88,6 +88,7 @@
             this.Beenden_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Info = new System.Windows.Forms.ToolStripMenuItem();
             this.SystemTray = new System.Windows.Forms.NotifyIcon(this.components);
+            this.BackgroundWorker_UpdateOnStartup = new System.ComponentModel.BackgroundWorker();
             this.MenuStrip_MainStrip.SuspendLayout();
             this.ContextMenuStrip_TrayContext.SuspendLayout();
             this.SuspendLayout();
@@ -573,6 +574,10 @@
             this.SystemTray.Text = "SimpleBackup";
             this.SystemTray.DoubleClick += new System.EventHandler(this.SystemTray_DoubleClick);
             // 
+            // BackgroundWorker_UpdateOnStartup
+            // 
+            this.BackgroundWorker_UpdateOnStartup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker_UpdateOnStartup_DoWork);
+            // 
             // Form_MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,8 +617,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
-            //this.Text = "Simple Backup " + ProductVersion + " - made by Hauke Stieler"; // this is the correct code, line below may be incorrect
-            this.Text = "Simple Backup " + ProductVersion + " - made by Hauke Stieler";
             this.SizeChanged += new System.EventHandler(this.Form_MainForm_SizeChanged);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
@@ -683,6 +686,7 @@
         private System.Windows.Forms.ToolStripMenuItem Beenden_ToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon SystemTray;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Info;
+        private System.ComponentModel.BackgroundWorker BackgroundWorker_UpdateOnStartup;
     }
 }
 

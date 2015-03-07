@@ -113,8 +113,7 @@ namespace SimpleBackup
         /// Checks for a newer version of SimpleBackup by download a simple text-file with the latest version number in it.
         /// </summary>
         public void CheckForUpdates() // download file from webspace and checks if update is avalaible
-        {            
-
+        {
             try
             {
                 System.Net.WebClient _wclient = new System.Net.WebClient();

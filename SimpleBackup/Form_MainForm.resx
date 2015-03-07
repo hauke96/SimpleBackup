@@ -142,7 +142,7 @@
     <value>700, 19</value>
   </metadata>
   <metadata name="ContextMenuStrip_Settings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 97</value>
+    <value>1221, 58</value>
   </metadata>
   <metadata name="ContextMenuStrip_TrayContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>131, 58</value>
@@ -151,7 +151,7 @@
   <data name="Beenden_ToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAABMpJREFUeF7tm11Mm2UYhmswAjNAykzkqCExHkk0qwmCybKDjUSZmYmeqCGGikxh
+        vwAADr8BOAVTJAAABMpJREFUeF7tm11Mm2UYhmswAjNAykzkqCExHkk0qwmCybKDjUSZmYmeqCGGikxh
         kygT/MG4SMtGZ6f92cpGKLQ1kw4zsqSOEDDlYCojTH67AIPTndEyNyWUtb19n+4jG+3bfjVh+Zb2vZPr
         oOR+3jzvBbSFpKpoNLrCCGQpKyTgDrI0dHcSEJAeZ13o7tsEDHkHYDtZj65TjbDLQB3q0owSuXcvgr7z
         RtiNH3H3i6fr+0aYOw5jbnZKOoEj4Ed9LcZMObh2Vo1xGahDXZpRIqu3Q+j89EVc73qau188k+fU+OWb
@@ -464,6 +464,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
 </value>
   </data>
+  <metadata name="BackgroundWorker_UpdateOnStartup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>963, 58</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>105</value>
   </metadata>

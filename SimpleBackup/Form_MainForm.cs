@@ -95,7 +95,12 @@ namespace SimpleBackup
         public Form_MainForm()
         {
             InitializeComponent();
+            this.Text = "Simple Backup " + ProductVersion + " - made by Hauke Stieler";
+
             InitializeLanguage();
+
+            BackgroundWorker_UpdateOnStartup.RunWorkerAsync();
+
             //UpdateThread();
             
             if (!QuickIOFile.Exists("some.settings"))
@@ -630,6 +635,15 @@ namespace SimpleBackup
             Form_Updates _fu = new Form_Updates(this);
             _fu.Show();
             _fu.CheckForUpdates();
+        }
+        /// <summary>
+        /// Opens the browser with the download link of the latest version of SimpleBackup.
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
+        private void ToolStripMenuItem_UpdateAvalaible_Click(object _sender, EventArgs _e)
+        {
+            System.Diagnostics.Process.Start("https://sourceforge.net/projects/simple-backup-tool/files/latest/download?source=navbar"); // download newest   
         }
 
 // TEXTBOX
@@ -1441,6 +1455,28 @@ namespace SimpleBackup
         private void TextBox_DestinationPath_KeyPress(object _sender, KeyPressEventArgs _kpe)
         {
             _kpe.Handled = true;
+        }
+
+        private void BackgroundWorker_UpdateOnStartup_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                System.Net.WebClient _wclient = new System.Net.WebClient();
+                _wclient.Proxy = null;
+                string _str = _wclient.DownloadString("http://master.dl.sourceforge.net/project/simple-backup-tool/ver.txt");
+                _str = _str.Replace(".", "");
+                if (Convert.ToInt32(_str) > Convert.ToInt32(ProductVersion.Replace(".", ""))) // newer version number withput "." is higher
+                {
+                    ToolStripMenuItem _menuItem = new ToolStripMenuItem(LanguageList[SelectedLanguage][1 + 74]);
+                    _menuItem.BackColor = Color.LightGreen;
+                    _menuItem.Click += new System.EventHandler(this.ToolStripMenuItem_UpdateAvalaible_Click); // ToolStripMenuItem_UpdateAvalaible_Click() will open the browser
+                    MenuStrip_MainStrip.Invoke((MethodInvoker)delegate { MenuStrip_MainStrip.Items.Add(_menuItem); });
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
 
