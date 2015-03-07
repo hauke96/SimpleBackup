@@ -79,8 +79,9 @@ namespace SimpleBackup
             CurrentFileInMBytes = 0, // size in mega-bytes (MBytes) of current file
             SelectedErrorMessage = -1, // the selected error message in the notification list
             SettingsList_SelectedIndex = -1, // saves the last selected index if ListBox_ListOfSettings
-            AmountOfLanguageRows = 90, // Amount of rows in a language file
-            ErrorLogFileID = 0; // the number of error log file
+            AmountOfLanguageRows = 85, // Amount of rows in a language file
+            ErrorLogFileID = 0, // the number of error log file
+            ErrorLogCounter = 0; // the index for the ErrorMessages-Array to copy the correct message
         public long Amount_BytesInSourcePath, // Amount of bytes in the original folder ( SourcePath )
             Amount_CopiedBytes; // for progressbar; Amount_CopiedBytes = copied amount of bytes
         public DateTime StartTime; // Time for elapsed and remaining time
@@ -91,18 +92,16 @@ namespace SimpleBackup
         public List<string[]> LanguageList = new List<string[]>();
         private List<ToolStripMenuItem> LanguageListItems = new List<ToolStripMenuItem>(); 
         
-
-        
         public Form_MainForm()
         {
             InitializeComponent();
             InitializeLanguage();
             //UpdateThread();
             
-           if (!QuickIOFile.Exists("some.settings"))
-                {
-                    QuickIOFile.Create("some.settings");
-                }
+            if (!QuickIOFile.Exists("some.settings"))
+            {
+                QuickIOFile.Create("some.settings");
+            }
             StreamReader _reader = new StreamReader("some.settings");
 
             // read language from settings file
@@ -410,6 +409,16 @@ namespace SimpleBackup
                 string _splitEntry = _currentEntry.Split('(')[1]; // [0] = "ERROR" , [1] = "x): ..."
                 _splitEntry = _splitEntry.Split(')')[0]; // [0] = "x", [1] = ": ..."
                 SelectedErrorMessage = Convert.ToInt32(_splitEntry);
+            }
+            else if (_e.Button == MouseButtons.Left
+                && ListBox_Notifications.SelectedItem != null
+                && ListBox_Notifications.SelectedItem.Equals(LanguageList[SelectedLanguage][1 + 83])) // "click here to report error" -> go to sourceforge.net
+            {
+                System.Diagnostics.Process.Start("https://sourceforge.net/p/simple-backup-tool/tickets/new/"); // Tickets on Sourceforge.net
+            }
+            else
+            {
+                ListBox_Notifications.SelectedIndex = -1;
             }
         }
         /// <summary>
@@ -801,7 +810,7 @@ namespace SimpleBackup
             _temp[1 + 31] = "detecting old files ...";
             _temp[1 + 32] = " files has been detected";
             _temp[1 + 33] = "backup successfully finished";
-            _temp[1 + 34] = "report error";
+            _temp[1 + 34] = "click here to report error";
             _temp[1 + 35] = "copy";
             _temp[1 + 36] = "no file exists";
             _temp[1 + 37] = "Please report the error and send the content of the following file:\n";
@@ -850,6 +859,7 @@ namespace SimpleBackup
             _temp[1 + 80] = "Program back on top";
             _temp[1 + 81] = "Exit";
             _temp[1 + 82] = "Info";
+            _temp[1 + 83] = "click here to report error";
 
             // create MenuItem
             _ToolStripMenuItem = new ToolStripMenuItem();//_temp[0]);
@@ -1045,10 +1055,10 @@ namespace SimpleBackup
         /// <param name="stopBackup">When the error is so fatal that the backup has to be canceled set this to "true".</param>
         public void ErrorOccured(Exception _ex, Boolean stopBackup = true)
         {
-            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogFileID + ") " + _ex.Message);
-            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 37] + ErrorLogFileID + ".log");
+            ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogCounter + ") " + _ex.Message);
+            ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 37] + ErrorLogFileID + ".log");
 
-            string _temp_ErrorMessage = LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogFileID + ") " + _ex.Message + "\n"
+            string _temp_ErrorMessage = LanguageList[SelectedLanguage][1 + 22] + "(" + ErrorLogCounter + ") " + _ex.Message + "\n"
                 + _ex.StackTrace + "\n"
                 + _ex.Data + "\n"
                 + _ex.HelpLink + "\n"
@@ -1059,8 +1069,9 @@ namespace SimpleBackup
             StreamWriter _writer = new StreamWriter(ErrorLogFileID + ".log", true);
             _writer.WriteLine(_temp_ErrorMessage + "\n");
             _writer.Close();
-            ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 34]);
+            ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 83]);
             BackupIsRunning = stopBackup == false;
+            ErrorLogCounter++;
         }
 
 
@@ -1140,9 +1151,10 @@ namespace SimpleBackup
             Amount_FilesInSourcePath = 0;
             Amount_ProcessedFiles = 0;
             if (BackupAborded)
-                ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 40]);
+                ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 40]);
             else
-                ListBox_Notifications.Items.Add(LanguageList[SelectedLanguage][1 + 33]);
+                ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 33]);
+
             TimeSpan _ts = (DateTime.Now - StartTime - PausedTime);
             ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 39] + string.Format("{0:D2}h:{1:D2}m:{2:D2}s", _ts.Hours, _ts.Minutes, _ts.Seconds));
             if (_e.Error != null)
@@ -1257,7 +1269,7 @@ namespace SimpleBackup
                                 }
                                 catch (Exception _ex)
                                 {
-                                    ListBox_Notifications_AddEntry(_ex.Message);
+                                    ErrorOccured(_ex, false);
                                 }
                             }
                         }
@@ -1276,7 +1288,8 @@ namespace SimpleBackup
                 }
                 else
                 {
-                    ListBox_Notifications_AddEntry(LanguageList[SelectedLanguage][1 + 50] + " \"" + _file.Name + "\" " + LanguageList[SelectedLanguage][1 + 51]);
+                    Exception ex = new Exception(LanguageList[SelectedLanguage][1 + 50] + " \"" + _file.Name + "\" " + LanguageList[SelectedLanguage][1 + 51]);
+                    ErrorOccured(ex, false);
                 }
             }
             return _amount;
@@ -1359,7 +1372,7 @@ namespace SimpleBackup
             PausedTime += (DateTime.Now - _dt); // the difference to DateTime.Now must be equal to the sifference BEFOR pausing the process.
         }
 
-        #region Systemtray
+//Systemtray
         /// <summary>
         /// Minimize the Window in the system tray .
         /// </summary>
@@ -1386,11 +1399,10 @@ namespace SimpleBackup
         }
 
         /// <summary>
-        /// Icon is visible in taskbar.
+        /// Double Click on Icon in the taskbar, SimpleBackup come back in normal window
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="e"></param>
-        // Double Click on Icon in the taskbar, SimpleBackup come back in normal window
         private void SystemTray_DoubleClick(object _sender, EventArgs _e)
         {
             this.Show(); //Apperas Program
@@ -1401,24 +1413,25 @@ namespace SimpleBackup
         }
 
         /// <summary>
-        /// Terminated SimpleBackup.
+        /// Terminated SimpleBackup by right click on Icon in the taskbar.
         /// </summary>
         /// <param name="_sender"></param>
         /// <param name="e"></param>
-        // right click on Icon in the taskbar, terminated SimpleBackup
-        private void Beenden_ToolStripMenuItem_Click(object _sender, EventArgs _e)
+        private void Exit_ToolStripMenuItem_Click(object _sender, EventArgs _e)
         {
             Application.Exit(); //Terminated Application
         }
         
-
-        // Is pointing to About SimpleBackup, without to start the main program
+        /// <summary>
+        /// Is pointing to About SimpleBackup, without to start the main program
+        /// </summary>
+        /// <param name="_sender"></param>
+        /// <param name="_e"></param>
         private void ToolStripMenuItem_Info_Click(object _sender, EventArgs _e)
         {
 
             (new Form_About(this)).Show();
         }
-        #endregion
 
         private void TextBox_SourcePath_KeyPress(object _sender, KeyPressEventArgs _kpe)
         {

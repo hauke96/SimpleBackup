@@ -82,3 +82,4 @@ Program runs in background=Programm läuft im Hintergrund
 Program back on top=Programm im Vordergrund
 Exit=Beenden
 Info=Info
+click here to report error=Hier clicken um Fehler zu melden

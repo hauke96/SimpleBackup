@@ -104,7 +104,6 @@
             this.ListBox_Notifications.HorizontalScrollbar = true;
             this.ListBox_Notifications.Location = new System.Drawing.Point(13, 499);
             this.ListBox_Notifications.Name = "ListBox_Notifications";
-            this.ListBox_Notifications.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBox_Notifications.Size = new System.Drawing.Size(577, 134);
             this.ListBox_Notifications.TabIndex = 5;
             this.ListBox_Notifications.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListBox_Notifications_MouseDown);
@@ -555,7 +554,7 @@
             this.Beenden_ToolStripMenuItem.Name = "Beenden_ToolStripMenuItem";
             this.Beenden_ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.Beenden_ToolStripMenuItem.Text = "Beenden";
-            this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Beenden_ToolStripMenuItem_Click);
+            this.Beenden_ToolStripMenuItem.Click += new System.EventHandler(this.Exit_ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_Info
             // 
@@ -613,7 +612,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_MainForm";
-            this.Text = "Simple Backup - ver.4.0.30319.34209 - made by Hauke Stieler";
+            //this.Text = "Simple Backup " + ProductVersion + " - made by Hauke Stieler"; // this is the correct code, line below may be incorrect
+            this.Text = "Simple Backup " + ProductVersion + " - made by Hauke Stieler";
             this.SizeChanged += new System.EventHandler(this.Form_MainForm_SizeChanged);
             this.MenuStrip_MainStrip.ResumeLayout(false);
             this.MenuStrip_MainStrip.PerformLayout();
