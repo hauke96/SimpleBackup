@@ -12,7 +12,6 @@
 *_i.c
 *_p.c
 *.ncb
-*.suo
 *.tlb
 *.tlh
 *.bak
@@ -26,14 +25,12 @@
 *.unsuccessfulbuild
 ipch/
 [Oo]bj/
-[Bb]in
+[Oo]bj/x86/[Dd]ebug
+[Bb]in/
+[Bb]in/[Dd]ebug/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
-
-#MonoDevelop
-*.pidb
-*.userprefs
 
 #Tooling
 _ReSharper*/
@@ -46,23 +43,3 @@ _ReSharper*/
 
 #Subversion files
 .svn
-
-# Office Temp Files
-~$*
-
-# vim Temp Files
-*~
-
-#NuGet
-packages/
-*.nupkg
-
-#ncrunch
-*ncrunch*
-*crunch*.local.xml
-
-# visual studio database projects
-*.dbmdl
-
-#Test files
-*.testsettings
