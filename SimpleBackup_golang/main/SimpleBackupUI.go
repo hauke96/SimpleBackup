@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"github.com/mattn/go-gtk/gdk"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
 
 type MainUI struct {
-	_window *gtk.Window
+	_defaultBackgroundColor *gdk.Color
+	_window                 *gtk.Window
 }
 
 // Finish starts the UI process. This will enable clicks and GUI-stuff.
@@ -27,19 +29,87 @@ func (ui MainUI) Finish() {
 func NewMainUI() MainUI {
 	gtk.Init(nil)
 	mainUI := MainUI{}
-	mainUI._window = createMainWindow()
+	mainUI._defaultBackgroundColor = gdk.NewColorRGB(200, 200, 200)
+	mainUI.createMainWindow()
 	return mainUI
 }
 
 // createMainWindow creates the main window :o
 // This function won't show or enable anything, this is the job of the
 // MainUI.MainUI_Finish function.
-func createMainWindow() *gtk.Window {
-	window := gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
-	window.SetTitle("Simple Backup Tool - golang version - ver.0.0.1 (alpha)")
-	window.Connect("destroy", func(ctx *glib.CallbackContext) {
+func (ui *MainUI) createMainWindow() {
+	ui._window = gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
+	ui._window.SetTitle("Simple Backup Tool - golang version - ver.0.0.1 (alpha)")
+	ui._window.Connect("destroy", func(ctx *glib.CallbackContext) {
 		fmt.Println("got destroy!", ctx.Data().(string))
 		gtk.MainQuit()
 	}, "foo")
-	return window
+	ui._window.Resize(800, 600)
+
+	layout := gtk.NewLayout(nil, nil)
+	layout.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
+
+	ui.createMenuBar(layout)
+
+	ui._window.Add(layout)
+
+}
+
+func (ui *MainUI) createMenuBar(layout *gtk.Layout) {
+	menubar := gtk.NewMenuBar()
+	menubar.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
+
+	//--------------------------------------------------------
+	// GtkMenuItem "File"
+	//--------------------------------------------------------
+	cascademenu := gtk.NewMenuItemWithMnemonic("_File")
+	menubar.Append(cascademenu)
+	submenu := gtk.NewMenu()
+	cascademenu.SetSubmenu(submenu)
+
+	//--------------------------------------------------------
+	// GtkMenuItem "Exit"
+	//--------------------------------------------------------
+	var menuitem *gtk.MenuItem
+	menuitem = gtk.NewMenuItemWithMnemonic("E_xit")
+	menuitem.Connect("activate", func() {
+		gtk.MainQuit()
+	})
+	submenu.Append(menuitem)
+
+	//--------------------------------------------------------
+	// GtkMenuItem "View"
+	//--------------------------------------------------------
+	cascademenu = gtk.NewMenuItemWithMnemonic("_View")
+	menubar.Append(cascademenu)
+	submenu = gtk.NewMenu()
+	cascademenu.SetSubmenu(submenu)
+
+	//--------------------------------------------------------
+	// GtkMenuItem "Disable"
+	//--------------------------------------------------------
+	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("_Disable")
+	checkmenuitem.Connect("activate", func() {
+		fmt.Println("NewState: ", !checkmenuitem.GetActive())
+	})
+	submenu.Append(checkmenuitem)
+
+	//--------------------------------------------------------
+	// GtkMenuItem "Help"
+	//--------------------------------------------------------
+	cascademenu = gtk.NewMenuItemWithMnemonic("_Help")
+	cascademenu.Connect("activate", func() {
+		popup := gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
+		popup.SetTypeHint(gdk.WINDOW_TYPE_HINT_MENU)
+		popup.SetResizable(false)
+		popup.SetTitle("Nothing here :(")
+		popup.SetSizeRequest(350, 150)
+		paned := gtk.NewVBox(false, 0)
+		paned.Add(gtk.NewLabel("N0thing's here yet :(\n\nIn the end this window will show some 'about' information.\n\n"))
+		popup.Add(paned)
+		popup.ShowAll()
+	})
+	menubar.Append(cascademenu)
+
+	layout.Add(menubar)
 }
