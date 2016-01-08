@@ -1,11 +1,12 @@
 package main
 
 import (
+	"./UI"
 	"fmt"
 )
 
 func main() {
-	mainUI := NewMainUI()
-	mainUI.Finish()
+	mainUI := UI.NewMainUI()
+	mainUI.ShowAndRun()
 	fmt.Println("Thanks for using SimpleBackup :D")
 }
