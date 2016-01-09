@@ -10,6 +10,7 @@ import (
 type MainUI struct {
 	_defaultBackgroundColor *gdk.Color
 	_window                 *gtk.Window
+	_backupUI               *BackupUI
 }
 
 // Finish starts the UI process. This will enable clicks and GUI-stuff.
@@ -29,7 +30,7 @@ func (ui MainUI) ShowAndRun() {
 func NewMainUI() MainUI {
 	gtk.Init(nil)
 	mainUI := MainUI{}
-	mainUI._defaultBackgroundColor = gdk.NewColorRGB(200, 200, 200)
+	mainUI._defaultBackgroundColor = gdk.NewColorRGB(200, 200, 203)
 	mainUI.createMainWindow()
 	return mainUI
 }
@@ -44,18 +45,32 @@ func (ui *MainUI) createMainWindow() {
 		fmt.Println("got destroy!", ctx.Data().(string))
 		gtk.MainQuit()
 	}, "foo")
+	ui._window.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 	ui._window.Resize(800, 600)
 
-	layout := gtk.NewLayout(nil, nil)
-	layout.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
+	// Box and Paned setup
+	vBox := gtk.NewVBox(false, 1)
+	vPaned := gtk.NewVPaned()
+	vPaned.SetPosition(250)
 
-	ui.createMenuBar(layout)
+	// MenuBar
+	ui.createMenuBar(vBox)
 
-	ui._window.Add(layout)
+	// BackupUI
+	ui._backupUI = NewBackupUI()
+	vPaned.Add(ui._backupUI._box)
 
+	// Dummy-EventUI
+	box := gtk.NewVBox(false, 10)
+	box.Add(gtk.NewLabel("Dummy-EventUI"))
+	vPaned.Add(box)
+
+	// Add stuff to window
+	vBox.Add(vPaned)
+	ui._window.Add(vBox)
 }
 
-func (ui *MainUI) createMenuBar(layout *gtk.Layout) {
+func (ui *MainUI) createMenuBar(vBox *gtk.VBox) {
 	menubar := gtk.NewMenuBar()
 	menubar.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 
@@ -122,5 +137,5 @@ func (ui *MainUI) createMenuBar(layout *gtk.Layout) {
 	})
 	menubar.Append(cascademenu)
 
-	layout.Add(menubar)
+	vBox.PackStart(menubar, false, false, 0)
 }
