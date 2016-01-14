@@ -31,60 +31,65 @@ func NewMainUI() MainUI {
 	gtk.Init(nil)
 	mainUI := MainUI{}
 	mainUI._defaultBackgroundColor = gdk.NewColorRGB(200, 200, 203)
-	mainUI.createMainWindow()
+	mainUI.createMainUIWindow()
 	return mainUI
 }
 
 // createMainWindow creates the main window :o
 // This function won't show or enable anything, this is the job of the
 // MainUI.MainUI_Finish function.
-func (ui *MainUI) createMainWindow() {
+func (ui *MainUI) createMainUIWindow() {
+	// ------------------------------
+	// CREATE WINDOW
+	// ------------------------------
 	ui._window = gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
 	ui._window.SetTitle("Simple Backup Tool - golang version - ver.0.0.1 (alpha)")
 	ui._window.Connect("destroy", func(ctx *glib.CallbackContext) {
-		fmt.Println("got destroy!", ctx.Data().(string))
+		fmt.Println(ctx.Data().(string))
 		gtk.MainQuit()
-	}, "foo")
+	}, "Closing MainUI")
 	ui._window.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
-	ui._window.Resize(800, 600)
+	ui._window.Resize(1300, 850)
 
-	// Box and Paned setup
+	// ------------------------------
+	// WINDOW SET-UP
+	// ------------------------------
 	vBox := gtk.NewVBox(false, 1)
 	vPaned := gtk.NewVPaned()
 	vPaned.SetPosition(250)
 
-	// MenuBar
-	ui.createMenuBar(vBox)
+	// ------------------------------
+	// CREATE SUB-UI STUFF
+	// ------------------------------
 
-	// BackupUI
-	ui._backupUI = NewBackupUI()
-	vPaned.Add(ui._backupUI._box)
+	vBox.PackStart(ui.createMenuBar(vBox), false, false, 0)
 
-	// Dummy-EventUI
-	box := gtk.NewVBox(false, 10)
-	box.Add(gtk.NewLabel("Dummy-EventUI"))
-	vPaned.Add(box)
+	vPaned.Add(ui.createBackupUI())
 
-	// Add stuff to window
+	vPaned.Add(ui.createEventUI())
+
+	// ------------------------------
+	// ADD THINGS TO WINDOW
+	// ------------------------------
 	vBox.Add(vPaned)
 	ui._window.Add(vBox)
 }
 
-func (ui *MainUI) createMenuBar(vBox *gtk.VBox) {
+func (ui *MainUI) createMenuBar(vBox *gtk.VBox) *gtk.MenuBar {
 	menubar := gtk.NewMenuBar()
 	menubar.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 
-	//--------------------------------------------------------
+	// ------------------------------
 	// GtkMenuItem "File"
-	//--------------------------------------------------------
+	// ------------------------------
 	cascademenu := gtk.NewMenuItemWithMnemonic("_File")
 	menubar.Append(cascademenu)
 	submenu := gtk.NewMenu()
 	cascademenu.SetSubmenu(submenu)
 
-	//--------------------------------------------------------
+	// ------------------------------
 	// GtkMenuItem "Exit"
-	//--------------------------------------------------------
+	// ------------------------------
 	var menuitem *gtk.MenuItem
 	menuitem = gtk.NewMenuItemWithMnemonic("E_xit")
 	menuitem.Connect("activate", func() {
@@ -92,50 +97,41 @@ func (ui *MainUI) createMenuBar(vBox *gtk.VBox) {
 	})
 	submenu.Append(menuitem)
 
-	//--------------------------------------------------------
+	// ------------------------------
 	// GtkMenuItem "View"
-	//--------------------------------------------------------
+	// ------------------------------
 	cascademenu = gtk.NewMenuItemWithMnemonic("_View")
 	menubar.Append(cascademenu)
 	submenu = gtk.NewMenu()
 	cascademenu.SetSubmenu(submenu)
 
-	//--------------------------------------------------------
+	// ------------------------------
 	// GtkMenuItem "Disable"
-	//--------------------------------------------------------
+	// ------------------------------
 	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("_Disable")
 	checkmenuitem.Connect("activate", func() {
 		fmt.Println("NewState: ", !checkmenuitem.GetActive())
 	})
 	submenu.Append(checkmenuitem)
 
-	//--------------------------------------------------------
+	// ------------------------------
 	// GtkMenuItem "Help"
-	//--------------------------------------------------------
+	// ------------------------------
 	cascademenu = gtk.NewMenuItemWithMnemonic("_Help")
-	cascademenu.Connect("activate", func() {
-		popup := gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
-		popup.SetTypeHint(gdk.WINDOW_TYPE_HINT_MENU)
-		popup.SetResizable(false)
-		popup.SetTitle("Nothing here :(")
-		popup.SetSizeRequest(450, 150)
-		paned := gtk.NewLayout(nil, nil)
-
-		paned.Put(gtk.NewLabel("N0thing's here yet :(\n\nIn the end this window will show some 'about' information.\n\n"), 10, 10)
-
-		button := gtk.NewButtonWithLabel("OK")
-		buttonWidth := 100
-		button.SetSizeRequest(buttonWidth, 25)
-		button.Connect("button-press-event", func() { popup.Destroy() })
-		var width int
-		var height int
-		popup.GetSize(&width, &height)
-		paned.Put(button, width/2-buttonWidth/2, height-35)
-
-		popup.Add(paned)
-		popup.ShowAll()
-	})
+	cascademenu.Connect("activate", openAboutWindow)
 	menubar.Append(cascademenu)
 
-	vBox.PackStart(menubar, false, false, 0)
+	return menubar
+}
+
+func (ui *MainUI) createBackupUI() *gtk.HBox {
+	ui._backupUI = NewBackupUI()
+	return ui._backupUI._box
+}
+
+func (ui *MainUI) createEventUI() *gtk.VBox {
+	// TODO create real event ui
+	box := gtk.NewVBox(false, 10)
+	box.Add(gtk.NewLabel("Dummy-EventUI"))
+	return box
 }

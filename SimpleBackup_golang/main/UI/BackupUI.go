@@ -10,12 +10,14 @@ type BackupUI struct {
 	_box *gtk.HBox
 }
 
+// NewBackupUI initiates the backup ui and creates all control.
 func NewBackupUI() *BackupUI {
 	backupUI := BackupUI{}
 	backupUI.createBackupUIPanel()
 	return &backupUI
 }
 
+// createBackupUIPanel is the main function in createing the backupUI stuff.
 func (backupUI *BackupUI) createBackupUIPanel() {
 	hBox := gtk.NewHBox(false, 1)
 
@@ -28,15 +30,25 @@ func (backupUI *BackupUI) createBackupUIPanel() {
 	backupUI._box = hBox
 }
 
+// createBackupList creates the left list with all backups.
 func (backupUI *BackupUI) createBackupList() *gtk.VBox {
+	// ------------------------------
+	// VBOX INITIATING
+	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
 	vBox.SetBorderWidth(10)
 
+	// ------------------------------
+	// LABEL
+	// ------------------------------
 	alignment := gtk.NewAlignment(0, 0, 0, 0)
 	label := gtk.NewLabel("Alle Backup Jobs:")
 	alignment.Add(label)
 	vBox.PackStart(alignment, false, false, 0)
 
+	// ------------------------------
+	// LIST SET-UP
+	// ------------------------------
 	list := gtk.NewListStore(glib.G_TYPE_STRING)
 
 	tree := gtk.NewTreeView()
@@ -49,14 +61,25 @@ func (backupUI *BackupUI) createBackupList() *gtk.VBox {
 	list.SetValue(&iter,
 		0, "hallo")
 
+	// ------------------------------
+	// ADDING AND RETURNING
+	// ------------------------------
 	vBox.Add(tree)
 
 	return vBox
 }
 
+// createBackupButtonArea creates the middle part with the buttons.
 func (backupUI *BackupUI) createButtonArea() *gtk.VBox {
+	// ------------------------------
+	// VBOX INITIATING
+	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
+	vBox.SetBorderWidth(10)
 
+	// ------------------------------
+	// CREATE BUTTONS
+	// ------------------------------
 	button1 := gtk.NewButtonWithLabel("Start Job0")
 	vBox.Add(button1)
 	button2 := gtk.NewButtonWithLabel("Start Job1")
@@ -67,15 +90,26 @@ func (backupUI *BackupUI) createButtonArea() *gtk.VBox {
 	return vBox
 }
 
+// createRunningList creates a list like the createBakupList but there'll be
+// only running backups here.
 func (backupUI *BackupUI) createRunningList() *gtk.VBox {
+	// ------------------------------
+	// VBOX INITIATING
+	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
 	vBox.SetBorderWidth(10)
 
+	// ------------------------------
+	// LABEL
+	// ------------------------------
 	alignment := gtk.NewAlignment(0, 0, 0, 0)
 	label := gtk.NewLabel("Alle laufenden Jobs:")
 	alignment.Add(label)
 	vBox.PackStart(alignment, false, false, 0)
 
+	// ------------------------------
+	// LIST SET-UP
+	// ------------------------------
 	list := gtk.NewListStore(glib.G_TYPE_STRING)
 
 	tree := gtk.NewTreeView()
@@ -88,6 +122,9 @@ func (backupUI *BackupUI) createRunningList() *gtk.VBox {
 	list.SetValue(&iter,
 		0, "test")
 
+	// ------------------------------
+	// ADDING AND RETURNING
+	// ------------------------------
 	vBox.Add(tree)
 
 	return vBox
