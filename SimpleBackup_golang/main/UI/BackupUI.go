@@ -19,12 +19,16 @@ func NewBackupUI() *BackupUI {
 
 // createBackupUIPanel is the main function in createing the backupUI stuff.
 func (backupUI *BackupUI) createBackupUIPanel() {
-	hBox := gtk.NewHBox(false, 1)
+	hBox := gtk.NewHBox(false, 10)
+	hBox.SetBorderWidth(10)
+	hBox.SetSizeRequest(100, 100)
 
 	hBox.Add(backupUI.createBackupList())
+
 	alignment := gtk.NewAlignment(0, 0.5, 0, 0)
 	alignment.Add(backupUI.createButtonArea())
 	hBox.PackStart(alignment, false, false, 0)
+
 	hBox.Add(backupUI.createRunningList())
 
 	backupUI._box = hBox
@@ -36,7 +40,6 @@ func (backupUI *BackupUI) createBackupList() *gtk.VBox {
 	// VBOX INITIATING
 	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
-	vBox.SetBorderWidth(10)
 
 	// ------------------------------
 	// LABEL
@@ -59,12 +62,13 @@ func (backupUI *BackupUI) createBackupList() *gtk.VBox {
 	var iter gtk.TreeIter
 	list.Append(&iter)
 	list.SetValue(&iter,
-		0, "hallo")
+		0, " hallo hallo hallo hallo hallo hallo")
 
 	// ------------------------------
 	// ADDING AND RETURNING
 	// ------------------------------
 	vBox.Add(tree)
+	vBox.SetSizeRequest(0, 0)
 
 	return vBox
 }
@@ -75,7 +79,7 @@ func (backupUI *BackupUI) createButtonArea() *gtk.VBox {
 	// VBOX INITIATING
 	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
-	vBox.SetBorderWidth(10)
+	vBox.SetSizeRequest(100, 100)
 
 	// ------------------------------
 	// CREATE BUTTONS
@@ -97,7 +101,6 @@ func (backupUI *BackupUI) createRunningList() *gtk.VBox {
 	// VBOX INITIATING
 	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
-	vBox.SetBorderWidth(10)
 
 	// ------------------------------
 	// LABEL
@@ -126,6 +129,7 @@ func (backupUI *BackupUI) createRunningList() *gtk.VBox {
 	// ADDING AND RETURNING
 	// ------------------------------
 	vBox.Add(tree)
+	vBox.SetSizeRequest(0, 0)
 
 	return vBox
 }

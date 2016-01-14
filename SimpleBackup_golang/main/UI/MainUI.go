@@ -30,7 +30,7 @@ func (ui MainUI) ShowAndRun() {
 func NewMainUI() MainUI {
 	gtk.Init(nil)
 	mainUI := MainUI{}
-	mainUI._defaultBackgroundColor = gdk.NewColorRGB(200, 200, 203)
+	mainUI._defaultBackgroundColor = gdk.NewColorRGB(183, 180, 182)
 	mainUI.createMainUIWindow()
 	return mainUI
 }
@@ -52,17 +52,19 @@ func (ui *MainUI) createMainUIWindow() {
 	ui._window.Resize(1300, 850)
 
 	// ------------------------------
-	// WINDOW SET-UP
+	// BOX AND PANED SET-UP
 	// ------------------------------
-	vBox := gtk.NewVBox(false, 1)
+	vBox := gtk.NewVBox(false, 10)
 	vPaned := gtk.NewVPaned()
-	vPaned.SetPosition(250)
+	width, height := 0, 0
+	ui._window.GetSize(&width, &height)
+	vPaned.SetPosition(height / 3)
 
 	// ------------------------------
 	// CREATE SUB-UI STUFF
 	// ------------------------------
 
-	vBox.PackStart(ui.createMenuBar(vBox), false, false, 0)
+	vBox.PackStart(ui.createMenuBar(), false, false, 0)
 
 	vPaned.Add(ui.createBackupUI())
 
@@ -75,7 +77,7 @@ func (ui *MainUI) createMainUIWindow() {
 	ui._window.Add(vBox)
 }
 
-func (ui *MainUI) createMenuBar(vBox *gtk.VBox) *gtk.MenuBar {
+func (ui *MainUI) createMenuBar() *gtk.MenuBar {
 	menubar := gtk.NewMenuBar()
 	menubar.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 
@@ -132,6 +134,8 @@ func (ui *MainUI) createBackupUI() *gtk.HBox {
 func (ui *MainUI) createEventUI() *gtk.VBox {
 	// TODO create real event ui
 	box := gtk.NewVBox(false, 10)
-	box.Add(gtk.NewLabel("Dummy-EventUI"))
+	box.SetBorderWidth(10)
+	label := gtk.NewLabel("Dummy-EventUI")
+	box.Add(label)
 	return box
 }
