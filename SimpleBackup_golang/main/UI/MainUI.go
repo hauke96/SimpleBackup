@@ -2,15 +2,14 @@ package UI
 
 import (
 	"fmt"
-	"github.com/mattn/go-gtk/gdk"
+	//	"github.com/mattn/go-gtk/gdk"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
 
 type MainUI struct {
-	_defaultBackgroundColor *gdk.Color
-	_window                 *gtk.Window
-	_backupUI               *BackupUI
+	_window   *gtk.Window
+	_backupUI *BackupUI
 }
 
 // Finish starts the UI process. This will enable clicks and GUI-stuff.
@@ -30,7 +29,6 @@ func (ui MainUI) ShowAndRun() {
 func NewMainUI() MainUI {
 	gtk.Init(nil)
 	mainUI := MainUI{}
-	mainUI._defaultBackgroundColor = gdk.NewColorRGB(183, 180, 182)
 	mainUI.createMainUIWindow()
 	return mainUI
 }
@@ -48,7 +46,6 @@ func (ui *MainUI) createMainUIWindow() {
 		fmt.Println(ctx.Data().(string))
 		gtk.MainQuit()
 	}, "Closing MainUI")
-	ui._window.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 	ui._window.Resize(1300, 850)
 
 	// ------------------------------
@@ -79,7 +76,6 @@ func (ui *MainUI) createMainUIWindow() {
 
 func (ui *MainUI) createMenuBar() *gtk.MenuBar {
 	menubar := gtk.NewMenuBar()
-	menubar.ModifyBG(gtk.STATE_NORMAL, ui._defaultBackgroundColor)
 
 	// ------------------------------
 	// GtkMenuItem "File"
