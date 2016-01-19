@@ -17,7 +17,7 @@ style "murrine-default" {
 	GtkButtonBox::child-min-height = 26
 
 	GtkCheckButton::indicator-size = 10
-GtkCheckButton::indicator-spacing = 4
+	GtkCheckButton::indicator-spacing = 4
 	#GtkRadioButton::indicator-size = 16
 
 	# The following line hints to gecko (and possibly other appliations)
@@ -38,7 +38,7 @@ GtkCheckButton::indicator-spacing = 4
 
 	GtkMenuItem::arrow-scaling= 0.5
 
-	GtkPaned::handle-size = 1
+	GtkPaned::handle-size = 10
 
 	GtkProgressBar::min-horizontal-bar-height = 12
 	GtkProgressBar::min-vertical-bar-width = 12
@@ -152,6 +152,21 @@ GtkCheckButton::indicator-spacing = 4
 		sliderstyle = 0 # 0 = none, 1 = handles
 		stepperstyle = 1 # 0 = standard, 1 = integrated stepper handles
 		toolbarstyle = 0 # 0 = flat, 1 = glassy, 2 = gradient
+	}
+	engine "pixmap"{
+		image {
+		function = HANDLE
+		overlay_file = "assets/handle-h.png"
+		overlay_stretch = FALSE
+		orientation = HORIZONTAL
+		}
+
+		image {
+		function = HANDLE
+		overlay_file = "assets/handle-v.png"
+		overlay_stretch = FALSE
+		orientation = VERTICAL
+		}
    }
 }
 
@@ -176,7 +191,7 @@ style "murrine-notebook-bg" {
 	bg[NORMAL] = @base_color
 	bg[ACTIVE] = @bg_color
 }
-
+	
 style "murrine-notebook"  {
 	xthickness = 3
 	ythickness = 1
@@ -800,31 +815,49 @@ style "pixbuf-scrollbar" {
 # Menus
 
 style "murrine-menu" = "murrine-thin" {
-	bg[NORMAL] = @menu_bg_color
-	bg[PRELIGHT] = @selected_bg_color
-	bg[SELECTED] = @selected_bg_color
-	bg[ACTIVE] = @menu_bg_color
-	bg[INSENSITIVE] = @menu_bg_color
+	#bg[NORMAL] = @menu_bg_color
+	#bg[PRELIGHT] = @selected_bg_color
+	#bg[SELECTED] = @selected_bg_color
+	#bg[ACTIVE] = @menu_bg_color
+	#bg[INSENSITIVE] = @menu_bg_color
 
-	fg[NORMAL] = @menu_fg_color
-	fg[PRELIGHT] = @selected_fg_color
-	fg[SELECTED] = @selected_fg_color
-	fg[ACTIVE] = @selected_fg_color
-	fg[INSENSITIVE] = mix (0.5, @menu_bg_color, @menu_fg_color)
+	#fg[NORMAL] = @menu_fg_color
+	#fg[PRELIGHT] = @selected_fg_color
+	#fg[SELECTED] = @selected_fg_color
+	#fg[ACTIVE] = @selected_fg_color
+	#fg[INSENSITIVE] = mix (0.5, @menu_bg_color, @menu_fg_color)
 
-	text[NORMAL] = @menu_fg_color
-	text[PRELIGHT] = @selected_fg_color
-	text[SELECTED] = @selected_fg_color
-	text[ACTIVE] = @selected_fg_color
-	text[INSENSITIVE] = mix (0.5, @menu_bg_color, @menu_fg_color)
+	#text[NORMAL] = @menu_fg_color
+	#text[PRELIGHT] = @selected_fg_color
+	#text[SELECTED] = @selected_fg_color
+	#text[ACTIVE] = @selected_fg_color
+	#text[INSENSITIVE] = mix (0.5, @menu_bg_color, @menu_fg_color)
 
-	engine "murrine" {
-		roundness = 0
+	#engine "murrine" {
+#		roundness = 0
+	#}
+	engine "pixmap" {
+		image {
+			function = BOX
+			state = PRELIGHT
+            recolorable = TRUE
+			file  = "Menubar/menuitem-selected.png"
+			stretch = TRUE
+			border = { 4,4,4,4 }
+		}
+		image {
+			function = SHADOW
+			state = NORMAL
+            recolorable = TRUE
+			file  = "Menubar/menuitem-normal.png"
+			stretch = TRUE
+			border = { 4,4,4,4 }
+		}
 	}
 }
 
 style "murrine-menu-item" {
-        xthickness = 2
+        #xthickness = 2
         ythickness = 4
 	bg[PRELIGHT] = @selected_bg_color
 	bg[SELECTED] = @selected_bg_color
@@ -836,10 +869,6 @@ style "murrine-menu-item" {
 	fg[ACTIVE] = @selected_fg_color
 	fg[INSENSITIVE] = mix (0.5, @menu_bg_color, @menu_fg_color)
 
-	engine "murrine" {
-		textstyle = 0
-		border_shades = { 1.2, 1.2 }
-	}
 }
 
 style "murrine-separator-menu-item" = "murrine-thin" { }
@@ -858,15 +887,6 @@ style "murrine-menubar" {
 	fg[SELECTED] = shade (1.08, @menubar_fg_color)
 	fg[ACTIVE] = @menubar_fg_color
 	fg[INSENSITIVE] = mix (0.5, @menubar_bg_color, @menubar_fg_color)
-
-	engine "pixmap" {
-            image {
-            function = BOX
-            file  = "assets/toolbar.png"
-            stretch  = TRUE
-            border = { 1, 1, 1, 1 }
-            }
-	}
 }
 
 style "murrine-menubaritem" {
@@ -898,19 +918,6 @@ style "pixbuf-toolbar" {
             border = { 1, 1, 1, 1 }
             }
 
-            image {
-            function = HANDLE
-            overlay_file = "assets/handle-h.png"
-            overlay_stretch = FALSE
-            orientation = HORIZONTAL
-            }
-
-            image {
-            function = HANDLE
-            overlay_file = "assets/handle-v.png"
-            overlay_stretch = FALSE
-            orientation = VERTICAL
-            }
 
             image {
             function = VLINE

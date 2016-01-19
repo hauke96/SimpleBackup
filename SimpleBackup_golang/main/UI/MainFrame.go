@@ -2,41 +2,14 @@ package UI
 
 import (
 	"fmt"
-	//	"github.com/mattn/go-gtk/gdk"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
 
-type MainUI struct {
-	_window   *gtk.Window
-	_backupUI *BackupUI
-}
-
-// Finish starts the UI process. This will enable clicks and GUI-stuff.
-// Note that this functions will call the main loop of the ui, meaning that
-// this will cause an (endless) loop.
-// This function will also show the window.
-func (ui MainUI) ShowAndRun() {
-	if ui._window == nil {
-		fmt.Errorf("Window of MainUI is nil!")
-	} else {
-		ui._window.ShowAll()
-	}
-	gtk.Main()
-}
-
-// NewMainUI creates a new UI.
-func NewMainUI() MainUI {
-	gtk.Init(nil)
-	mainUI := MainUI{}
-	mainUI.createMainUIWindow()
-	return mainUI
-}
-
 // createMainWindow creates the main window :o
 // This function won't show or enable anything, this is the job of the
 // MainUI.MainUI_Finish function.
-func (ui *MainUI) createMainUIWindow() {
+func (ui *MainFrameUI) createMainUIWindow() {
 	// ------------------------------
 	// CREATE WINDOW
 	// ------------------------------
@@ -74,7 +47,7 @@ func (ui *MainUI) createMainUIWindow() {
 	ui._window.Add(vBox)
 }
 
-func (ui *MainUI) createMenuBar() *gtk.MenuBar {
+func (ui *MainFrameUI) createMenuBar() *gtk.MenuBar {
 	menubar := gtk.NewMenuBar()
 
 	// ------------------------------
@@ -111,6 +84,14 @@ func (ui *MainUI) createMenuBar() *gtk.MenuBar {
 		fmt.Println("NewState: ", !checkmenuitem.GetActive())
 	})
 	submenu.Append(checkmenuitem)
+	menuitem = gtk.NewMenuItemWithMnemonic("test1")
+	submenu.Append(menuitem)
+	menuitem = gtk.NewMenuItemWithMnemonic("test2")
+	submenu.Append(menuitem)
+	menuitem = gtk.NewMenuItemWithMnemonic("test3")
+	submenu.Append(menuitem)
+	menuitem = gtk.NewMenuItemWithMnemonic("test4")
+	submenu.Append(menuitem)
 
 	// ------------------------------
 	// GtkMenuItem "Help"
@@ -122,12 +103,12 @@ func (ui *MainUI) createMenuBar() *gtk.MenuBar {
 	return menubar
 }
 
-func (ui *MainUI) createBackupUI() *gtk.HBox {
+func (ui *MainFrameUI) createBackupUI() *gtk.HBox {
 	ui._backupUI = NewBackupUI()
 	return ui._backupUI._box
 }
 
-func (ui *MainUI) createEventUI() *gtk.VBox {
+func (ui *MainFrameUI) createEventUI() *gtk.VBox {
 	// TODO create real event ui
 	box := gtk.NewVBox(false, 10)
 	box.SetBorderWidth(10)
