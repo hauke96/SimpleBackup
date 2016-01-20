@@ -63,6 +63,9 @@ func (backupUI *BackupUI) createBackupList() *gtk.VBox {
 	list.Append(&iter)
 	list.SetValue(&iter,
 		0, " hallo hallo hallo hallo hallo hallo")
+	list.Append(&iter)
+	list.SetValue(&iter,
+		0, "ololol")
 
 	// ------------------------------
 	// ADDING AND RETURNING

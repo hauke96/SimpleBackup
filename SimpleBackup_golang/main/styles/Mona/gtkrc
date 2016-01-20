@@ -444,6 +444,10 @@ style "murrine-progressbar" = "murrine-thin" {
 	}
 }
 
+style "murrine-liststore" {
+	base[SELECTED] = shade (0.65, @selected_bg_color)
+}
+
 style "murrine-treeview-header" = "murrine-button" {
   	engine "murrine" {
 		roundness = 0
@@ -665,12 +669,12 @@ style "radiobutton"	= "default"
 
 style "murrine-entry" = "murrine-wider" {
 	engine "murrine" {
-		border_shades = { 1.15, 1.15 }
+		border_shades = { 1.15, 1.5 }
 	}
 }
 
 style "metacity-frame" = "murrine-default" {
-	bg[SELECTED] = @selected_bg_color
+	bg[SELECTED] = @menu_bg_color
 }
 
 style "murrine-statusbar" { }
@@ -887,6 +891,30 @@ style "murrine-menubar" {
 	fg[SELECTED] = shade (1.08, @menubar_fg_color)
 	fg[ACTIVE] = @menubar_fg_color
 	fg[INSENSITIVE] = mix (0.5, @menubar_bg_color, @menubar_fg_color)
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			recolorable	= TRUE
+			state		= PRELIGHT
+			file		= "Menubar/menubutton-selected.png"
+
+			border		= { 4, 4, 4, 4 }
+			stretch		= TRUE
+		}
+		image
+		{
+			function	= BOX
+			recolorable	= TRUE
+			state		= NORMAL
+			file		= "Menubar/menubutton-normal.png"
+
+			border		= { 4, 4, 4, 4 }
+			stretch		= TRUE
+		}
+	}
 }
 
 style "murrine-menubaritem" {
@@ -1319,6 +1347,7 @@ widget_class "*.<GtkFrame>.<GtkLabel>" style "murrine-frame-title"
 
 widget_class "*.<GtkTreeView>*" style "murrine-treeview"
 widget_class "*.<GtkTreeView>.<GtkButton>" style "murrine-treeview-header"
+widget_class "*.<GtkTreeView>" style "murrine-liststore"
 widget_class "*.<GtkCTree>.<GtkButton>" style "murrine-treeview-header"
 widget_class "*.<GtkList>.<GtkButton>" style "murrine-treeview-header"
 widget_class "*.<GtkCList>.<GtkButton>" style "murrine-treeview-header"
