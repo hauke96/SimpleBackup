@@ -12,7 +12,7 @@ import (
 
 func main() {
 	gtk.RCParse("./styles/Mona/gtkrc")
-	mainUI := UI.NewMainUI()
-	mainUI.ShowAndRun()
+	mainFrame := UI.NewMainFrame()
+	mainFrame.ShowAndRun()
 	fmt.Println("Thanks for using SimpleBackup :)")
 }
