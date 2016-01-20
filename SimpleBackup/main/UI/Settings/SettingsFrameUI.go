@@ -6,9 +6,9 @@ import (
 )
 
 type SettingsFrameUI struct {
-	_window *gtk.Window
-	_paned  *gtk.HPaned
-	_tree   *gtk.TreeView
+	window *gtk.Window
+	paned  *gtk.HPaned
+	tree   *gtk.TreeView
 }
 
 func NewSettingsFrameUI() *SettingsFrameUI {
@@ -37,9 +37,9 @@ func NewSettingsFrameUI() *SettingsFrameUI {
 	// ------------------------------
 	// Add Widgets to UI
 	// ------------------------------
-	frame._paned = hPaned
-	//	frame._tree = tree
-	frame._window = window
+	frame.paned = hPaned
+	//	frame.tree = tree
+	frame.window = window
 
 	return &frame
 }
@@ -64,19 +64,19 @@ func (frame *SettingsFrameUI) createTreeView() *gtk.HBox {
 	// ------------------------------
 	// Fill Tree
 	// ------------------------------
-	var iter_p, iter_c gtk.TreeIter
+	var iterp, iterc gtk.TreeIter
 
-	store.Append(&iter_p, nil)
-	store.Set(&iter_p, "Oberfläche")
+	store.Append(&iterp, nil)
+	store.Set(&iterp, "Oberfläche")
 
-	store.Append(&iter_c, &iter_p)
-	store.Set(&iter_c, "Sprache")
+	store.Append(&iterc, &iterp)
+	store.Set(&iterc, "Sprache")
 
 	// ------------------------------
 	// Add tree to panel and panel to UI
 	// ------------------------------
 	hBox.Add(swin)
-	frame._tree = tree
+	frame.tree = tree
 
 	return hBox
 }
