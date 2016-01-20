@@ -7,7 +7,12 @@ import (
 )
 
 type BackupUI struct {
-	_box *gtk.HBox
+	_box         *gtk.HBox
+	_backupList  *gtk.ListStore
+	_runningList *gtk.ListStore
+	_startJob    *gtk.Button
+	_pauseJob    *gtk.Button
+	_stopJob     *gtk.Button
 }
 
 // NewBackupUI initiates the backup ui and creates all control.
@@ -53,6 +58,7 @@ func (backupUI *BackupUI) createBackupList() *gtk.VBox {
 	// LIST SET-UP
 	// ------------------------------
 	list := gtk.NewListStore(glib.G_TYPE_STRING)
+	backupUI._backupList = list
 
 	tree := gtk.NewTreeView()
 	tree.SetModel(list)
@@ -87,12 +93,12 @@ func (backupUI *BackupUI) createButtonArea() *gtk.VBox {
 	// ------------------------------
 	// CREATE BUTTONS
 	// ------------------------------
-	button1 := gtk.NewButtonWithLabel("Start Job0")
-	vBox.Add(button1)
-	button2 := gtk.NewButtonWithLabel("Start Job1")
-	vBox.Add(button2)
-	button3 := gtk.NewButtonWithLabel("Start Job2")
-	vBox.Add(button3)
+	backupUI._startJob = gtk.NewButtonWithLabel("Starten")
+	vBox.Add(backupUI._startJob)
+	backupUI._pauseJob = gtk.NewButtonWithLabel("Pausieren")
+	vBox.Add(backupUI._pauseJob)
+	backupUI._stopJob = gtk.NewButtonWithLabel("Beenden")
+	vBox.Add(backupUI._stopJob)
 
 	return vBox
 }
@@ -117,6 +123,7 @@ func (backupUI *BackupUI) createRunningList() *gtk.VBox {
 	// LIST SET-UP
 	// ------------------------------
 	list := gtk.NewListStore(glib.G_TYPE_STRING)
+	backupUI._runningList = list
 
 	tree := gtk.NewTreeView()
 	tree.SetModel(list)
