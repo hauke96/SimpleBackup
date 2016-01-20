@@ -1,6 +1,7 @@
 package UI
 
 import (
+	"./Settings"
 	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
@@ -103,11 +104,12 @@ func (ui *MainFrameUI) createMenuBar() *gtk.MenuBar {
 	cascademenu.SetSubmenu(submenu)
 
 	// ------------------------------
-	// GtkMenuItem "Disable"
+	// GtkMenuItem SubItems is "View"
 	// ------------------------------
-	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("_Disable")
+	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("_Settings")
 	checkmenuitem.Connect("activate", func() {
-		fmt.Println("NewState: ", !checkmenuitem.GetActive())
+		settingsWindow := Settings.NewSettingsFrame()
+		settingsWindow.ShowAndRun()
 	})
 	submenu.Append(checkmenuitem)
 	menuitem = gtk.NewMenuItemWithMnemonic("test1")
