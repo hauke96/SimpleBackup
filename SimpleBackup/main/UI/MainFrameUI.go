@@ -3,6 +3,7 @@ package UI
 import (
 	"./Backup"
 	"./Settings"
+	"./Status"
 	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
@@ -11,6 +12,7 @@ import (
 type MainFrameUI struct {
 	window *gtk.Window
 	backup *Backup.BackupFrame
+	status *Status.StatusFrame
 }
 
 // NewMainUI creates a new UI.
@@ -64,9 +66,11 @@ func (ui *MainFrameUI) createMainFrameUIWindow() {
 
 	vBox.PackStart(ui.createMenuBar(), false, false, 0)
 
-	vPaned.Add(ui.createBackupUI())
+	vPaned.Pack1(ui.createBackupUI(), false, false)
 
-	vPaned.Add(ui.createEventUI())
+	//TODO create own UI for label area
+
+	vPaned.Add(ui.createStatusUI()) //TODO change to logUI
 
 	// ------------------------------
 	// ADD THINGS TO WINDOW
@@ -137,11 +141,7 @@ func (ui *MainFrameUI) createBackupUI() *gtk.HBox {
 	return ui.backup.BackupFrameUI.Box
 }
 
-func (ui *MainFrameUI) createEventUI() *gtk.VBox {
-	// TODO create real event ui
-	box := gtk.NewVBox(false, 10)
-	box.SetBorderWidth(10)
-	label := gtk.NewLabel("Dummy-EventUI")
-	box.Add(label)
-	return box
+func (ui *MainFrameUI) createStatusUI() *gtk.VPaned {
+	ui.status = Status.NewStatusFrame()
+	return ui.status.StatusFrameUI.Box
 }
