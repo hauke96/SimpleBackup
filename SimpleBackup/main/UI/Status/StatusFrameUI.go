@@ -5,8 +5,8 @@ import (
 )
 
 type StatusFrameUI struct {
-	Box                *gtk.VPaned
-	labelPanedValues   *gtk.VBox
+	Box *gtk.VBox
+	//	labelPanedValues   *gtk.VBox // Use later (maybe?)
 	labelPaned         *gtk.HPaned
 	labelCurrentFile   *gtk.Label
 	labelAmountFiles   *gtk.Label
@@ -14,64 +14,95 @@ type StatusFrameUI struct {
 	labelRemainingTime *gtk.Label
 }
 
+// newStatusFrameUI creates a new UI object with the window including all controls.
 func newStatusFrameUI() *StatusFrameUI {
 	frame := &StatusFrameUI{}
 	frame.createFrame()
 	return frame
 }
 
+// createFrame creates the window with all controls.
 func (frame *StatusFrameUI) createFrame() {
-	frame.Box = gtk.NewVPaned()
-	frame.Box.SetBorderWidth(10)
+	frame.Box = gtk.NewVBox(false, 0)
 
-	frame.Box.Pack1(frame.createLabelArea(), false, false)
-	frame.Box.Add(frame.createLogArea())
+	frame.Box.PackStart(frame.createLabelArea(), false, false, 0)
+	frame.Box.PackStart(frame.createLogArea(), false, false, 0)
 }
 
+// createLabelArea creates the area with the labels that show e.g. the elapsed time.
 func (frame *StatusFrameUI) createLabelArea() *gtk.Alignment {
 	labelPaned := gtk.NewHPaned()
 
-	labelPaned.Add(frame.createDescriptionLabel())
-	labelPaned.Add(frame.createValueLabel())
+	// ------------------------------
+	// CREATE LABEL AREAS
+	// ------------------------------
+	labelPaned.Pack1(frame.createDescriptionLabels(), false, false)
+	labelPaned.Add(frame.createValueLabels())
 
-	alignment := gtk.NewAlignment(0, 0, 1, 0)
+	// ------------------------------
+	// ALIGN AREA
+	// ------------------------------
+	alignment := gtk.NewAlignment(0, 0, 1, 0) // they won't be shrinked
 	alignment.Add(labelPaned)
 
 	return alignment
 }
 
-func (frame *StatusFrameUI) createDescriptionLabel() *gtk.VBox {
-	panel := gtk.NewVBox(false, 0)
-	panel.SetSizeRequest(150, -1)
+// createDescriptionLabels creates the left part of the label area.
+// These labes just describe the value on the right.
+func (frame *StatusFrameUI) createDescriptionLabels() *gtk.VBox {
+	// ------------------------------
+	// CREATE VBOX
+	// ------------------------------
+	panel := gtk.NewVBox(false, 3)
+	panel.SetBorderWidth(10)
+	panel.SetSizeRequest(-1, -1)
 
-	panel.Add(createLeftAlignesLabel("Current file:"))
-	panel.Add(createLeftAlignesLabel("Amount of files:"))
-	panel.Add(createLeftAlignesLabel("Elapsed time:"))
-	panel.Add(createLeftAlignesLabel("Remained time:"))
-
-	return panel
-}
-
-func (frame *StatusFrameUI) createValueLabel() *gtk.VBox {
-	panel := gtk.NewVBox(false, 0)
-
-	panel.Add(createLeftAlignesLabel("/home/max/dummy/dir/with/very/long/path name/and/file.txt"))
-	panel.Add(createLeftAlignesLabel("420/1337"))
-	panel.Add(createLeftAlignesLabel("1:03:45"))
-	panel.Add(createLeftAlignesLabel("50:33"))
+	// ------------------------------
+	// ADD DESCRIPTION LABELS
+	// ------------------------------
+	panel.Add(frame.createLeftAlignedLabel("Current file:"))
+	panel.Add(frame.createLeftAlignedLabel("Amount of files:"))
+	panel.Add(frame.createLeftAlignedLabel("Elapsed time:"))
+	panel.Add(frame.createLeftAlignedLabel("Remained time:"))
 
 	return panel
 }
 
-func createLeftAlignesLabel(text string) *gtk.Label {
+// createValueLabels creates all the labels that contains the value (e.g. elapsed time).
+func (frame *StatusFrameUI) createValueLabels() *gtk.VBox {
+	// ------------------------------
+	// CREATE VBOX
+	// ------------------------------
+	panel := gtk.NewVBox(false, 3)
+	panel.SetBorderWidth(10)
+
+	// ------------------------------
+	// ADD VALUE LABELS
+	// ------------------------------
+	panel.Add(frame.createLeftAlignedLabel("/home/max/dummy/dir/with/very/long/path name/and/file.txt"))
+	panel.Add(frame.createLeftAlignedLabel("420/1337"))
+	panel.Add(frame.createLeftAlignedLabel("1:03:45"))
+	panel.Add(frame.createLeftAlignedLabel("50:33"))
+
+	return panel
+}
+
+// createLeftAlignedLabel creates a label that's aligned to the left side.
+func (frame *StatusFrameUI) createLeftAlignedLabel(text string) *gtk.Label {
 	label := gtk.NewLabel(text)
 	label.SetAlignment(0, 0)
 	return label
 }
 
+// createLogArea creates the area below all labels and shows all event outputs.
 func (frame *StatusFrameUI) createLogArea() *gtk.Alignment {
 	alignment := gtk.NewAlignment(0, 0, 1, 0)
 
+	// ------------------------------
+	// CREATE LOG
+	// ------------------------------
+	// TODO create real log-area (not just the dummy label)
 	panel := gtk.NewHBox(false, 0)
 	panel.Add(gtk.NewLabel("Dummy log"))
 

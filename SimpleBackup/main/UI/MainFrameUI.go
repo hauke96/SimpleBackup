@@ -67,10 +67,7 @@ func (ui *MainFrameUI) createMainFrameUIWindow() {
 	vBox.PackStart(ui.createMenuBar(), false, false, 0)
 
 	vPaned.Pack1(ui.createBackupUI(), false, false)
-
-	//TODO create own UI for label area
-
-	vPaned.Add(ui.createStatusUI()) //TODO change to logUI
+	vPaned.Add(ui.createStatusUI())
 
 	// ------------------------------
 	// ADD THINGS TO WINDOW
@@ -83,39 +80,43 @@ func (ui *MainFrameUI) createMenuBar() *gtk.MenuBar {
 	menubar := gtk.NewMenuBar()
 
 	// ------------------------------
-	// GtkMenuItem "File"
+	// MENU ITEM "File"
 	// ------------------------------
-	cascademenu := gtk.NewMenuItemWithMnemonic("File")
+	cascademenu := gtk.NewMenuItemWithMnemonic("_File")
 	menubar.Append(cascademenu)
 	submenu := gtk.NewMenu()
 	cascademenu.SetSubmenu(submenu)
 
 	// ------------------------------
-	// GtkMenuItem "Exit"
+	// MENU ITEM  "Exit"
 	// ------------------------------
 	var menuitem *gtk.MenuItem
-	menuitem = gtk.NewMenuItemWithMnemonic("Exit")
+	menuitem = gtk.NewMenuItemWithMnemonic("_Exit")
 	menuitem.Connect("activate", func() {
 		gtk.MainQuit()
 	})
 	submenu.Append(menuitem)
 
 	// ------------------------------
-	// GtkMenuItem "View"
+	// MENU ITEM  "View"
 	// ------------------------------
-	cascademenu = gtk.NewMenuItemWithMnemonic("View")
+	cascademenu = gtk.NewMenuItemWithMnemonic("_View")
 	menubar.Append(cascademenu)
 	submenu = gtk.NewMenu()
 	cascademenu.SetSubmenu(submenu)
 
 	// ------------------------------
-	// GtkMenuItem SubItems is "View"
+	// SUB MENU "Settings"
 	// ------------------------------
-	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("Settings")
+	checkmenuitem := gtk.NewCheckMenuItemWithMnemonic("_Settings")
 	checkmenuitem.Connect("activate", func() {
 		settingsWindow := Settings.NewSettingsFrame()
 		settingsWindow.ShowAndRun()
 	})
+
+	// ------------------------------
+	// DUMMY ENTRIES
+	// ------------------------------
 	submenu.Append(checkmenuitem)
 	menuitem = gtk.NewMenuItemWithMnemonic("test1")
 	submenu.Append(menuitem)
@@ -127,21 +128,31 @@ func (ui *MainFrameUI) createMenuBar() *gtk.MenuBar {
 	submenu.Append(menuitem)
 
 	// ------------------------------
-	// GtkMenuItem "Help"
+	// MENU ITEM  "Help"
 	// ------------------------------
-	cascademenu = gtk.NewMenuItemWithMnemonic("Help")
-	cascademenu.Connect("activate", openAboutWindow)
+	cascademenu = gtk.NewMenuItemWithMnemonic("_Help")
+	submenu = gtk.NewMenu()
 	menubar.Append(cascademenu)
+
+	// ------------------------------
+	// SUB MENU "About"
+	// ------------------------------
+	menuitem = gtk.NewMenuItemWithMnemonic("_About")
+	menuitem.Connect("activate", openAboutWindow)
+	submenu.Add(menuitem)
+	cascademenu.SetSubmenu(submenu)
 
 	return menubar
 }
 
-func (ui *MainFrameUI) createBackupUI() *gtk.HBox {
+// createBackupUI creates the BackupUI and gets its widget.
+func (ui *MainFrameUI) createBackupUI() *gtk.Alignment {
 	ui.backup = Backup.NewBackupFrame()
 	return ui.backup.BackupFrameUI.Box
 }
 
-func (ui *MainFrameUI) createStatusUI() *gtk.VPaned {
+// createBackupUI creates the StatusUI and gets its widget.
+func (ui *MainFrameUI) createStatusUI() *gtk.VBox {
 	ui.status = Status.NewStatusFrame()
 	return ui.status.StatusFrameUI.Box
 }

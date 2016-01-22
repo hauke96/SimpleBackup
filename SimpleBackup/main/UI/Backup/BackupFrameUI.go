@@ -7,7 +7,7 @@ import (
 )
 
 type BackupFrameUI struct {
-	Box         *gtk.HBox
+	Box         *gtk.Alignment
 	backupList  *gtk.ListStore
 	runningList *gtk.ListStore
 	newJob,
@@ -29,17 +29,18 @@ func NewBackupFrameUI() *BackupFrameUI {
 func (backupUI *BackupFrameUI) createBackupUIPanel() {
 	hBox := gtk.NewHBox(false, 10)
 	hBox.SetBorderWidth(10)
-	hBox.SetSizeRequest(100, 100)
 
 	hBox.Add(backupUI.createBackupList())
 
-	alignment := gtk.NewAlignment(0, 0.5, 0, 0)
+	alignment := gtk.NewAlignment(0.5, 0.5, 0, 0)
 	alignment.Add(backupUI.createButtonArea())
 	hBox.PackStart(alignment, false, false, 0)
-
 	hBox.Add(backupUI.createRunningList())
 
-	backupUI.Box = hBox
+	alignment = gtk.NewAlignment(0, 0, 1, 1)
+	alignment.Add(hBox)
+
+	backupUI.Box = alignment
 }
 
 // createBackupList creates the left list with all backups.
@@ -48,6 +49,7 @@ func (backupUI *BackupFrameUI) createBackupList() *gtk.VBox {
 	// VBOX INITIATING
 	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
+	vBox.SetSizeRequest(0, 0)
 
 	// ------------------------------
 	// LABEL
@@ -71,7 +73,7 @@ func (backupUI *BackupFrameUI) createBackupList() *gtk.VBox {
 	var iter gtk.TreeIter
 	list.Append(&iter)
 	list.SetValue(&iter,
-		0, " hallo hallo hallo hallo hallo hallo")
+		0, " hallo hallo hallo hallo hallo hallo hallo hallo hallo hallo hallo")
 	list.Append(&iter)
 	list.SetValue(&iter,
 		0, "ololol")
@@ -80,7 +82,6 @@ func (backupUI *BackupFrameUI) createBackupList() *gtk.VBox {
 	// ADDING AND RETURNING
 	// ------------------------------
 	vBox.Add(tree)
-	vBox.SetSizeRequest(0, 0)
 
 	return vBox
 }
@@ -121,6 +122,7 @@ func (backupUI *BackupFrameUI) createRunningList() *gtk.VBox {
 	// VBOX INITIATING
 	// ------------------------------
 	vBox := gtk.NewVBox(false, 10)
+	vBox.SetSizeRequest(0, 0)
 
 	// ------------------------------
 	// LABEL
@@ -150,7 +152,6 @@ func (backupUI *BackupFrameUI) createRunningList() *gtk.VBox {
 	// ADDING AND RETURNING
 	// ------------------------------
 	vBox.Add(tree)
-	vBox.SetSizeRequest(0, 0)
 
 	return vBox
 }
