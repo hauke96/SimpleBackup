@@ -1,7 +1,6 @@
 package Settings
 
 import (
-	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
@@ -9,7 +8,7 @@ import (
 type SettingsFrameUI struct {
 	window       *gtk.Window
 	treePaned    *gtk.HPaned
-	settingsBox  *gtk.HBox
+	settingsBox  *gtk.Box
 	tree         *gtk.TreeView
 	treeStore    *gtk.TreeStore
 	themeChooser *ThemeChooser
@@ -39,16 +38,8 @@ func NewSettingsFrameUI() *SettingsFrameUI {
 	// ------------------------------
 	hBox := gtk.NewHBox(false, 0)
 	hBox.Add(gtk.NewLabel("foo"))
-	frame.settingsBox = hBox
+	frame.settingsBox = &hBox.Box
 	hPaned.Add(hBox)
-
-	hPaned.Remove(frame.settingsBox)
-	hPaned.Add(frame.themeChooser.themeChooserUI.hBox)
-	frame.settingsBox = frame.themeChooser.themeChooserUI.hBox
-
-	hPaned.Remove(frame.settingsBox)
-	frame.settingsBox = frame.themeChooser.themeChooserUI.hBox
-	hPaned.Add(frame.themeChooser.themeChooserUI.hBox)
 
 	window.Add(hPaned)
 
@@ -81,19 +72,15 @@ func (frame *SettingsFrameUI) createTreeView() *gtk.HBox {
 	// ------------------------------
 	// CREATE CONNECT FOR CLICKS
 	// ------------------------------
-	tree.Connect("button-press-event", func() {
+	tree.GetSelection().Connect("changed", func() {
 		var path *gtk.TreePath
 		var column *gtk.TreeViewColumn
 		tree.GetCursor(&path, &column)
-		fmt.Println("SettingsEntry chosen:", path)
 		switch {
 		case path.Compare(*frame.themeUIID) == 0:
+			frame.settingsBox.Ref()
 			frame.treePaned.Remove(frame.settingsBox)
-
-			frame.settingsBox = frame.themeChooser.themeChooserUI.hBox
-			//			hBox := gtk.NewHBox(false, 0)
-			//			hBox.Add(gtk.NewLabel("fskdfgsudfgkjhvfskjd fhs dfisgh oo")) // TODO DOES NOT WORK >:(
-			//						frame.settingsBox = hBox
+			frame.settingsBox = &frame.themeChooser.themeChooserUI.hBox.Box
 			frame.treePaned.Add(frame.settingsBox)
 			frame.settingsBox.ShowAll()
 		}
@@ -113,6 +100,11 @@ func (frame *SettingsFrameUI) createTreeView() *gtk.HBox {
 	store.Append(&iterc, &iterp)
 	store.Set(&iterc, "Theme")
 	frame.themeUIID = store.GetPath(&iterc)
+
+	// ------------------------------
+	// EXPAND
+	// ------------------------------
+	tree.ExpandAll()
 
 	// ------------------------------
 	// ADD TREE TO PANEL AND PANEL TO UI

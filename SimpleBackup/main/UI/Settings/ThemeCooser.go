@@ -13,14 +13,17 @@ type ThemeChooser struct {
 
 func NewThemeChooser() *ThemeChooser {
 	frame := ThemeChooser{themeChooserUI: NewThemeChooserUI()}
-	frame.themeListLoad()
+	list, e := frame.themeListLoad()
+	if e == nil {
+		frame.themeChooserUI.fillThemeList(list)
+	}
 	return &frame
 }
 
 // loadThemeList reads all subdirectories in the "styles" dir and save the names in a list.
 // If one of the directories has no "./styles/foo/gtkrc" file (where "foo" is the style name),
 // there might be an error in parsing the style.
-func (frame ThemeChooser) themeListLoad() {
+func (frame ThemeChooser) themeListLoad() ([]string, error) {
 	fmt.Println("Reading style directories...")
 
 	// ------------------------------
@@ -34,7 +37,7 @@ func (frame ThemeChooser) themeListLoad() {
 	list, e := ioutil.ReadDir("./styles/")
 	if e != nil {
 		fmt.Println(fmt.Errorf(e.Error()))
-		return
+		return nil, e
 	}
 
 	// ------------------------------
@@ -47,20 +50,18 @@ func (frame ThemeChooser) themeListLoad() {
 	writer.Init(os.Stdout, 0, 4, 2, ' ', 0)
 	defer writer.Flush()
 
-	fmt.Println("Got following style directories: ")
+	fmt.Print("Got following style directories: ")
 
 	for _, v := range list {
 		dir := v.Name()
-		output := "./styles/" + dir + "\t"
+		output := "\t./styles/" + dir + "\t"
 		if _, err := os.Stat("styles/" + dir + "/gtkrc"); err == nil {
 			output += "(valid)"
 			validThemes = append(validThemes, dir)
 		}
 		fmt.Fprintln(writer, output)
 	}
+	fmt.Println()
 
-	// ------------------------------
-	// SET THEME LIST
-	// ------------------------------
-	frame.themeChooserUI.themeList = validThemes
+	return validThemes, nil
 }

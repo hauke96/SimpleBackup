@@ -6,35 +6,61 @@ import (
 )
 
 type ThemeChooserUI struct {
-	hBox          *gtk.HBox
+	hBox          *gtk.VBox
 	themeListView *gtk.ListStore
 	themeList     []string
+	buttonOK      *gtk.Button
+	buttonCancel  *gtk.Button
 }
 
 func NewThemeChooserUI() *ThemeChooserUI {
 	frame := ThemeChooserUI{}
 
-	frame.hBox = gtk.NewHBox(false, 0)
-	frame.hBox.Add(gtk.NewLabel("fskdfgsudfgkjhvfskjd fhs dfisgh oo"))
-	//	frame.hBox.Add(frame.createThemeList())
+	frame.hBox = gtk.NewVBox(false, 10)
+	frame.hBox.SetBorderWidth(10)
+
+	frame.hBox.Add(frame.createThemeList())
+	frame.hBox.PackEnd(frame.createButtonArea(), false, false, 10)
 
 	return &frame
 }
 
-func (frame *ThemeChooserUI) createThemeList() *gtk.TreeView {
-	box := gtk.NewHBox(false, 0)
-	box.SetSizeRequest(-1, -1)
+func (frame *ThemeChooserUI) createThemeList() *gtk.HBox {
+	box := gtk.NewHBox(false, 10)
+	box.SetSizeRequest(0, 0)
 
 	list := gtk.NewListStore(glib.G_TYPE_STRING)
 	frame.themeListView = list
 
 	tree := gtk.NewTreeView()
 	tree.SetModel(list)
-	tree.AppendColumn(gtk.NewTreeViewColumnWithAttributes("", gtk.NewCellRendererText(), "text", 0))
+	tree.AppendColumn(gtk.NewTreeViewColumnWithAttributes("Existing themes:", gtk.NewCellRendererText(), "text", 0))
 
+	box.Add(tree)
+
+	return box
+}
+
+func (frame *ThemeChooserUI) fillThemeList(themeList []string) {
+	frame.themeList = themeList
 	var iter gtk.TreeIter
-	list.Append(&iter)
-	list.SetValue(&iter, 0, "test")
+	for _, v := range frame.themeList {
+		frame.themeListView.Append(&iter)
+		frame.themeListView.SetValue(&iter, 0, v)
+	}
+}
 
-	return tree
+func (frame *ThemeChooserUI) createButtonArea() *gtk.HBox {
+	frame.buttonOK = gtk.NewButtonWithLabel("OK")
+	frame.buttonOK.SetSizeRequest(100, 30)
+
+	frame.buttonCancel = gtk.NewButtonWithLabel("Cancel")
+	frame.buttonCancel.SetSizeRequest(100, 30)
+
+	hBox := gtk.NewHBox(false, 10)
+
+	hBox.PackEnd(frame.buttonOK, false, false, 0)
+	hBox.PackEnd(frame.buttonCancel, false, false, 0)
+
+	return hBox
 }
