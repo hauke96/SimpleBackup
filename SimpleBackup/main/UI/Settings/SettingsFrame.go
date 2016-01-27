@@ -2,11 +2,13 @@ package Settings
 
 type SettingsFrame struct {
 	settingsFrameUI *SettingsFrameUI
+	themeList       []string
 }
 
 // NewSettingsFrame creates a window that contains all available settings
 func NewSettingsFrame() *SettingsFrame {
 	frame := SettingsFrame{settingsFrameUI: NewSettingsFrameUI()}
+
 	return &frame
 }
 
