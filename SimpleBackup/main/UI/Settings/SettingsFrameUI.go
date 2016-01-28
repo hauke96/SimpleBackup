@@ -1,6 +1,7 @@
 package Settings
 
 import (
+	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
@@ -12,7 +13,7 @@ type SettingsFrameUI struct {
 	tree         *gtk.TreeView
 	treeStore    *gtk.TreeStore
 	themeChooser *ThemeChooser
-	themeUIID    *gtk.TreePath
+	eventMap     map[string]func()
 }
 
 func NewSettingsFrameUI() *SettingsFrameUI {
@@ -21,6 +22,7 @@ func NewSettingsFrameUI() *SettingsFrameUI {
 	// ------------------------------
 	frame := SettingsFrameUI{}
 	frame.themeChooser = NewThemeChooser()
+	frame.eventMap = make(map[string]func())
 
 	window := gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
 	window.SetSizeRequest(800, 600)
@@ -74,15 +76,20 @@ func (frame *SettingsFrameUI) createTreeView() *gtk.HBox {
 	// ------------------------------
 	tree.GetSelection().Connect("changed", func() {
 		var path *gtk.TreePath
-		var column *gtk.TreeViewColumn
-		tree.GetCursor(&path, &column)
-		switch {
-		case path.Compare(*frame.themeUIID) == 0:
-			frame.settingsBox.Ref()
-			frame.treePaned.Remove(frame.settingsBox)
-			frame.settingsBox = &frame.themeChooser.themeChooserUI.hBox.Box
-			frame.treePaned.Add(frame.settingsBox)
-			frame.settingsBox.ShowAll()
+		var iter gtk.TreeIter
+		var value glib.GValue
+		var entry string
+
+		tree.GetCursor(&path, nil)
+		b := tree.GetModel().GetIter(&iter, path) // true when an iter was found
+		if b {
+			tree.GetModel().GetValue(&iter, 0, &value)
+			entry = value.GetString()
+		}
+
+		// the id of an entry has the following format: name+path (e.g. the "Theme" entry has the ID "Theme0:1")
+		if val, exists := frame.eventMap[entry+path.String()]; exists {
+			val()
 		}
 	})
 
@@ -99,7 +106,13 @@ func (frame *SettingsFrameUI) createTreeView() *gtk.HBox {
 
 	store.Append(&iterc, &iterp)
 	store.Set(&iterc, "Theme")
-	frame.themeUIID = store.GetPath(&iterc)
+	frame.eventMap["Theme"+store.GetPath(&iterc).String()] = func() {
+		frame.settingsBox.Ref()
+		frame.treePaned.Remove(frame.settingsBox)
+		frame.settingsBox = &frame.themeChooser.themeChooserUI.hBox.Box
+		frame.treePaned.Add(frame.settingsBox)
+		frame.settingsBox.ShowAll()
+	}
 
 	// ------------------------------
 	// EXPAND
