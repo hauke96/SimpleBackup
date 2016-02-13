@@ -1,7 +1,6 @@
 package UI
 
 import (
-	"github.com/mattn/go-gtk/gdk"
 	"github.com/mattn/go-gtk/gtk"
 )
 
@@ -11,10 +10,10 @@ func openAboutWindow() {
 	// WINDOW INIT
 	// ------------------------------
 	popup := gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
-	popup.SetTypeHint(gdk.WINDOW_TYPE_HINT_MENU)
 	popup.SetResizable(false)
 	popup.SetTitle("Nothing here :(")
 	popup.SetSizeRequest(450, 150)
+
 	paned := gtk.NewLayout(nil, nil)
 
 	// ------------------------------

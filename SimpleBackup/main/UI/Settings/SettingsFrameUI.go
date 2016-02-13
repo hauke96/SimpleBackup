@@ -1,7 +1,7 @@
 package Settings
 
 import (
-	"fmt"
+	//	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
