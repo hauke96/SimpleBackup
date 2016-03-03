@@ -1,4 +1,4 @@
-package UI
+package Backup
 
 import (
 	"fmt"
@@ -10,19 +10,30 @@ type jobCreatorUI struct {
 	window *gtk.Window
 }
 
-func NewJobCreatorUI() {
+func NewJobCreatorUI() *jobCreatorUI {
 	jobCreatorUI := jobCreatorUI{}
 	jobCreatorUI.createJobCreatorUIWindow()
-	return
+	return &jobCreatorUI
 }
 
 func (ui *jobCreatorUI) createJobCreatorUIWindow() {
 	ui.window = gtk.NewWindow(gtk.WINDOW_TOPLEVEL)
+	ui.window.SetModal(true)
 	ui.window.SetTitle("Create Job")
 	ui.window.Connect("destroy", func(ctx *glib.CallbackContext) {
 		fmt.Println(ctx.Data().(string))
 		gtk.MainQuit()
-	}, "Closing MainUI")
+	}, "Closing jobCreatorUI")
 
 	ui.window.ShowAll()
+}
+
+// ShowAndRun shows the window and starts the gtk-event routine.
+func (ui *jobCreatorUI) ShowAndRun() {
+	if ui.window == nil {
+		fmt.Errorf("Window of jobCreatorUI is nil!")
+	} else {
+		ui.window.ShowAll()
+	}
+	gtk.Main()
 }

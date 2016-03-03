@@ -2,6 +2,7 @@ package Backup
 
 import (
 	"C"
+	"fmt"
 	"github.com/mattn/go-gtk/glib"
 	"github.com/mattn/go-gtk/gtk"
 )
@@ -97,22 +98,27 @@ func (backupUI *BackupFrameUI) createButtonArea() *gtk.VBox {
 	// ------------------------------
 	// CREATE BUTTONS
 	// ------------------------------
-	backupUI.newJobButton("Job erstellen", vBox, backupUI.newJob)
-	backupUI.newJobButton("Job editieren", vBox, backupUI.editJob)
-	backupUI.newJobButton("Job löschen", vBox, backupUI.removeJob)
+	backupUI.newJob = backupUI.newJobButton("Job erstellen", vBox)
+	backupUI.newJob.Connect("button-press-event", func() {
+		NewJobCreator().ShowAndRun()
+	})
 
-	backupUI.newJobButton("Starten", vBox, backupUI.startJob)
-	backupUI.newJobButton("Pausieren", vBox, backupUI.pauseJob)
-	backupUI.newJobButton("Stoppen", vBox, backupUI.stopJob)
+	backupUI.editJob = backupUI.newJobButton("Job editieren", vBox)
+	backupUI.removeJob = backupUI.newJobButton("Job löschen", vBox)
+
+	backupUI.startJob = backupUI.newJobButton("Starten", vBox)
+	backupUI.pauseJob = backupUI.newJobButton("Pausieren", vBox)
+	backupUI.stopJob = backupUI.newJobButton("Stoppen", vBox)
 
 	return vBox
 }
 
 // newJobButton creates a new button for the middle panel.
-func (backupUI *BackupFrameUI) newJobButton(text string, vBox *gtk.VBox, button *gtk.Button) {
-	button = gtk.NewButtonWithLabel(text)
+func (backupUI *BackupFrameUI) newJobButton(text string, vBox *gtk.VBox) *gtk.Button {
+	button := gtk.NewButtonWithLabel(text)
 	button.SetSizeRequest(100, 23)
 	vBox.Add(button)
+	return button
 }
 
 // createRunningList creates a list like the createBakupList but there'll be
